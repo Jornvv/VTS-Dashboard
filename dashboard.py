@@ -28,7 +28,7 @@ THRESHOLDS   = [("Calm", 0, 60), ("Defensive", 60, 80),
 INSTRUMENTS  = {"Calm":{"TV":"SVXY","DR":"QLD","STR":"SPY"},
                 "Defensive":{"TV":"IAU","DR":"XLU","STR":"IYR"},
                 "High-Stress":{"TV":"IAU","DR":"Cash","STR":"Cash"},
-                "Extreme":{"TV":"VXZ","DR":"Cash","STR":"Cash"}}
+                "Extreme":{"TV":"Cash","DR":"Cash","STR":"Cash"}}
 
 # ── Page setup ─────────────────────────────────────────────────────────────────
 st.set_page_config(page_title="VTS V20", page_icon="📊",
