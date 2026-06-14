@@ -5,7 +5,7 @@ Run with:  streamlit run VTS_V18/monitoring/dashboard.py
 """
 
 import json, os
-from datetime import datetime, date
+from datetime import datetime, date, timezone
 
 import numpy as np
 import pandas as pd
@@ -73,6 +73,8 @@ def load_perf():
         out["cagr"]   = m.get("cagr")
         out["sharpe"] = m.get("sharpe")
         out["max_dd"] = m.get("max_dd")
+        out["report_generated"] = m.get("report_generated")
+        out["data_through"]     = m.get("data_through")
     # YTD from annual returns
     af = os.path.join(RPT_OUT, "01_annual_returns.csv")
     if os.path.exists(af):
@@ -137,10 +139,12 @@ if sig is None:
     st.stop()
 
 gen_dt  = datetime.fromisoformat(sig["generated_at"])
-age_hrs = (datetime.now() - gen_dt).total_seconds() / 3600
+if gen_dt.tzinfo is None:                       # older signals were tz-naive (UTC)
+    gen_dt = gen_dt.replace(tzinfo=timezone.utc)
+age_hrs = (datetime.now(timezone.utc) - gen_dt).total_seconds() / 3600
 fresh   = "🟢 Fresh" if age_hrs < 6 else ("🟡 Today" if age_hrs < 20 else "🔴 Stale — rerun signal")
 st.caption(f"Based on US close **{sig['as_of']}** · "
-           f"Computed {gen_dt.strftime('%H:%M')} · {fresh} · "
+           f"Computed {gen_dt.strftime('%H:%M')} UTC · {fresh} · "
            f"1-day lag: positions effective tomorrow")
 
 # ── Trade alert banner ─────────────────────────────────────────────────────────
@@ -181,6 +185,18 @@ k3.markdown(kpi("SPY YTD",   fmt_pct(perf.get("spy_ytd")),
 k4.markdown(kpi("CAGR (full)", f"{perf.get('cagr','—')}%", color="#1A3D6E"), unsafe_allow_html=True)
 k5.markdown(kpi("Sharpe", f"{perf.get('sharpe','—')}", color="#1A3D6E"), unsafe_allow_html=True)
 k6.markdown(kpi("Max DD", f"{perf.get('max_dd','—')}%", color="#B71C1C"), unsafe_allow_html=True)
+
+# Backtest provenance — these KPIs are static backtest figures, not live values.
+_rg = perf.get("report_generated")
+_dt = perf.get("data_through")
+if _rg or _dt:
+    st.markdown(
+        f"<div style='font-size:.72rem;color:#999;text-align:center;margin-top:4px'>"
+        f"Performance figures above are from the backtest"
+        + (f" through <b>{_dt}</b>" if _dt else "")
+        + (f" · regenerated {_rg}" if _rg else "")
+        + " — not live. The barometer, regime and signal below are live.</div>",
+        unsafe_allow_html=True)
 
 st.markdown("<div style='margin-top:8px'></div>", unsafe_allow_html=True)
 

@@ -1,13 +1,13 @@
 {
   "as_of": "2026-06-12",
-  "generated_at": "2026-06-13T19:49:08.181180",
+  "generated_at": "2026-06-14T09:21:48.018147+00:00",
   "barometer": 35.59,
-  "barometer_raw": 29.9,
+  "barometer_raw": 30.1,
   "vix": 17.68,
-  "vix_252d_percentile": 59.9,
+  "vix_252d_percentile": 59.8,
   "hyg": 79.94,
-  "hyg_252d_percentile": 100.0,
-  "hyg_stress": 0.0,
+  "hyg_252d_percentile": 99.6,
+  "hyg_stress": 0.4,
   "regime": "Calm",
   "regime_changed": false,
   "previous_regime": "Calm",
@@ -17,8 +17,8 @@
     "STR": "SPY"
   },
   "svxy_price": 54.9,
-  "svxy_peak_price": 54.9,
-  "svxy_dd_from_peak_pct": 0.0,
+  "svxy_peak_price": 55.85,
+  "svxy_dd_from_peak_pct": -1.7,
   "svxy_stop_active": false,
   "svxy_stop_triggered_today": false,
   "trade_needed_tomorrow": false,
@@ -333,7 +333,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 46.68,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -4.66
     },
     {
       "date": "2026-03-16",
@@ -342,7 +342,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 48.53,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.88
     },
     {
       "date": "2026-03-17",
@@ -351,7 +351,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 48.72,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.49
     },
     {
       "date": "2026-03-18",
@@ -360,7 +360,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 46.78,
-      "svxy_dd_pct": -3.98
+      "svxy_dd_pct": -4.45
     },
     {
       "date": "2026-03-19",
@@ -369,7 +369,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 47.43,
-      "svxy_dd_pct": -2.65
+      "svxy_dd_pct": -3.12
     },
     {
       "date": "2026-03-20",
@@ -782,8 +782,8 @@
       "vix": 16.6,
       "regime": "Calm",
       "regime_changed": false,
-      "svxy_price": 52.77,
-      "svxy_dd_pct": -0.57
+      "svxy_price": null,
+      "svxy_dd_pct": null
     },
     {
       "date": "2026-05-26",
@@ -1589,7 +1589,7 @@
       "regime": "Calm",
       "date_from": "2026-04-01",
       "date_to": "2026-06-12",
-      "days": 51,
+      "days": 52,
       "TV_pct": 18.65,
       "DR_pct": 49.43,
       "STR_pct": 13.2,
