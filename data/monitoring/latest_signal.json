@@ -1,13 +1,13 @@
 {
-  "as_of": "2026-06-19",
-  "generated_at": "2026-06-19T21:53:55.235418+00:00",
-  "barometer": 23.6,
-  "barometer_raw": 23.7,
-  "vix": 16.78,
-  "vix_252d_percentile": 46.2,
-  "hyg": 80.01,
-  "hyg_252d_percentile": 98.8,
-  "hyg_stress": 1.2,
+  "as_of": "2026-06-22",
+  "generated_at": "2026-06-22T22:14:39.768746+00:00",
+  "barometer": 25.89,
+  "barometer_raw": 28.3,
+  "vix": 17.28,
+  "vix_252d_percentile": 54.6,
+  "hyg": 79.94,
+  "hyg_252d_percentile": 98.0,
+  "hyg_stress": 2.0,
   "regime": "Calm",
   "regime_changed": false,
   "previous_regime": "Calm",
@@ -16,9 +16,9 @@
     "DR": "QLD",
     "STR": "SPY"
   },
-  "svxy_price": 56.44,
-  "svxy_peak_price": 56.44,
-  "svxy_dd_from_peak_pct": 0.0,
+  "svxy_price": 56.52,
+  "svxy_peak_price": 56.85,
+  "svxy_dd_from_peak_pct": -0.58,
   "svxy_stop_active": false,
   "svxy_stop_triggered_today": false,
   "trade_needed_tomorrow": false,
@@ -320,8 +320,8 @@
       "regime": "Calm"
     },
     {
-      "date": "2026-06-19",
-      "barometer": 23.6,
+      "date": "2026-06-22",
+      "barometer": 25.89,
       "regime": "Calm"
     }
   ],
@@ -903,13 +903,13 @@
       "svxy_dd_pct": -0.72
     },
     {
-      "date": "2026-06-19",
-      "barometer": 23.6,
-      "vix": 16.8,
+      "date": "2026-06-22",
+      "barometer": 25.89,
+      "vix": 17.3,
       "regime": "Calm",
       "regime_changed": false,
-      "svxy_price": null,
-      "svxy_dd_pct": null
+      "svxy_price": 56.52,
+      "svxy_dd_pct": -0.58
     }
   ],
   "equity_60d": [
@@ -1554,11 +1554,11 @@
       "STR_ticker": "SPY"
     },
     {
-      "date": "2026-06-19",
-      "portfolio_value": 135154.41,
-      "TV": 129.1516,
-      "DR": 162.9356,
-      "STR": 116.0064,
+      "date": "2026-06-22",
+      "portfolio_value": 134970.66,
+      "TV": 129.3346,
+      "DR": 162.5528,
+      "STR": 115.6413,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1578,12 +1578,12 @@
     {
       "regime": "Calm",
       "date_from": "2026-04-01",
-      "date_to": "2026-06-19",
+      "date_to": "2026-06-22",
       "days": 57,
-      "TV_pct": 21.98,
-      "DR_pct": 56.68,
-      "STR_pct": 14.26,
-      "port_pct": 30.14
+      "TV_pct": 22.15,
+      "DR_pct": 56.31,
+      "STR_pct": 13.9,
+      "port_pct": 29.96
     }
   ]
 }
