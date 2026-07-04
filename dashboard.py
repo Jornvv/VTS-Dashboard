@@ -137,6 +137,15 @@ def load_sleeve_monthly():
     if not os.path.exists(path): return None
     return pd.read_csv(path, parse_dates=["month"]).set_index("month")
 
+@st.cache_data(ttl=3600)
+def load_spy_equity():
+    """SPY buy-and-hold cumulative value ($100K start), from the monthly SPY column."""
+    sm = load_sleeve_monthly()
+    if sm is None or "SPY" not in sm.columns: return None
+    s = sm["SPY"].dropna() / 100
+    if s.empty: return None
+    return (1 + s).cumprod() * 100_000
+
 def mtd_from_equity(eq60):
     """Current calendar-month-to-date returns per sleeve + portfolio, fresh from the
     daily 60-day equity. Returns (dict, period) or (None, period)."""
@@ -147,7 +156,7 @@ def mtd_from_equity(eq60):
     if prev.empty: return None, cur
     base, now = prev.iloc[-1], df.iloc[-1]
     out = {}
-    for k in ["TV", "DR", "STR"]:
+    for k in ["TV", "DR", "STR", "SPY"]:
         if k in df.columns and base[k]:
             out[k] = (now[k] / base[k] - 1) * 100
     out["PORT"] = (now["portfolio_value"] / base["portfolio_value"] - 1) * 100
@@ -159,6 +168,7 @@ history = load_history()
 perf    = load_perf()
 equity  = load_equity()
 sleeve_monthly = load_sleeve_monthly()
+spy_equity     = load_spy_equity()
 
 # ── Header ─────────────────────────────────────────────────────────────────────
 c1, c2 = st.columns([6, 1])
@@ -415,7 +425,8 @@ with right:
         cur_period = pd.Timestamp.today().to_period("M")
         completed  = sm[sm.index.to_period("M") < cur_period]
         avg        = sm.mean()
-        SLBL = {"TV": "TV", "DR": "DR", "STR": "STR", "PORT": "Portfolio"}
+        SLBL = {"TV": "TV", "DR": "DR", "STR": "STR", "PORT": "Portfolio", "SPY": "SPY"}
+        _keys = ["PORT", "SPY", "TV", "DR", "STR"] if "SPY" in sm.columns else ["PORT", "TV", "DR", "STR"]
 
         if not completed.empty:
             last = completed.iloc[-1]
@@ -424,8 +435,8 @@ with right:
                 f"**📅 Monthly Performance — {lbl}** "
                 f"<span style='font-size:.8rem;color:#888'>(last full month · strategies "
                 f"standalone, vs average month)</span>", unsafe_allow_html=True)
-            sc = st.columns(4)
-            for i, k in enumerate(["PORT", "TV", "DR", "STR"]):
+            sc = st.columns(len(_keys))
+            for i, k in enumerate(_keys):
                 v = float(last[k]); a = float(avg[k]); d = v - a
                 arrow = "▲" if d >= 0 else "▼"
                 vcol = "#2E7D32" if v >= 0 else "#B71C1C"
@@ -435,10 +446,19 @@ with right:
                     f'<div class="kpi-lbl">{SLBL[k]}</div>'
                     f'<div style="font-size:.72rem;color:{dcol};margin-top:2px">'
                     f'{arrow} {d:+.1f}pp vs avg</div></div>', unsafe_allow_html=True)
+            if "SPY" in sm.columns:
+                _exc  = float(last["PORT"]) - float(last["SPY"])
+                _ecol = "#2E7D32" if _exc >= 0 else "#B71C1C"
+                st.markdown(
+                    f"<div style='font-size:.82rem;margin-top:4px'><b>Portfolio vs SPY:</b> "
+                    f"<b style='color:{_ecol}'>{_exc:+.1f}pp</b> "
+                    f"<span style='color:#999'>(SPY {float(last['SPY']):+.1f}% this month)</span></div>",
+                    unsafe_allow_html=True)
             st.markdown(
                 f"<div style='font-size:.72rem;color:#999;margin-top:3px'>"
-                f"Average month (all history): Portfolio {avg['PORT']:+.1f}% · "
-                f"TV {avg['TV']:+.1f}% · DR {avg['DR']:+.1f}% · STR {avg['STR']:+.1f}%</div>",
+                f"Average month (all history): Portfolio {avg['PORT']:+.1f}%"
+                + (f" · SPY {avg['SPY']:+.1f}%" if 'SPY' in sm.columns else "")
+                + f" · TV {avg['TV']:+.1f}% · DR {avg['DR']:+.1f}% · STR {avg['STR']:+.1f}%</div>",
                 unsafe_allow_html=True)
 
         # MTD — current month so far (fresh from the daily signal, not the report)
@@ -446,7 +466,7 @@ with right:
         if mtd:
             parts = " · ".join(
                 f"{SLBL[k]} <b style='color:{'#2E7D32' if mtd[k] >= 0 else '#B71C1C'}'>"
-                f"{mtd[k]:+.1f}%</b>" for k in ["PORT", "TV", "DR", "STR"] if k in mtd)
+                f"{mtd[k]:+.1f}%</b>" for k in ["PORT", "SPY", "TV", "DR", "STR"] if k in mtd)
             st.markdown(f"<div style='font-size:.82rem;color:#555;margin:4px 0 6px'>"
                         f"<b>{mtd_p.strftime('%B')} so far (MTD, live):</b> {parts}</div>",
                         unsafe_allow_html=True)
@@ -456,7 +476,12 @@ with right:
         tbl.index = tbl.index.strftime("%b %Y")
         tbl = tbl.iloc[::-1]   # most recent month on top
         tbl = pd.concat([tbl, pd.DataFrame([avg], index=["Avg month"])])  # avg at bottom
-        tbl = tbl[["PORT", "TV", "DR", "STR"]].rename(columns={"PORT": "Portfolio"})
+        if "SPY" in tbl.columns:
+            tbl["vs SPY"] = tbl["PORT"] - tbl["SPY"]
+            _tc = ["PORT", "SPY", "vs SPY", "TV", "DR", "STR"]
+        else:
+            _tc = ["PORT", "TV", "DR", "STR"]
+        tbl = tbl[_tc].rename(columns={"PORT": "Portfolio"})
         def _csign(v):
             if pd.isna(v): return ""
             return "color:#2E7D32;font-weight:600" if v >= 0 else "color:#B71C1C;font-weight:600"
@@ -732,7 +757,7 @@ with right:
             )
 
     # ── Equity curve ──────────────────────────────────────────────────────────
-    st.markdown("**Portfolio Value — Full Period** *(starting $100K)*")
+    st.markdown("**Portfolio Value — Full Period** *(starting $100K · VTS vs SPY)*")
     if equity is not None:
         final = equity.iloc[-1]
         fig_e = go.Figure()
@@ -741,17 +766,30 @@ with right:
             mode="lines", name="VTS V20",
             line={"color":"#1A3D6E","width":2},
             fill="tozeroy", fillcolor="rgba(26,61,110,0.06)",
-            hovertemplate="<b>$%{y:,.0f}</b><extra>%{x|%b %Y}</extra>",
+            hovertemplate="<b>VTS $%{y:,.0f}</b><extra>%{x|%b %Y}</extra>",
         ))
+        if spy_equity is not None and len(spy_equity):
+            fig_e.add_trace(go.Scatter(
+                x=spy_equity.index, y=spy_equity.values,
+                mode="lines", name="SPY (buy & hold)",
+                line={"color":"#E67E22","width":1.6,"dash":"dot"},
+                hovertemplate="<b>SPY $%{y:,.0f}</b><extra>%{x|%b %Y}</extra>",
+            ))
+            fig_e.add_annotation(
+                x=spy_equity.index[-1], y=spy_equity.iloc[-1],
+                text=f" SPY ${spy_equity.iloc[-1]/1e6:.2f}M",
+                showarrow=False, xanchor="left",
+                font={"color":"#E67E22","size":10,"family":"monospace"},
+            )
         fig_e.add_hline(y=100_000, line_dash="dot", line_color="#BBB", line_width=1)
         fig_e.add_annotation(
             x=equity.index[-1], y=final,
-            text=f" ${final/1e6:.2f}M",
+            text=f" VTS ${final/1e6:.2f}M",
             showarrow=False, xanchor="left",
             font={"color":"#1A3D6E","size":11,"family":"monospace"},
         )
         fig_e.update_layout(
-            height=240, margin=dict(l=0,r=80,t=5,b=25),
+            height=240, margin=dict(l=0,r=95,t=5,b=25),
             xaxis={"showgrid":False},
             yaxis={"showgrid":True,"gridcolor":"#EEE","tickformat":"$,.0f"},
             paper_bgcolor="white", plot_bgcolor="white",
