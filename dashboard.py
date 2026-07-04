@@ -14,9 +14,17 @@ from plotly.subplots import make_subplots
 import streamlit as st
 
 # ── Paths ──────────────────────────────────────────────────────────────────────
-ROOT      = os.path.dirname(os.path.abspath(__file__))
-MON_OUT   = os.path.join(ROOT, "data", "monitoring")
-RPT_OUT   = os.path.join(ROOT, "data", "v20_report")
+_HERE = os.path.dirname(__file__)
+# Works in BOTH repos: the flat deploy repo (Jornvv/VTS-Dashboard — dashboard.py at
+# root with data/ beside it) and the research repo (Jornvv/VTS-Backtest — data under
+# VTS_V18/output/). Detect the flat layout first, else fall back to the nested one.
+if os.path.isdir(os.path.join(_HERE, "data", "monitoring")):
+    MON_OUT = os.path.join(_HERE, "data", "monitoring")
+    RPT_OUT = os.path.join(_HERE, "data", "v20_report")
+else:
+    _ROOT   = os.path.join(_HERE, "..", "..")
+    MON_OUT = os.path.join(_ROOT, "VTS_V18", "output", "monitoring")
+    RPT_OUT = os.path.join(_ROOT, "VTS_V18", "output", "v20_report")
 SIGNAL_F  = os.path.join(MON_OUT, "latest_signal.json")
 HISTORY_F = os.path.join(MON_OUT, "signal_history.csv")
 
@@ -122,11 +130,35 @@ def load_equity():
     s.index = s.index + pd.offsets.MonthEnd(0)
     return (1 + s).cumprod() * 100_000
 
+@st.cache_data(ttl=3600)
+def load_sleeve_monthly():
+    """Monthly per-sleeve (standalone) + portfolio returns (%), index = month-end."""
+    path = os.path.join(RPT_OUT, "05_sleeve_monthly.csv")
+    if not os.path.exists(path): return None
+    return pd.read_csv(path, parse_dates=["month"]).set_index("month")
+
+def mtd_from_equity(eq60):
+    """Current calendar-month-to-date returns per sleeve + portfolio, fresh from the
+    daily 60-day equity. Returns (dict, period) or (None, period)."""
+    if not eq60: return None, None
+    df = pd.DataFrame(eq60); df["date"] = pd.to_datetime(df["date"])
+    cur = df["date"].iloc[-1].to_period("M")
+    prev = df[df["date"].dt.to_period("M") < cur]
+    if prev.empty: return None, cur
+    base, now = prev.iloc[-1], df.iloc[-1]
+    out = {}
+    for k in ["TV", "DR", "STR"]:
+        if k in df.columns and base[k]:
+            out[k] = (now[k] / base[k] - 1) * 100
+    out["PORT"] = (now["portfolio_value"] / base["portfolio_value"] - 1) * 100
+    return out, cur
+
 # ── Load ───────────────────────────────────────────────────────────────────────
 sig     = load_signal()
 history = load_history()
 perf    = load_perf()
 equity  = load_equity()
+sleeve_monthly = load_sleeve_monthly()
 
 # ── Header ─────────────────────────────────────────────────────────────────────
 c1, c2 = st.columns([6, 1])
@@ -300,7 +332,8 @@ with left:
 
     st.divider()
 
-    # ── SVXY stop ────────────────────────────────────────────────────────────
+    # ── Crash systems: SVXY trailing stop + VIX override ──────────────────────
+    st.markdown("**🛡️ Crash Systems**")
     if pos["TV"] in ("SVXY", "Cash (stop)"):
         st.markdown("**SVXY Trailing Stop**")
         dd      = sig["svxy_dd_from_peak_pct"]
@@ -338,6 +371,35 @@ with left:
 
         st.divider()
 
+    # ── VIX crash override (2nd crash system) ─────────────────────────────────
+    ov = sig.get("override")
+    if ov:
+        st.markdown("**VIX Crash Override**")
+        active = ov.get("active"); level = ov.get("level")
+        roc = ov.get("vix_5d_roc", 0.0); trig = ov.get("trigger_roc", 80)
+        backw = ov.get("backwardation", False)
+        ocls, olbl = ("stop-active", f"🛑 FIRING → baro {level}") if active else \
+                     ("stop-ok", "✅ Armed (off)")
+        st.markdown(
+            f'<div style="display:flex;justify-content:space-between;'
+            f'font-size:.85rem;margin-bottom:4px">'
+            f'<span class="{ocls}">{olbl}</span>'
+            f'<span style="color:#555">5d VIX ROC <b>{roc:+.0f}%</b> / fires &gt;{trig}%</span>'
+            f'</div>', unsafe_allow_html=True)
+        pct_o = min(max(roc / trig, 0), 1.0) if trig else 0
+        obar  = "#2E7D32" if pct_o < 0.5 else ("#E65C00" if pct_o < 0.85 else "#B71C1C")
+        st.markdown(
+            f'<div style="background:#EEE;border-radius:4px;height:10px">'
+            f'<div style="background:{obar};width:{pct_o*100:.0f}%;'
+            f'height:10px;border-radius:4px"></div></div>'
+            f'<div style="font-size:.75rem;color:#888;text-align:right">'
+            f'{pct_o*100:.0f}% toward trigger</div>', unsafe_allow_html=True)
+        term = "⚠️ Backwardation (trigger 40%)" if backw else "Contango (trigger 80%)"
+        tcol = "#B71C1C" if backw else "#2E7D32"
+        st.markdown(f'<div style="font-size:.75rem;color:{tcol};margin-top:2px">{term}</div>',
+                    unsafe_allow_html=True)
+        st.divider()
+
     # ── VIX ──────────────────────────────────────────────────────────────────
     st.markdown("**Market Conditions**")
     col_a, col_b = st.columns(2)
@@ -346,6 +408,64 @@ with left:
 
 # ── Right panel ────────────────────────────────────────────────────────────────
 with right:
+
+    # ── Monthly performance (top) — per sleeve + portfolio vs average ─────────
+    if sleeve_monthly is not None and not sleeve_monthly.empty:
+        sm = sleeve_monthly.copy()
+        cur_period = pd.Timestamp.today().to_period("M")
+        completed  = sm[sm.index.to_period("M") < cur_period]
+        avg        = sm.mean()
+        SLBL = {"TV": "TV", "DR": "DR", "STR": "STR", "PORT": "Portfolio"}
+
+        if not completed.empty:
+            last = completed.iloc[-1]
+            lbl  = completed.index[-1].strftime("%B %Y")
+            st.markdown(
+                f"**📅 Monthly Performance — {lbl}** "
+                f"<span style='font-size:.8rem;color:#888'>(last full month · strategies "
+                f"standalone, vs average month)</span>", unsafe_allow_html=True)
+            sc = st.columns(4)
+            for i, k in enumerate(["PORT", "TV", "DR", "STR"]):
+                v = float(last[k]); a = float(avg[k]); d = v - a
+                arrow = "▲" if d >= 0 else "▼"
+                vcol = "#2E7D32" if v >= 0 else "#B71C1C"
+                dcol = "#2E7D32" if d >= 0 else "#B71C1C"
+                sc[i].markdown(
+                    f'<div class="kpi-box"><div class="kpi-val" style="color:{vcol}">{v:+.1f}%</div>'
+                    f'<div class="kpi-lbl">{SLBL[k]}</div>'
+                    f'<div style="font-size:.72rem;color:{dcol};margin-top:2px">'
+                    f'{arrow} {d:+.1f}pp vs avg</div></div>', unsafe_allow_html=True)
+            st.markdown(
+                f"<div style='font-size:.72rem;color:#999;margin-top:3px'>"
+                f"Average month (all history): Portfolio {avg['PORT']:+.1f}% · "
+                f"TV {avg['TV']:+.1f}% · DR {avg['DR']:+.1f}% · STR {avg['STR']:+.1f}%</div>",
+                unsafe_allow_html=True)
+
+        # MTD — current month so far (fresh from the daily signal, not the report)
+        mtd, mtd_p = mtd_from_equity(sig.get("equity_60d", []))
+        if mtd:
+            parts = " · ".join(
+                f"{SLBL[k]} <b style='color:{'#2E7D32' if mtd[k] >= 0 else '#B71C1C'}'>"
+                f"{mtd[k]:+.1f}%</b>" for k in ["PORT", "TV", "DR", "STR"] if k in mtd)
+            st.markdown(f"<div style='font-size:.82rem;color:#555;margin:4px 0 6px'>"
+                        f"<b>{mtd_p.strftime('%B')} so far (MTD, live):</b> {parts}</div>",
+                        unsafe_allow_html=True)
+
+        # Recent-months table (last 12 full months) + average row, colour-coded
+        tbl = completed.tail(12).copy()
+        tbl.index = tbl.index.strftime("%b %Y")
+        tbl = tbl.iloc[::-1]   # most recent month on top
+        tbl = pd.concat([tbl, pd.DataFrame([avg], index=["Avg month"])])  # avg at bottom
+        tbl = tbl[["PORT", "TV", "DR", "STR"]].rename(columns={"PORT": "Portfolio"})
+        def _csign(v):
+            if pd.isna(v): return ""
+            return "color:#2E7D32;font-weight:600" if v >= 0 else "color:#B71C1C;font-weight:600"
+        _st = tbl.style
+        _elem = _st.map if hasattr(_st, "map") else _st.applymap   # pandas ≥2.1 .map / 2.0 .applymap
+        sty = _elem(_csign).format("{:+.1f}%")
+        st.dataframe(sty, use_container_width=True, height=300)
+
+    st.divider()
 
     # ── Barometer 60 days ─────────────────────────────────────────────────────
     st.markdown("**Barometer — Last 60 Days**")
