@@ -1,18 +1,18 @@
 {
-  "as_of": "2026-07-03",
-  "generated_at": "2026-07-03T21:51:45.302843+00:00",
-  "barometer": 15.16,
-  "barometer_raw": 11.8,
-  "vix": 15.81,
-  "vix_252d_percentile": 23.1,
-  "hyg": 79.71,
+  "as_of": "2026-07-06",
+  "generated_at": "2026-07-06T22:00:11.418033+00:00",
+  "barometer": 15.29,
+  "barometer_raw": 9.1,
+  "vix": 15.57,
+  "vix_252d_percentile": 17.9,
+  "hyg": 79.87,
   "hyg_252d_percentile": 99.6,
   "hyg_stress": 0.4,
   "override": {
     "active": false,
     "level": null,
-    "vix_5d_roc": -14.1,
-    "vix3m": 20.13,
+    "vix_5d_roc": -15.4,
+    "vix3m": 18.78,
     "backwardation": false,
     "trigger_roc": 80
   },
@@ -24,8 +24,8 @@
     "DR": "QLD",
     "STR": "SPY"
   },
-  "svxy_price": 57.31,
-  "svxy_peak_price": 57.31,
+  "svxy_price": 58.07,
+  "svxy_peak_price": 58.07,
   "svxy_dd_from_peak_pct": 0.0,
   "svxy_stop_active": false,
   "svxy_stop_triggered_today": false,
@@ -214,122 +214,122 @@
     },
     {
       "date": "2026-06-01",
-      "barometer": 11.47,
+      "barometer": 14.46,
       "regime": "Calm"
     },
     {
       "date": "2026-06-02",
-      "barometer": 11.01,
+      "barometer": 14.9,
       "regime": "Calm"
     },
     {
       "date": "2026-06-03",
-      "barometer": 12.88,
+      "barometer": 17.81,
       "regime": "Calm"
     },
     {
       "date": "2026-06-04",
-      "barometer": 10.72,
+      "barometer": 16.17,
       "regime": "Calm"
     },
     {
       "date": "2026-06-05",
-      "barometer": 30.56,
+      "barometer": 37.07,
       "regime": "Calm"
     },
     {
       "date": "2026-06-08",
-      "barometer": 35.6,
+      "barometer": 42.54,
       "regime": "Calm"
     },
     {
       "date": "2026-06-09",
-      "barometer": 39.31,
+      "barometer": 45.77,
       "regime": "Calm"
     },
     {
       "date": "2026-06-10",
-      "barometer": 44.76,
+      "barometer": 51.67,
       "regime": "Calm"
     },
     {
       "date": "2026-06-11",
-      "barometer": 41.1,
+      "barometer": 46.45,
       "regime": "Calm"
     },
     {
       "date": "2026-06-12",
-      "barometer": 35.59,
+      "barometer": 40.16,
       "regime": "Calm"
     },
     {
       "date": "2026-06-15",
-      "barometer": 24.87,
+      "barometer": 28.55,
       "regime": "Calm"
     },
     {
       "date": "2026-06-16",
-      "barometer": 21.3,
+      "barometer": 24.53,
       "regime": "Calm"
     },
     {
       "date": "2026-06-17",
-      "barometer": 29.27,
+      "barometer": 33.68,
       "regime": "Calm"
     },
     {
       "date": "2026-06-18",
-      "barometer": 23.5,
+      "barometer": 27.1,
       "regime": "Calm"
     },
     {
       "date": "2026-06-22",
-      "barometer": 25.89,
+      "barometer": 29.59,
       "regime": "Calm"
     },
     {
       "date": "2026-06-23",
-      "barometer": 32.97,
+      "barometer": 37.3,
       "regime": "Calm"
     },
     {
       "date": "2026-06-24",
-      "barometer": 35.01,
+      "barometer": 40.07,
       "regime": "Calm"
     },
     {
       "date": "2026-06-25",
-      "barometer": 36.43,
+      "barometer": 41.35,
       "regime": "Calm"
     },
     {
       "date": "2026-06-26",
-      "barometer": 36.54,
+      "barometer": 41.99,
       "regime": "Calm"
     },
     {
       "date": "2026-06-29",
-      "barometer": 33.41,
+      "barometer": 37.53,
       "regime": "Calm"
     },
     {
       "date": "2026-06-30",
-      "barometer": 26.27,
+      "barometer": 29.92,
       "regime": "Calm"
     },
     {
       "date": "2026-07-01",
-      "barometer": 23.39,
+      "barometer": 26.91,
       "regime": "Calm"
     },
     {
       "date": "2026-07-02",
-      "barometer": 18.57,
+      "barometer": 21.42,
       "regime": "Calm"
     },
     {
-      "date": "2026-07-03",
-      "barometer": 15.16,
+      "date": "2026-07-06",
+      "barometer": 15.29,
       "regime": "Calm"
     }
   ],
@@ -705,7 +705,7 @@
     },
     {
       "date": "2026-06-01",
-      "barometer": 11.47,
+      "barometer": 14.46,
       "vix": 16.0,
       "regime": "Calm",
       "regime_changed": false,
@@ -714,7 +714,7 @@
     },
     {
       "date": "2026-06-02",
-      "barometer": 11.01,
+      "barometer": 14.9,
       "vix": 15.8,
       "regime": "Calm",
       "regime_changed": false,
@@ -723,7 +723,7 @@
     },
     {
       "date": "2026-06-03",
-      "barometer": 12.88,
+      "barometer": 17.81,
       "vix": 16.1,
       "regime": "Calm",
       "regime_changed": false,
@@ -732,7 +732,7 @@
     },
     {
       "date": "2026-06-04",
-      "barometer": 10.72,
+      "barometer": 16.17,
       "vix": 15.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -741,7 +741,7 @@
     },
     {
       "date": "2026-06-05",
-      "barometer": 30.56,
+      "barometer": 37.07,
       "vix": 21.5,
       "regime": "Calm",
       "regime_changed": false,
@@ -750,7 +750,7 @@
     },
     {
       "date": "2026-06-08",
-      "barometer": 35.6,
+      "barometer": 42.54,
       "vix": 18.9,
       "regime": "Calm",
       "regime_changed": false,
@@ -759,7 +759,7 @@
     },
     {
       "date": "2026-06-09",
-      "barometer": 39.31,
+      "barometer": 45.77,
       "vix": 19.9,
       "regime": "Calm",
       "regime_changed": false,
@@ -768,7 +768,7 @@
     },
     {
       "date": "2026-06-10",
-      "barometer": 44.76,
+      "barometer": 51.67,
       "vix": 22.2,
       "regime": "Calm",
       "regime_changed": false,
@@ -777,7 +777,7 @@
     },
     {
       "date": "2026-06-11",
-      "barometer": 41.1,
+      "barometer": 46.45,
       "vix": 19.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -786,7 +786,7 @@
     },
     {
       "date": "2026-06-12",
-      "barometer": 35.59,
+      "barometer": 40.16,
       "vix": 17.7,
       "regime": "Calm",
       "regime_changed": false,
@@ -795,7 +795,7 @@
     },
     {
       "date": "2026-06-15",
-      "barometer": 24.87,
+      "barometer": 28.55,
       "vix": 16.2,
       "regime": "Calm",
       "regime_changed": false,
@@ -804,7 +804,7 @@
     },
     {
       "date": "2026-06-16",
-      "barometer": 21.3,
+      "barometer": 24.53,
       "vix": 16.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -813,7 +813,7 @@
     },
     {
       "date": "2026-06-17",
-      "barometer": 29.27,
+      "barometer": 33.68,
       "vix": 18.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -822,7 +822,7 @@
     },
     {
       "date": "2026-06-18",
-      "barometer": 23.5,
+      "barometer": 27.1,
       "vix": 16.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -831,7 +831,7 @@
     },
     {
       "date": "2026-06-22",
-      "barometer": 25.89,
+      "barometer": 29.59,
       "vix": 17.3,
       "regime": "Calm",
       "regime_changed": false,
@@ -840,7 +840,7 @@
     },
     {
       "date": "2026-06-23",
-      "barometer": 32.97,
+      "barometer": 37.3,
       "vix": 19.5,
       "regime": "Calm",
       "regime_changed": false,
@@ -849,7 +849,7 @@
     },
     {
       "date": "2026-06-24",
-      "barometer": 35.01,
+      "barometer": 40.07,
       "vix": 18.6,
       "regime": "Calm",
       "regime_changed": false,
@@ -858,7 +858,7 @@
     },
     {
       "date": "2026-06-25",
-      "barometer": 36.43,
+      "barometer": 41.35,
       "vix": 18.9,
       "regime": "Calm",
       "regime_changed": false,
@@ -867,7 +867,7 @@
     },
     {
       "date": "2026-06-26",
-      "barometer": 36.54,
+      "barometer": 41.99,
       "vix": 18.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -876,7 +876,7 @@
     },
     {
       "date": "2026-06-29",
-      "barometer": 33.41,
+      "barometer": 37.53,
       "vix": 17.6,
       "regime": "Calm",
       "regime_changed": false,
@@ -885,7 +885,7 @@
     },
     {
       "date": "2026-06-30",
-      "barometer": 26.27,
+      "barometer": 29.92,
       "vix": 16.5,
       "regime": "Calm",
       "regime_changed": false,
@@ -894,7 +894,7 @@
     },
     {
       "date": "2026-07-01",
-      "barometer": 23.39,
+      "barometer": 26.91,
       "vix": 16.6,
       "regime": "Calm",
       "regime_changed": false,
@@ -903,7 +903,7 @@
     },
     {
       "date": "2026-07-02",
-      "barometer": 18.57,
+      "barometer": 21.42,
       "vix": 16.1,
       "regime": "Calm",
       "regime_changed": false,
@@ -911,13 +911,13 @@
       "svxy_dd_pct": 0.0
     },
     {
-      "date": "2026-07-03",
-      "barometer": 15.16,
-      "vix": 15.8,
+      "date": "2026-07-06",
+      "barometer": 15.29,
+      "vix": 15.6,
       "regime": "Calm",
       "regime_changed": false,
-      "svxy_price": null,
-      "svxy_dd_pct": null
+      "svxy_price": 58.07,
+      "svxy_dd_pct": 0.0
     }
   ],
   "equity_60d": [
@@ -927,6 +927,7 @@
       "TV": 100.0,
       "DR": 100.0,
       "STR": 100.0,
+      "SPY": 100.0,
       "TV_ticker": null,
       "DR_ticker": null,
       "STR_ticker": null
@@ -937,6 +938,7 @@
       "TV": 101.406,
       "DR": 101.1981,
       "STR": 100.4727,
+      "SPY": 100.4727,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -947,6 +949,7 @@
       "TV": 99.4809,
       "DR": 101.262,
       "STR": 100.5169,
+      "SPY": 100.5169,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -957,6 +960,7 @@
       "TV": 104.4343,
       "DR": 107.1566,
       "STR": 103.077,
+      "SPY": 103.077,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -967,6 +971,7 @@
       "TV": 106.6407,
       "DR": 108.6422,
       "STR": 103.6717,
+      "SPY": 103.6717,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -977,6 +982,7 @@
       "TV": 105.7106,
       "DR": 108.9297,
       "STR": 103.6031,
+      "SPY": 103.6031,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -987,6 +993,7 @@
       "TV": 107.852,
       "DR": 111.1661,
       "STR": 104.6155,
+      "SPY": 104.6155,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -997,6 +1004,7 @@
       "TV": 108.7173,
       "DR": 115.1757,
       "STR": 105.8902,
+      "SPY": 105.8902,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1007,6 +1015,7 @@
       "TV": 108.4144,
       "DR": 118.3866,
       "STR": 106.7258,
+      "SPY": 106.7258,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1017,6 +1026,7 @@
       "TV": 108.3928,
       "DR": 119.4888,
       "STR": 106.9881,
+      "SPY": 106.9881,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1027,6 +1037,7 @@
       "TV": 109.1283,
       "DR": 122.5719,
       "STR": 108.2811,
+      "SPY": 108.2811,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1037,6 +1048,7 @@
       "TV": 108.4577,
       "DR": 121.8371,
       "STR": 108.0646,
+      "SPY": 108.0646,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1047,6 +1059,7 @@
       "TV": 107.4411,
       "DR": 120.8786,
       "STR": 107.3571,
+      "SPY": 107.3571,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1057,6 +1070,7 @@
       "TV": 108.1333,
       "DR": 124.8882,
       "STR": 108.4443,
+      "SPY": 108.4443,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1067,6 +1081,7 @@
       "TV": 108.3712,
       "DR": 123.4824,
       "STR": 108.0234,
+      "SPY": 108.0234,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1077,6 +1092,7 @@
       "TV": 107.5925,
       "DR": 128.1789,
       "STR": 108.8605,
+      "SPY": 108.8605,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1087,6 +1103,7 @@
       "TV": 109.4095,
       "DR": 128.2588,
       "STR": 109.0481,
+      "SPY": 109.0481,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1097,6 +1114,7 @@
       "TV": 110.1449,
       "DR": 125.6709,
       "STR": 108.5174,
+      "SPY": 108.5174,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1107,6 +1125,7 @@
       "TV": 109.1066,
       "DR": 127.2205,
       "STR": 108.5007,
+      "SPY": 108.5007,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1117,6 +1136,7 @@
       "TV": 110.8155,
       "DR": 129.4729,
       "STR": 109.5802,
+      "SPY": 109.5802,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1127,6 +1147,7 @@
       "TV": 110.2531,
       "DR": 131.9489,
       "STR": 109.8837,
+      "SPY": 109.8837,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1137,6 +1158,7 @@
       "TV": 109.4527,
       "DR": 131.4377,
       "STR": 109.4811,
+      "SPY": 109.4811,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1147,6 +1169,7 @@
       "TV": 109.8205,
       "DR": 134.8083,
       "STR": 110.3594,
+      "SPY": 110.3594,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1157,6 +1180,7 @@
       "TV": 110.7939,
       "DR": 140.3355,
       "STR": 111.8933,
+      "SPY": 111.8933,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1167,6 +1191,7 @@
       "TV": 111.0967,
       "DR": 140.032,
       "STR": 111.5503,
+      "SPY": 111.5503,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1177,6 +1202,7 @@
       "TV": 110.7722,
       "DR": 146.5176,
       "STR": 112.4712,
+      "SPY": 112.4712,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1187,6 +1213,7 @@
       "TV": 110.1882,
       "DR": 147.3802,
       "STR": 112.7274,
+      "SPY": 112.7274,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1197,6 +1224,7 @@
       "TV": 111.1832,
       "DR": 144.8722,
       "STR": 112.5566,
+      "SPY": 112.5566,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1207,6 +1235,7 @@
       "TV": 110.2747,
       "DR": 147.8435,
       "STR": 113.1863,
+      "SPY": 113.1863,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1217,6 +1246,7 @@
       "TV": 111.4861,
       "DR": 150.0,
       "STR": 114.0799,
+      "SPY": 114.0799,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1227,6 +1257,7 @@
       "TV": 111.1183,
       "DR": 145.4153,
       "STR": 112.7076,
+      "SPY": 112.7076,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1237,6 +1268,7 @@
       "TV": 112.1999,
       "DR": 144.0895,
       "STR": 112.6283,
+      "SPY": 112.6283,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1247,6 +1279,7 @@
       "TV": 111.9836,
       "DR": 142.3802,
       "STR": 111.8781,
+      "SPY": 111.8781,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1257,6 +1290,7 @@
       "TV": 112.957,
       "DR": 147.0447,
       "STR": 113.0247,
+      "SPY": 113.0247,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1267,6 +1301,7 @@
       "TV": 114.7956,
       "DR": 147.5719,
       "STR": 113.2489,
+      "SPY": 113.2489,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1277,6 +1312,7 @@
       "TV": 114.1467,
       "DR": 148.7221,
       "STR": 113.6941,
+      "SPY": 113.6941,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1287,6 +1323,7 @@
       "TV": 114.1467,
       "DR": 148.7221,
       "STR": 113.6941,
+      "SPY": 113.6941,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1297,6 +1334,7 @@
       "TV": 115.942,
       "DR": 153.9936,
       "STR": 114.4489,
+      "SPY": 114.4489,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1307,6 +1345,7 @@
       "TV": 117.2832,
       "DR": 153.6582,
       "STR": 114.429,
+      "SPY": 114.429,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1317,6 +1356,7 @@
       "TV": 118.4945,
       "DR": 156.2141,
       "STR": 115.0603,
+      "SPY": 115.0603,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1327,6 +1367,7 @@
       "TV": 119.3814,
       "DR": 157.2843,
       "STR": 115.347,
+      "SPY": 115.347,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1337,6 +1378,7 @@
       "TV": 117.8672,
       "DR": 159.1534,
       "STR": 115.6611,
+      "SPY": 115.6611,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1347,6 +1389,7 @@
       "TV": 118.9271,
       "DR": 160.5911,
       "STR": 115.8181,
+      "SPY": 115.8181,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1357,6 +1400,7 @@
       "TV": 118.6892,
       "DR": 159.7444,
       "STR": 115.0054,
+      "SPY": 115.0054,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1367,6 +1411,7 @@
       "TV": 120.809,
       "DR": 158.1789,
       "STR": 115.44,
+      "SPY": 115.44,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1377,6 +1422,7 @@
       "TV": 116.3098,
       "DR": 143.0352,
       "STR": 112.4605,
+      "SPY": 112.4605,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1387,6 +1433,7 @@
       "TV": 117.5644,
       "DR": 147.3642,
       "STR": 112.7152,
+      "SPY": 112.7152,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1397,6 +1444,7 @@
       "TV": 116.5261,
       "DR": 143.9617,
       "STR": 112.3843,
+      "SPY": 112.3843,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1407,6 +1455,7 @@
       "TV": 113.3247,
       "DR": 138.1949,
       "STR": 110.6125,
+      "SPY": 110.6125,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1417,6 +1466,7 @@
       "TV": 115.8988,
       "DR": 147.2524,
       "STR": 112.4926,
+      "SPY": 112.4926,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1427,6 +1477,7 @@
       "TV": 118.7541,
       "DR": 149.1693,
       "STR": 113.101,
+      "SPY": 113.101,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1437,6 +1488,7 @@
       "TV": 122.9721,
       "DR": 158.4345,
       "STR": 115.0954,
+      "SPY": 115.0954,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1447,6 +1499,7 @@
       "TV": 122.7774,
       "DR": 152.492,
       "STR": 114.4092,
+      "SPY": 114.4092,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1457,6 +1510,7 @@
       "TV": 120.1168,
       "DR": 149.4569,
       "STR": 112.9805,
+      "SPY": 112.9805,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1467,6 +1521,7 @@
       "TV": 122.0852,
       "DR": 156.4058,
       "STR": 114.1552,
+      "SPY": 114.1552,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1477,6 +1532,7 @@
       "TV": 122.2583,
       "DR": 156.0384,
       "STR": 113.7959,
+      "SPY": 113.7959,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1487,6 +1543,7 @@
       "TV": 118.9704,
       "DR": 145.7189,
       "STR": 112.1434,
+      "SPY": 112.1434,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1497,6 +1554,7 @@
       "TV": 119.3165,
       "DR": 144.4576,
       "STR": 112.0914,
+      "SPY": 112.0914,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1507,6 +1565,7 @@
       "TV": 120.2899,
       "DR": 146.6955,
       "STR": 112.2534,
+      "SPY": 112.2534,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1517,6 +1576,7 @@
       "TV": 120.1168,
       "DR": 142.4595,
       "STR": 111.4417,
+      "SPY": 111.4417,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1527,6 +1587,7 @@
       "TV": 122.4097,
       "DR": 149.7487,
       "STR": 113.2777,
+      "SPY": 113.2777,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1537,6 +1598,7 @@
       "TV": 123.859,
       "DR": 154.6721,
       "STR": 114.1597,
+      "SPY": 114.1597,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1547,6 +1609,7 @@
       "TV": 123.4912,
       "DR": 150.1004,
       "STR": 114.0053,
+      "SPY": 114.0053,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1557,16 +1620,18 @@
       "TV": 123.9671,
       "DR": 144.8413,
       "STR": 113.8555,
+      "SPY": 113.8555,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
-      "date": "2026-07-03",
-      "portfolio_value": 127407.11,
-      "TV": 123.9671,
-      "DR": 144.8413,
-      "STR": 113.8555,
+      "date": "2026-07-06",
+      "portfolio_value": 129526.76,
+      "TV": 125.6111,
+      "DR": 148.8855,
+      "STR": 114.8492,
+      "SPY": 114.8492,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1576,12 +1641,12 @@
     {
       "regime": "Calm",
       "date_from": "2026-04-02",
-      "date_to": "2026-07-03",
+      "date_to": "2026-07-06",
       "days": 65,
-      "TV_pct": 23.97,
-      "DR_pct": 44.84,
-      "STR_pct": 13.86,
-      "port_pct": 27.41
+      "TV_pct": 25.61,
+      "DR_pct": 48.89,
+      "STR_pct": 14.85,
+      "port_pct": 29.53
     }
   ]
 }
