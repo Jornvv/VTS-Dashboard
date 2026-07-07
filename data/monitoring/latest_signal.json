@@ -1,18 +1,18 @@
 {
-  "as_of": "2026-07-06",
-  "generated_at": "2026-07-06T22:00:11.418033+00:00",
-  "barometer": 15.29,
-  "barometer_raw": 9.1,
-  "vix": 15.57,
-  "vix_252d_percentile": 17.9,
-  "hyg": 79.87,
-  "hyg_252d_percentile": 99.6,
-  "hyg_stress": 0.4,
+  "as_of": "2026-07-07",
+  "generated_at": "2026-07-07T21:59:08.149557+00:00",
+  "barometer": 15.51,
+  "barometer_raw": 15.8,
+  "vix": 16.13,
+  "vix_252d_percentile": 27.9,
+  "hyg": 79.76,
+  "hyg_252d_percentile": 96.4,
+  "hyg_stress": 3.6,
   "override": {
     "active": false,
     "level": null,
-    "vix_5d_roc": -15.4,
-    "vix3m": 18.78,
+    "vix_5d_roc": -8.6,
+    "vix3m": 19.01,
     "backwardation": false,
     "trigger_roc": 80
   },
@@ -24,9 +24,9 @@
     "DR": "QLD",
     "STR": "SPY"
   },
-  "svxy_price": 58.07,
+  "svxy_price": 57.83,
   "svxy_peak_price": 58.07,
-  "svxy_dd_from_peak_pct": 0.0,
+  "svxy_dd_from_peak_pct": -0.41,
   "svxy_stop_active": false,
   "svxy_stop_triggered_today": false,
   "trade_needed_tomorrow": false,
@@ -188,148 +188,148 @@
       "regime": "Calm"
     },
     {
-      "date": "2026-05-25",
-      "barometer": 23.83,
-      "regime": "Calm"
-    },
-    {
       "date": "2026-05-26",
-      "barometer": 23.77,
+      "barometer": 24.93,
       "regime": "Calm"
     },
     {
       "date": "2026-05-27",
-      "barometer": 19.06,
+      "barometer": 19.64,
       "regime": "Calm"
     },
     {
       "date": "2026-05-28",
-      "barometer": 14.41,
+      "barometer": 14.7,
       "regime": "Calm"
     },
     {
       "date": "2026-05-29",
-      "barometer": 10.59,
+      "barometer": 10.74,
       "regime": "Calm"
     },
     {
       "date": "2026-06-01",
-      "barometer": 14.46,
+      "barometer": 14.43,
       "regime": "Calm"
     },
     {
       "date": "2026-06-02",
-      "barometer": 14.9,
+      "barometer": 14.79,
       "regime": "Calm"
     },
     {
       "date": "2026-06-03",
-      "barometer": 17.81,
+      "barometer": 17.65,
       "regime": "Calm"
     },
     {
       "date": "2026-06-04",
-      "barometer": 16.17,
+      "barometer": 16.0,
       "regime": "Calm"
     },
     {
       "date": "2026-06-05",
-      "barometer": 37.07,
+      "barometer": 36.88,
       "regime": "Calm"
     },
     {
       "date": "2026-06-08",
-      "barometer": 42.54,
+      "barometer": 42.35,
       "regime": "Calm"
     },
     {
       "date": "2026-06-09",
-      "barometer": 45.77,
+      "barometer": 45.58,
       "regime": "Calm"
     },
     {
       "date": "2026-06-10",
-      "barometer": 51.67,
+      "barometer": 51.47,
       "regime": "Calm"
     },
     {
       "date": "2026-06-11",
-      "barometer": 46.45,
+      "barometer": 46.35,
       "regime": "Calm"
     },
     {
       "date": "2026-06-12",
-      "barometer": 40.16,
+      "barometer": 40.01,
       "regime": "Calm"
     },
     {
       "date": "2026-06-15",
-      "barometer": 28.55,
+      "barometer": 28.47,
       "regime": "Calm"
     },
     {
       "date": "2026-06-16",
-      "barometer": 24.53,
+      "barometer": 24.49,
       "regime": "Calm"
     },
     {
       "date": "2026-06-17",
-      "barometer": 33.68,
+      "barometer": 33.46,
       "regime": "Calm"
     },
     {
       "date": "2026-06-18",
-      "barometer": 27.1,
+      "barometer": 26.99,
       "regime": "Calm"
     },
     {
       "date": "2026-06-22",
-      "barometer": 29.59,
+      "barometer": 29.43,
       "regime": "Calm"
     },
     {
       "date": "2026-06-23",
-      "barometer": 37.3,
+      "barometer": 37.03,
       "regime": "Calm"
     },
     {
       "date": "2026-06-24",
-      "barometer": 40.07,
+      "barometer": 39.83,
       "regime": "Calm"
     },
     {
       "date": "2026-06-25",
-      "barometer": 41.35,
+      "barometer": 41.13,
       "regime": "Calm"
     },
     {
       "date": "2026-06-26",
-      "barometer": 41.99,
+      "barometer": 41.78,
       "regime": "Calm"
     },
     {
       "date": "2026-06-29",
-      "barometer": 37.53,
+      "barometer": 37.42,
       "regime": "Calm"
     },
     {
       "date": "2026-06-30",
-      "barometer": 29.92,
+      "barometer": 29.87,
       "regime": "Calm"
     },
     {
       "date": "2026-07-01",
-      "barometer": 26.91,
+      "barometer": 26.89,
       "regime": "Calm"
     },
     {
       "date": "2026-07-02",
-      "barometer": 21.42,
+      "barometer": 21.41,
       "regime": "Calm"
     },
     {
       "date": "2026-07-06",
       "barometer": 15.29,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-07-07",
+      "barometer": 15.51,
       "regime": "Calm"
     }
   ],
@@ -659,17 +659,8 @@
       "svxy_dd_pct": -0.57
     },
     {
-      "date": "2026-05-25",
-      "barometer": 23.83,
-      "vix": 16.6,
-      "regime": "Calm",
-      "regime_changed": false,
-      "svxy_price": null,
-      "svxy_dd_pct": null
-    },
-    {
       "date": "2026-05-26",
-      "barometer": 23.77,
+      "barometer": 24.93,
       "vix": 17.0,
       "regime": "Calm",
       "regime_changed": false,
@@ -678,7 +669,7 @@
     },
     {
       "date": "2026-05-27",
-      "barometer": 19.06,
+      "barometer": 19.64,
       "vix": 16.3,
       "regime": "Calm",
       "regime_changed": false,
@@ -687,7 +678,7 @@
     },
     {
       "date": "2026-05-28",
-      "barometer": 14.41,
+      "barometer": 14.7,
       "vix": 15.7,
       "regime": "Calm",
       "regime_changed": false,
@@ -696,7 +687,7 @@
     },
     {
       "date": "2026-05-29",
-      "barometer": 10.59,
+      "barometer": 10.74,
       "vix": 15.3,
       "regime": "Calm",
       "regime_changed": false,
@@ -705,7 +696,7 @@
     },
     {
       "date": "2026-06-01",
-      "barometer": 14.46,
+      "barometer": 14.43,
       "vix": 16.0,
       "regime": "Calm",
       "regime_changed": false,
@@ -714,7 +705,7 @@
     },
     {
       "date": "2026-06-02",
-      "barometer": 14.9,
+      "barometer": 14.79,
       "vix": 15.8,
       "regime": "Calm",
       "regime_changed": false,
@@ -723,7 +714,7 @@
     },
     {
       "date": "2026-06-03",
-      "barometer": 17.81,
+      "barometer": 17.65,
       "vix": 16.1,
       "regime": "Calm",
       "regime_changed": false,
@@ -732,7 +723,7 @@
     },
     {
       "date": "2026-06-04",
-      "barometer": 16.17,
+      "barometer": 16.0,
       "vix": 15.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -741,7 +732,7 @@
     },
     {
       "date": "2026-06-05",
-      "barometer": 37.07,
+      "barometer": 36.88,
       "vix": 21.5,
       "regime": "Calm",
       "regime_changed": false,
@@ -750,7 +741,7 @@
     },
     {
       "date": "2026-06-08",
-      "barometer": 42.54,
+      "barometer": 42.35,
       "vix": 18.9,
       "regime": "Calm",
       "regime_changed": false,
@@ -759,7 +750,7 @@
     },
     {
       "date": "2026-06-09",
-      "barometer": 45.77,
+      "barometer": 45.58,
       "vix": 19.9,
       "regime": "Calm",
       "regime_changed": false,
@@ -768,7 +759,7 @@
     },
     {
       "date": "2026-06-10",
-      "barometer": 51.67,
+      "barometer": 51.47,
       "vix": 22.2,
       "regime": "Calm",
       "regime_changed": false,
@@ -777,7 +768,7 @@
     },
     {
       "date": "2026-06-11",
-      "barometer": 46.45,
+      "barometer": 46.35,
       "vix": 19.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -786,7 +777,7 @@
     },
     {
       "date": "2026-06-12",
-      "barometer": 40.16,
+      "barometer": 40.01,
       "vix": 17.7,
       "regime": "Calm",
       "regime_changed": false,
@@ -795,7 +786,7 @@
     },
     {
       "date": "2026-06-15",
-      "barometer": 28.55,
+      "barometer": 28.47,
       "vix": 16.2,
       "regime": "Calm",
       "regime_changed": false,
@@ -804,7 +795,7 @@
     },
     {
       "date": "2026-06-16",
-      "barometer": 24.53,
+      "barometer": 24.49,
       "vix": 16.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -813,7 +804,7 @@
     },
     {
       "date": "2026-06-17",
-      "barometer": 33.68,
+      "barometer": 33.46,
       "vix": 18.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -822,7 +813,7 @@
     },
     {
       "date": "2026-06-18",
-      "barometer": 27.1,
+      "barometer": 26.99,
       "vix": 16.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -831,7 +822,7 @@
     },
     {
       "date": "2026-06-22",
-      "barometer": 29.59,
+      "barometer": 29.43,
       "vix": 17.3,
       "regime": "Calm",
       "regime_changed": false,
@@ -840,7 +831,7 @@
     },
     {
       "date": "2026-06-23",
-      "barometer": 37.3,
+      "barometer": 37.03,
       "vix": 19.5,
       "regime": "Calm",
       "regime_changed": false,
@@ -849,7 +840,7 @@
     },
     {
       "date": "2026-06-24",
-      "barometer": 40.07,
+      "barometer": 39.83,
       "vix": 18.6,
       "regime": "Calm",
       "regime_changed": false,
@@ -858,7 +849,7 @@
     },
     {
       "date": "2026-06-25",
-      "barometer": 41.35,
+      "barometer": 41.13,
       "vix": 18.9,
       "regime": "Calm",
       "regime_changed": false,
@@ -867,7 +858,7 @@
     },
     {
       "date": "2026-06-26",
-      "barometer": 41.99,
+      "barometer": 41.78,
       "vix": 18.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -876,7 +867,7 @@
     },
     {
       "date": "2026-06-29",
-      "barometer": 37.53,
+      "barometer": 37.42,
       "vix": 17.6,
       "regime": "Calm",
       "regime_changed": false,
@@ -885,7 +876,7 @@
     },
     {
       "date": "2026-06-30",
-      "barometer": 29.92,
+      "barometer": 29.87,
       "vix": 16.5,
       "regime": "Calm",
       "regime_changed": false,
@@ -894,7 +885,7 @@
     },
     {
       "date": "2026-07-01",
-      "barometer": 26.91,
+      "barometer": 26.89,
       "vix": 16.6,
       "regime": "Calm",
       "regime_changed": false,
@@ -903,7 +894,7 @@
     },
     {
       "date": "2026-07-02",
-      "barometer": 21.42,
+      "barometer": 21.41,
       "vix": 16.1,
       "regime": "Calm",
       "regime_changed": false,
@@ -918,6 +909,15 @@
       "regime_changed": false,
       "svxy_price": 58.07,
       "svxy_dd_pct": 0.0
+    },
+    {
+      "date": "2026-07-07",
+      "barometer": 15.51,
+      "vix": 16.1,
+      "regime": "Calm",
+      "regime_changed": false,
+      "svxy_price": 57.83,
+      "svxy_dd_pct": -0.41
     }
   ],
   "equity_60d": [
@@ -1318,17 +1318,6 @@
       "STR_ticker": "SPY"
     },
     {
-      "date": "2026-05-25",
-      "portfolio_value": 124694.72,
-      "TV": 114.1467,
-      "DR": 148.7221,
-      "STR": 113.6941,
-      "SPY": 113.6941,
-      "TV_ticker": "SVXY",
-      "DR_ticker": "QLD",
-      "STR_ticker": "SPY"
-    },
-    {
       "date": "2026-05-26",
       "portfolio_value": 127097.71,
       "TV": 115.942,
@@ -1635,18 +1624,29 @@
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
+    },
+    {
+      "date": "2026-07-07",
+      "portfolio_value": 127543.89,
+      "TV": 125.0919,
+      "DR": 143.3706,
+      "STR": 114.3034,
+      "SPY": 114.3034,
+      "TV_ticker": "SVXY",
+      "DR_ticker": "QLD",
+      "STR_ticker": "SPY"
     }
   ],
   "period_attribution": [
     {
       "regime": "Calm",
       "date_from": "2026-04-02",
-      "date_to": "2026-07-06",
+      "date_to": "2026-07-07",
       "days": 65,
-      "TV_pct": 25.61,
-      "DR_pct": 48.89,
-      "STR_pct": 14.85,
-      "port_pct": 29.53
+      "TV_pct": 25.09,
+      "DR_pct": 43.37,
+      "STR_pct": 14.3,
+      "port_pct": 27.54
     }
   ]
 }
