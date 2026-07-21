@@ -31,9 +31,12 @@ HISTORY_F = os.path.join(MON_OUT, "signal_history.csv")
 # ── Regime config ──────────────────────────────────────────────────────────────
 REGIME_COLOR = {"Calm":"#2E7D32","Defensive":"#E65C00","High-Stress":"#BF360C","Extreme":"#B71C1C"}
 REGIME_BG    = {"Calm":"#E8F5E9","Defensive":"#FFF3E0","High-Stress":"#FBE9E7","Extreme":"#FFEBEE"}
-THRESHOLDS   = [("Calm", 0, 60), ("Defensive", 60, 80),
+# The DR sleeve de-risks one step earlier (at 55) than TV/STR (60) — see appendix C.6.
+# The 55–59 sub-band ("DR de-risk") is Calm at portfolio level but DR already holds XLU.
+THRESHOLDS   = [("Calm", 0, 55), ("DR de-risk", 55, 60), ("Defensive", 60, 80),
                 ("High-Stress", 80, 95), ("Extreme", 95, 101)]
 INSTRUMENTS  = {"Calm":{"TV":"SVXY","DR":"QLD","STR":"SPY"},
+                "DR de-risk":{"TV":"SVXY","DR":"XLU","STR":"SPY"},
                 "Defensive":{"TV":"IAU","DR":"XLU","STR":"IYR"},
                 "High-Stress":{"TV":"IAU","DR":"Cash","STR":"Cash"},
                 "Extreme":{"TV":"Cash","DR":"Cash","STR":"Cash"}}
