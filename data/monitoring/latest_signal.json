@@ -1,20 +1,42 @@
 {
-  "as_of": "2026-07-31",
-  "generated_at": "2026-07-31T21:52:20.825010+00:00",
-  "barometer": 27.57,
-  "barometer_raw": 17.4,
-  "vix": 15.99,
-  "vix_252d_percentile": 23.5,
-  "hyg": 79.48,
-  "hyg_252d_percentile": 88.8,
-  "hyg_stress": 11.2,
+  "as_of": "2026-08-03",
+  "generated_at": "2026-08-03T21:53:03.886508+00:00",
+  "barometer": 24.23,
+  "barometer_raw": 20.5,
+  "vix": 15.86,
+  "vix_252d_percentile": 22.7,
+  "hyg": 79.31,
+  "hyg_252d_percentile": 81.7,
+  "hyg_stress": 18.3,
   "override": {
     "active": false,
     "level": null,
-    "vix_5d_roc": -13.9,
-    "vix3m": 19.02,
+    "vix_5d_roc": -15.1,
+    "vix3m": 18.93,
     "backwardation": false,
     "trigger_roc": 80
+  },
+  "data_freshness": {
+    "reference": "2026-08-03",
+    "series": {
+      "vix": {
+        "last": "2026-08-03",
+        "lag_days": 0
+      },
+      "vix3m": {
+        "last": "2026-08-03",
+        "lag_days": 0
+      },
+      "hyg": {
+        "last": "2026-08-03",
+        "lag_days": 0
+      },
+      "svxy": {
+        "last": "2026-08-03",
+        "lag_days": 0
+      }
+    },
+    "stale": []
   },
   "regime": "Calm",
   "regime_changed": false,
@@ -24,107 +46,92 @@
     "DR": "QLD",
     "STR": "SPY"
   },
-  "svxy_price": 58.06,
+  "svxy_price": 58.26,
   "svxy_peak_price": 58.83,
-  "svxy_dd_from_peak_pct": -1.31,
+  "svxy_dd_from_peak_pct": -0.97,
   "svxy_stop_active": false,
   "svxy_stop_triggered_today": false,
   "trade_needed_tomorrow": false,
   "trade_details": null,
   "barometer_history_60d": [
     {
-      "date": "2026-05-07",
-      "barometer": 26.86,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-05-08",
-      "barometer": 25.68,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-05-11",
-      "barometer": 30.27,
-      "regime": "Calm"
-    },
-    {
       "date": "2026-05-12",
-      "barometer": 31.97,
+      "barometer": 32.23,
       "regime": "Calm"
     },
     {
       "date": "2026-05-13",
-      "barometer": 32.52,
+      "barometer": 32.85,
       "regime": "Calm"
     },
     {
       "date": "2026-05-14",
-      "barometer": 30.9,
+      "barometer": 31.17,
       "regime": "Calm"
     },
     {
       "date": "2026-05-15",
-      "barometer": 37.36,
+      "barometer": 37.69,
       "regime": "Calm"
     },
     {
       "date": "2026-05-18",
-      "barometer": 38.0,
+      "barometer": 38.57,
       "regime": "Calm"
     },
     {
       "date": "2026-05-19",
-      "barometer": 41.11,
+      "barometer": 41.99,
       "regime": "Calm"
     },
     {
       "date": "2026-05-20",
-      "barometer": 35.9,
+      "barometer": 36.53,
       "regime": "Calm"
     },
     {
       "date": "2026-05-21",
-      "barometer": 29.8,
+      "barometer": 30.22,
       "regime": "Calm"
     },
     {
       "date": "2026-05-22",
-      "barometer": 26.35,
+      "barometer": 26.66,
       "regime": "Calm"
     },
     {
       "date": "2026-05-25",
-      "barometer": 23.83,
+      "barometer": 24.09,
       "regime": "Calm"
     },
     {
       "date": "2026-05-26",
-      "barometer": 23.77,
+      "barometer": 24.0,
       "regime": "Calm"
     },
     {
       "date": "2026-05-27",
-      "barometer": 19.06,
+      "barometer": 19.27,
       "regime": "Calm"
     },
     {
       "date": "2026-05-28",
-      "barometer": 14.41,
+      "barometer": 14.52,
       "regime": "Calm"
     },
     {
       "date": "2026-05-29",
-      "barometer": 10.59,
+      "barometer": 10.64,
       "regime": "Calm"
     },
     {
       "date": "2026-06-01",
-      "barometer": 11.47,
+      "barometer": 11.5,
       "regime": "Calm"
     },
     {
       "date": "2026-06-02",
-      "barometer": 11.01,
+      "barometer": 11.03,
       "regime": "Calm"
     },
     {
@@ -134,236 +141,224 @@
     },
     {
       "date": "2026-06-04",
-      "barometer": 10.72,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-06-05",
-      "barometer": 30.56,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-06-08",
-      "barometer": 35.6,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-06-09",
-      "barometer": 39.31,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-06-10",
-      "barometer": 44.76,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-06-11",
-      "barometer": 41.1,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-06-12",
-      "barometer": 35.59,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-06-15",
-      "barometer": 24.87,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-06-16",
-      "barometer": 21.3,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-06-17",
-      "barometer": 29.27,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-06-18",
-      "barometer": 23.5,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-06-22",
-      "barometer": 25.89,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-06-23",
-      "barometer": 32.97,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-06-24",
-      "barometer": 35.01,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-06-25",
-      "barometer": 36.43,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-06-26",
-      "barometer": 36.54,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-06-29",
-      "barometer": 33.41,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-06-30",
-      "barometer": 26.27,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-07-01",
-      "barometer": 23.39,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-07-02",
-      "barometer": 18.57,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-07-06",
-      "barometer": 13.77,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-07-07",
-      "barometer": 13.95,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-07-08",
-      "barometer": 19.23,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-07-09",
-      "barometer": 15.69,
-      "regime": "Calm"
-    },
-    {
-      "date": "2026-07-10",
       "barometer": 10.73,
       "regime": "Calm"
     },
     {
-      "date": "2026-07-13",
-      "barometer": 19.51,
+      "date": "2026-06-05",
+      "barometer": 30.46,
       "regime": "Calm"
     },
     {
-      "date": "2026-07-14",
+      "date": "2026-06-08",
+      "barometer": 35.65,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-06-09",
+      "barometer": 39.44,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-06-10",
+      "barometer": 44.82,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-06-11",
+      "barometer": 41.43,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-06-12",
+      "barometer": 36.06,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-06-15",
+      "barometer": 25.2,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-06-16",
+      "barometer": 21.56,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-06-17",
+      "barometer": 29.61,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-06-18",
+      "barometer": 23.77,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-06-19",
+      "barometer": 23.54,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-06-22",
+      "barometer": 25.91,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-06-23",
+      "barometer": 33.08,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-06-24",
+      "barometer": 35.06,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-06-25",
+      "barometer": 36.56,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-06-26",
+      "barometer": 36.6,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-06-29",
+      "barometer": 33.44,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-06-30",
+      "barometer": 26.38,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-07-01",
+      "barometer": 23.45,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-07-02",
+      "barometer": 18.5,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-07-03",
+      "barometer": 15.03,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-07-06",
+      "barometer": 12.0,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-07-07",
+      "barometer": 13.07,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-07-08",
+      "barometer": 18.89,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-07-09",
+      "barometer": 15.52,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-07-10",
+      "barometer": 10.75,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-07-13",
       "barometer": 19.72,
       "regime": "Calm"
     },
     {
+      "date": "2026-07-14",
+      "barometer": 20.02,
+      "regime": "Calm"
+    },
+    {
       "date": "2026-07-15",
-      "barometer": 14.84,
+      "barometer": 14.89,
       "regime": "Calm"
     },
     {
       "date": "2026-07-16",
-      "barometer": 18.77,
+      "barometer": 18.4,
       "regime": "Calm"
     },
     {
       "date": "2026-07-17",
-      "barometer": 28.31,
+      "barometer": 28.12,
       "regime": "Calm"
     },
     {
       "date": "2026-07-20",
-      "barometer": 32.58,
+      "barometer": 32.49,
       "regime": "Calm"
     },
     {
       "date": "2026-07-21",
-      "barometer": 29.94,
+      "barometer": 29.69,
       "regime": "Calm"
     },
     {
       "date": "2026-07-22",
-      "barometer": 27.62,
+      "barometer": 27.3,
       "regime": "Calm"
     },
     {
       "date": "2026-07-23",
-      "barometer": 36.12,
+      "barometer": 36.06,
       "regime": "Calm"
     },
     {
       "date": "2026-07-24",
-      "barometer": 39.87,
+      "barometer": 40.04,
       "regime": "Calm"
     },
     {
       "date": "2026-07-27",
-      "barometer": 41.95,
+      "barometer": 42.23,
       "regime": "Calm"
     },
     {
       "date": "2026-07-28",
-      "barometer": 40.3,
+      "barometer": 40.64,
       "regime": "Calm"
     },
     {
       "date": "2026-07-29",
-      "barometer": 45.95,
+      "barometer": 46.22,
       "regime": "Calm"
     },
     {
       "date": "2026-07-30",
-      "barometer": 37.81,
+      "barometer": 38.15,
       "regime": "Calm"
     },
     {
       "date": "2026-07-31",
-      "barometer": 27.57,
+      "barometer": 27.94,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-08-03",
+      "barometer": 24.23,
       "regime": "Calm"
     }
   ],
   "signal_history_3m": [
     {
-      "date": "2026-04-30",
-      "barometer": 28.35,
-      "vix": 16.9,
-      "regime": "Calm",
-      "regime_changed": false,
-      "svxy_price": 51.23,
-      "svxy_dd_pct": 0.0
-    },
-    {
-      "date": "2026-05-01",
-      "barometer": 26.13,
-      "vix": 17.0,
-      "regime": "Calm",
-      "regime_changed": false,
-      "svxy_price": 50.97,
-      "svxy_dd_pct": -0.51
-    },
-    {
-      "date": "2026-05-04",
-      "barometer": 30.2,
-      "vix": 18.3,
-      "regime": "Calm",
-      "regime_changed": false,
-      "svxy_price": 50.6,
-      "svxy_dd_pct": -1.23
-    },
-    {
       "date": "2026-05-05",
-      "barometer": 29.14,
+      "barometer": 29.63,
       "vix": 17.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -372,7 +367,7 @@
     },
     {
       "date": "2026-05-06",
-      "barometer": 27.62,
+      "barometer": 28.06,
       "vix": 17.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -381,7 +376,7 @@
     },
     {
       "date": "2026-05-07",
-      "barometer": 26.86,
+      "barometer": 27.18,
       "vix": 17.1,
       "regime": "Calm",
       "regime_changed": false,
@@ -390,7 +385,7 @@
     },
     {
       "date": "2026-05-08",
-      "barometer": 25.68,
+      "barometer": 25.94,
       "vix": 17.2,
       "regime": "Calm",
       "regime_changed": false,
@@ -399,7 +394,7 @@
     },
     {
       "date": "2026-05-11",
-      "barometer": 30.27,
+      "barometer": 30.4,
       "vix": 18.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -408,7 +403,7 @@
     },
     {
       "date": "2026-05-12",
-      "barometer": 31.97,
+      "barometer": 32.23,
       "vix": 18.0,
       "regime": "Calm",
       "regime_changed": false,
@@ -417,7 +412,7 @@
     },
     {
       "date": "2026-05-13",
-      "barometer": 32.52,
+      "barometer": 32.85,
       "vix": 17.9,
       "regime": "Calm",
       "regime_changed": false,
@@ -426,7 +421,7 @@
     },
     {
       "date": "2026-05-14",
-      "barometer": 30.9,
+      "barometer": 31.17,
       "vix": 17.3,
       "regime": "Calm",
       "regime_changed": false,
@@ -435,7 +430,7 @@
     },
     {
       "date": "2026-05-15",
-      "barometer": 37.36,
+      "barometer": 37.69,
       "vix": 18.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -444,7 +439,7 @@
     },
     {
       "date": "2026-05-18",
-      "barometer": 38.0,
+      "barometer": 38.57,
       "vix": 17.8,
       "regime": "Calm",
       "regime_changed": false,
@@ -453,7 +448,7 @@
     },
     {
       "date": "2026-05-19",
-      "barometer": 41.11,
+      "barometer": 41.99,
       "vix": 18.1,
       "regime": "Calm",
       "regime_changed": false,
@@ -462,7 +457,7 @@
     },
     {
       "date": "2026-05-20",
-      "barometer": 35.9,
+      "barometer": 36.53,
       "vix": 17.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -471,7 +466,7 @@
     },
     {
       "date": "2026-05-21",
-      "barometer": 29.8,
+      "barometer": 30.22,
       "vix": 16.8,
       "regime": "Calm",
       "regime_changed": false,
@@ -480,7 +475,7 @@
     },
     {
       "date": "2026-05-22",
-      "barometer": 26.35,
+      "barometer": 26.66,
       "vix": 16.7,
       "regime": "Calm",
       "regime_changed": false,
@@ -489,7 +484,7 @@
     },
     {
       "date": "2026-05-25",
-      "barometer": 23.83,
+      "barometer": 24.09,
       "vix": 16.6,
       "regime": "Calm",
       "regime_changed": false,
@@ -498,7 +493,7 @@
     },
     {
       "date": "2026-05-26",
-      "barometer": 23.77,
+      "barometer": 24.0,
       "vix": 17.0,
       "regime": "Calm",
       "regime_changed": false,
@@ -507,7 +502,7 @@
     },
     {
       "date": "2026-05-27",
-      "barometer": 19.06,
+      "barometer": 19.27,
       "vix": 16.3,
       "regime": "Calm",
       "regime_changed": false,
@@ -516,7 +511,7 @@
     },
     {
       "date": "2026-05-28",
-      "barometer": 14.41,
+      "barometer": 14.52,
       "vix": 15.7,
       "regime": "Calm",
       "regime_changed": false,
@@ -525,7 +520,7 @@
     },
     {
       "date": "2026-05-29",
-      "barometer": 10.59,
+      "barometer": 10.64,
       "vix": 15.3,
       "regime": "Calm",
       "regime_changed": false,
@@ -534,8 +529,8 @@
     },
     {
       "date": "2026-06-01",
-      "barometer": 11.47,
-      "vix": 16.0,
+      "barometer": 11.5,
+      "vix": 16.1,
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 54.49,
@@ -543,7 +538,7 @@
     },
     {
       "date": "2026-06-02",
-      "barometer": 11.01,
+      "barometer": 11.03,
       "vix": 15.8,
       "regime": "Calm",
       "regime_changed": false,
@@ -561,7 +556,7 @@
     },
     {
       "date": "2026-06-04",
-      "barometer": 10.72,
+      "barometer": 10.73,
       "vix": 15.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -570,7 +565,7 @@
     },
     {
       "date": "2026-06-05",
-      "barometer": 30.56,
+      "barometer": 30.46,
       "vix": 21.5,
       "regime": "Calm",
       "regime_changed": false,
@@ -579,7 +574,7 @@
     },
     {
       "date": "2026-06-08",
-      "barometer": 35.6,
+      "barometer": 35.65,
       "vix": 18.9,
       "regime": "Calm",
       "regime_changed": false,
@@ -588,7 +583,7 @@
     },
     {
       "date": "2026-06-09",
-      "barometer": 39.31,
+      "barometer": 39.44,
       "vix": 19.9,
       "regime": "Calm",
       "regime_changed": false,
@@ -597,7 +592,7 @@
     },
     {
       "date": "2026-06-10",
-      "barometer": 44.76,
+      "barometer": 44.82,
       "vix": 22.2,
       "regime": "Calm",
       "regime_changed": false,
@@ -606,7 +601,7 @@
     },
     {
       "date": "2026-06-11",
-      "barometer": 41.1,
+      "barometer": 41.43,
       "vix": 19.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -615,7 +610,7 @@
     },
     {
       "date": "2026-06-12",
-      "barometer": 35.59,
+      "barometer": 36.06,
       "vix": 17.7,
       "regime": "Calm",
       "regime_changed": false,
@@ -624,7 +619,7 @@
     },
     {
       "date": "2026-06-15",
-      "barometer": 24.87,
+      "barometer": 25.2,
       "vix": 16.2,
       "regime": "Calm",
       "regime_changed": false,
@@ -633,7 +628,7 @@
     },
     {
       "date": "2026-06-16",
-      "barometer": 21.3,
+      "barometer": 21.56,
       "vix": 16.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -642,7 +637,7 @@
     },
     {
       "date": "2026-06-17",
-      "barometer": 29.27,
+      "barometer": 29.61,
       "vix": 18.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -651,7 +646,7 @@
     },
     {
       "date": "2026-06-18",
-      "barometer": 23.5,
+      "barometer": 23.77,
       "vix": 16.4,
       "regime": "Calm",
       "regime_changed": false,
@@ -659,63 +654,72 @@
       "svxy_dd_pct": -0.72
     },
     {
+      "date": "2026-06-19",
+      "barometer": 23.54,
+      "vix": 16.8,
+      "regime": "Calm",
+      "regime_changed": false,
+      "svxy_price": null,
+      "svxy_dd_pct": null
+    },
+    {
       "date": "2026-06-22",
-      "barometer": 25.89,
+      "barometer": 25.91,
       "vix": 17.3,
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 56.52,
-      "svxy_dd_pct": -0.58
+      "svxy_dd_pct": 0.0
     },
     {
       "date": "2026-06-23",
-      "barometer": 32.97,
+      "barometer": 33.08,
       "vix": 19.5,
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 55.0,
-      "svxy_dd_pct": -3.25
+      "svxy_dd_pct": -2.69
     },
     {
       "date": "2026-06-24",
-      "barometer": 35.01,
+      "barometer": 35.06,
       "vix": 18.6,
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 55.16,
-      "svxy_dd_pct": -2.97
+      "svxy_dd_pct": -2.41
     },
     {
       "date": "2026-06-25",
-      "barometer": 36.43,
+      "barometer": 36.56,
       "vix": 18.9,
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 55.61,
-      "svxy_dd_pct": -2.18
+      "svxy_dd_pct": -1.61
     },
     {
       "date": "2026-06-26",
-      "barometer": 36.54,
+      "barometer": 36.6,
       "vix": 18.4,
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 55.53,
-      "svxy_dd_pct": -2.32
+      "svxy_dd_pct": -1.75
     },
     {
       "date": "2026-06-29",
-      "barometer": 33.41,
+      "barometer": 33.44,
       "vix": 17.6,
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 56.59,
-      "svxy_dd_pct": -0.46
+      "svxy_dd_pct": 0.0
     },
     {
       "date": "2026-06-30",
-      "barometer": 26.27,
-      "vix": 16.5,
+      "barometer": 26.38,
+      "vix": 16.4,
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 57.26,
@@ -723,7 +727,7 @@
     },
     {
       "date": "2026-07-01",
-      "barometer": 23.39,
+      "barometer": 23.45,
       "vix": 16.6,
       "regime": "Calm",
       "regime_changed": false,
@@ -732,7 +736,7 @@
     },
     {
       "date": "2026-07-02",
-      "barometer": 18.57,
+      "barometer": 18.5,
       "vix": 16.1,
       "regime": "Calm",
       "regime_changed": false,
@@ -740,8 +744,17 @@
       "svxy_dd_pct": 0.0
     },
     {
+      "date": "2026-07-03",
+      "barometer": 15.03,
+      "vix": 15.8,
+      "regime": "Calm",
+      "regime_changed": false,
+      "svxy_price": null,
+      "svxy_dd_pct": null
+    },
+    {
       "date": "2026-07-06",
-      "barometer": 13.77,
+      "barometer": 12.0,
       "vix": 15.6,
       "regime": "Calm",
       "regime_changed": false,
@@ -750,7 +763,7 @@
     },
     {
       "date": "2026-07-07",
-      "barometer": 13.95,
+      "barometer": 13.07,
       "vix": 16.1,
       "regime": "Calm",
       "regime_changed": false,
@@ -759,7 +772,7 @@
     },
     {
       "date": "2026-07-08",
-      "barometer": 19.23,
+      "barometer": 18.89,
       "vix": 16.9,
       "regime": "Calm",
       "regime_changed": false,
@@ -768,7 +781,7 @@
     },
     {
       "date": "2026-07-09",
-      "barometer": 15.69,
+      "barometer": 15.52,
       "vix": 15.8,
       "regime": "Calm",
       "regime_changed": false,
@@ -777,7 +790,7 @@
     },
     {
       "date": "2026-07-10",
-      "barometer": 10.73,
+      "barometer": 10.75,
       "vix": 15.0,
       "regime": "Calm",
       "regime_changed": false,
@@ -786,7 +799,7 @@
     },
     {
       "date": "2026-07-13",
-      "barometer": 19.51,
+      "barometer": 19.72,
       "vix": 17.2,
       "regime": "Calm",
       "regime_changed": false,
@@ -795,7 +808,7 @@
     },
     {
       "date": "2026-07-14",
-      "barometer": 19.72,
+      "barometer": 20.02,
       "vix": 16.5,
       "regime": "Calm",
       "regime_changed": false,
@@ -804,7 +817,7 @@
     },
     {
       "date": "2026-07-15",
-      "barometer": 14.84,
+      "barometer": 14.89,
       "vix": 15.7,
       "regime": "Calm",
       "regime_changed": false,
@@ -813,7 +826,7 @@
     },
     {
       "date": "2026-07-16",
-      "barometer": 18.77,
+      "barometer": 18.4,
       "vix": 16.7,
       "regime": "Calm",
       "regime_changed": false,
@@ -822,7 +835,7 @@
     },
     {
       "date": "2026-07-17",
-      "barometer": 28.31,
+      "barometer": 28.12,
       "vix": 18.8,
       "regime": "Calm",
       "regime_changed": false,
@@ -831,7 +844,7 @@
     },
     {
       "date": "2026-07-20",
-      "barometer": 32.58,
+      "barometer": 32.49,
       "vix": 18.6,
       "regime": "Calm",
       "regime_changed": false,
@@ -840,8 +853,8 @@
     },
     {
       "date": "2026-07-21",
-      "barometer": 29.94,
-      "vix": 17.0,
+      "barometer": 29.69,
+      "vix": 17.1,
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 58.14,
@@ -849,7 +862,7 @@
     },
     {
       "date": "2026-07-22",
-      "barometer": 27.62,
+      "barometer": 27.3,
       "vix": 16.6,
       "regime": "Calm",
       "regime_changed": false,
@@ -858,7 +871,7 @@
     },
     {
       "date": "2026-07-23",
-      "barometer": 36.12,
+      "barometer": 36.06,
       "vix": 18.7,
       "regime": "Calm",
       "regime_changed": false,
@@ -867,7 +880,7 @@
     },
     {
       "date": "2026-07-24",
-      "barometer": 39.87,
+      "barometer": 40.04,
       "vix": 18.6,
       "regime": "Calm",
       "regime_changed": false,
@@ -876,7 +889,7 @@
     },
     {
       "date": "2026-07-27",
-      "barometer": 41.95,
+      "barometer": 42.23,
       "vix": 18.7,
       "regime": "Calm",
       "regime_changed": false,
@@ -885,7 +898,7 @@
     },
     {
       "date": "2026-07-28",
-      "barometer": 40.3,
+      "barometer": 40.64,
       "vix": 18.2,
       "regime": "Calm",
       "regime_changed": false,
@@ -894,7 +907,7 @@
     },
     {
       "date": "2026-07-29",
-      "barometer": 45.95,
+      "barometer": 46.22,
       "vix": 20.7,
       "regime": "Calm",
       "regime_changed": false,
@@ -903,7 +916,7 @@
     },
     {
       "date": "2026-07-30",
-      "barometer": 37.81,
+      "barometer": 38.15,
       "vix": 17.1,
       "regime": "Calm",
       "regime_changed": false,
@@ -912,17 +925,26 @@
     },
     {
       "date": "2026-07-31",
-      "barometer": 27.57,
+      "barometer": 27.94,
       "vix": 16.0,
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 58.06,
       "svxy_dd_pct": -1.31
+    },
+    {
+      "date": "2026-08-03",
+      "barometer": 24.23,
+      "vix": 15.9,
+      "regime": "Calm",
+      "regime_changed": false,
+      "svxy_price": 58.26,
+      "svxy_dd_pct": -0.97
     }
   ],
   "equity_60d": [
     {
-      "date": "2026-04-30",
+      "date": "2026-05-05",
       "portfolio_value": 100000.0,
       "TV": 100.0,
       "DR": 100.0,
@@ -933,705 +955,705 @@
       "STR_ticker": null
     },
     {
-      "date": "2026-05-01",
-      "portfolio_value": 100560.6,
-      "TV": 99.4925,
-      "DR": 101.9124,
-      "STR": 100.2769,
-      "SPY": 100.2769,
-      "TV_ticker": "SVXY",
-      "DR_ticker": "QLD",
-      "STR_ticker": "SPY"
-    },
-    {
-      "date": "2026-05-04",
-      "portfolio_value": 100064.61,
-      "TV": 98.7702,
-      "DR": 101.5176,
-      "STR": 99.9096,
-      "SPY": 99.9096,
-      "TV_ticker": "SVXY",
-      "DR_ticker": "QLD",
-      "STR_ticker": "SPY"
-    },
-    {
-      "date": "2026-05-05",
-      "portfolio_value": 101299.61,
-      "TV": 99.1021,
-      "DR": 104.1209,
-      "STR": 100.7111,
-      "SPY": 100.7111,
-      "TV_ticker": "SVXY",
-      "DR_ticker": "QLD",
-      "STR_ticker": "SPY"
-    },
-    {
       "date": "2026-05-06",
-      "portfolio_value": 103452.67,
-      "TV": 99.9805,
-      "DR": 108.3899,
-      "STR": 102.1109,
-      "SPY": 102.1109,
+      "portfolio_value": 102125.43,
+      "TV": 100.8864,
+      "DR": 104.1,
+      "STR": 101.3899,
+      "SPY": 101.3899,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-05-07",
-      "portfolio_value": 103366.61,
-      "TV": 100.2538,
-      "DR": 108.1555,
-      "STR": 101.7978,
-      "SPY": 101.7978,
+      "portfolio_value": 102040.48,
+      "TV": 101.1621,
+      "DR": 103.8749,
+      "STR": 101.0791,
+      "SPY": 101.0791,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-05-08",
-      "portfolio_value": 105146.27,
-      "TV": 99.961,
-      "DR": 113.1647,
-      "STR": 102.6382,
-      "SPY": 102.6382,
+      "portfolio_value": 103797.31,
+      "TV": 100.8667,
+      "DR": 108.6859,
+      "STR": 101.9136,
+      "SPY": 101.9136,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-05-11",
-      "portfolio_value": 105247.65,
-      "TV": 99.4339,
-      "DR": 113.831,
-      "STR": 102.872,
-      "SPY": 102.872,
+      "portfolio_value": 103897.39,
+      "TV": 100.3348,
+      "DR": 109.3258,
+      "STR": 102.1457,
+      "SPY": 102.1457,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-05-12",
-      "portfolio_value": 104914.3,
-      "TV": 100.3318,
-      "DR": 111.8939,
-      "STR": 102.7162,
-      "SPY": 102.7162,
+      "portfolio_value": 103568.32,
+      "TV": 101.2409,
+      "DR": 107.4653,
+      "STR": 101.991,
+      "SPY": 101.991,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-05-13",
-      "portfolio_value": 105541.45,
-      "TV": 99.512,
-      "DR": 114.1888,
-      "STR": 103.2908,
-      "SPY": 103.2908,
+      "portfolio_value": 104187.42,
+      "TV": 100.4136,
+      "DR": 109.6694,
+      "STR": 102.5616,
+      "SPY": 102.5616,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-05-14",
-      "portfolio_value": 106718.79,
-      "TV": 100.6051,
-      "DR": 115.8544,
-      "STR": 104.1063,
-      "SPY": 104.1063,
+      "portfolio_value": 105349.65,
+      "TV": 101.5166,
+      "DR": 111.2691,
+      "STR": 103.3712,
+      "SPY": 103.3712,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-05-15",
-      "portfolio_value": 105086.26,
-      "TV": 100.2733,
-      "DR": 112.3134,
-      "STR": 102.8539,
-      "SPY": 102.8539,
+      "portfolio_value": 103738.08,
+      "TV": 101.1818,
+      "DR": 107.8682,
+      "STR": 102.1277,
+      "SPY": 102.1277,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-05-18",
-      "portfolio_value": 105083.18,
-      "TV": 101.2493,
-      "DR": 111.2893,
-      "STR": 102.7816,
-      "SPY": 102.7816,
+      "portfolio_value": 103735.03,
+      "TV": 102.1666,
+      "DR": 106.8847,
+      "STR": 102.0559,
+      "SPY": 102.0559,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-05-19",
-      "portfolio_value": 104366.82,
-      "TV": 101.0541,
-      "DR": 109.9691,
-      "STR": 102.097,
-      "SPY": 102.097,
+      "portfolio_value": 103027.86,
+      "TV": 101.9697,
+      "DR": 105.6168,
+      "STR": 101.3761,
+      "SPY": 101.3761,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-05-20",
-      "portfolio_value": 106165.5,
-      "TV": 101.9325,
-      "DR": 113.5719,
-      "STR": 103.1434,
-      "SPY": 103.1434,
+      "portfolio_value": 104803.46,
+      "TV": 102.856,
+      "DR": 109.0769,
+      "STR": 102.4151,
+      "SPY": 102.4151,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-05-21",
-      "portfolio_value": 106938.57,
-      "TV": 103.5916,
-      "DR": 113.979,
-      "STR": 103.3479,
-      "SPY": 103.3479,
+      "portfolio_value": 105566.62,
+      "TV": 104.5302,
+      "DR": 109.4679,
+      "STR": 102.6182,
+      "SPY": 102.6182,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-05-22",
-      "portfolio_value": 107155.03,
-      "TV": 103.0061,
-      "DR": 114.8674,
-      "STR": 103.7542,
-      "SPY": 103.7542,
+      "portfolio_value": 105780.3,
+      "TV": 103.9393,
+      "DR": 110.3211,
+      "STR": 103.0217,
+      "SPY": 103.0217,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-05-25",
-      "portfolio_value": 107155.03,
-      "TV": 103.0061,
-      "DR": 114.8674,
-      "STR": 103.7542,
-      "SPY": 103.7542,
+      "portfolio_value": 105780.3,
+      "TV": 103.9393,
+      "DR": 110.3211,
+      "STR": 103.0217,
+      "SPY": 103.0217,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-05-26",
-      "portfolio_value": 109220.02,
-      "TV": 104.6262,
-      "DR": 118.9389,
-      "STR": 104.443,
-      "SPY": 104.443,
+      "portfolio_value": 107818.8,
+      "TV": 105.5742,
+      "DR": 114.2316,
+      "STR": 103.7056,
+      "SPY": 103.7056,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-05-27",
-      "portfolio_value": 109555.53,
-      "TV": 105.8364,
-      "DR": 118.6798,
-      "STR": 104.4249,
-      "SPY": 104.4249,
+      "portfolio_value": 108150.0,
+      "TV": 106.7954,
+      "DR": 113.9827,
+      "STR": 103.6876,
+      "SPY": 103.6876,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-05-28",
-      "portfolio_value": 110741.59,
-      "TV": 106.9295,
-      "DR": 120.6539,
-      "STR": 105.001,
-      "SPY": 105.001,
+      "portfolio_value": 109320.85,
+      "TV": 107.8984,
+      "DR": 115.8787,
+      "STR": 104.2596,
+      "SPY": 104.2596,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-05-29",
-      "portfolio_value": 111362.75,
-      "TV": 107.7298,
-      "DR": 121.4806,
-      "STR": 105.2626,
-      "SPY": 105.2626,
+      "portfolio_value": 109934.04,
+      "TV": 108.7059,
+      "DR": 116.6726,
+      "STR": 104.5194,
+      "SPY": 104.5194,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-01",
-      "portfolio_value": 111434.13,
-      "TV": 106.3635,
-      "DR": 122.9241,
-      "STR": 105.5492,
-      "SPY": 105.5492,
+      "portfolio_value": 110004.5,
+      "TV": 107.3272,
+      "DR": 118.059,
+      "STR": 104.804,
+      "SPY": 104.804,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-02",
-      "portfolio_value": 112154.13,
-      "TV": 107.3199,
-      "DR": 124.0345,
-      "STR": 105.6925,
-      "SPY": 105.6925,
+      "portfolio_value": 110715.27,
+      "TV": 108.2923,
+      "DR": 119.1255,
+      "STR": 104.9463,
+      "SPY": 104.9463,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-03",
-      "portfolio_value": 111619.91,
-      "TV": 107.1052,
-      "DR": 123.3806,
-      "STR": 104.9509,
-      "SPY": 104.9509,
+      "portfolio_value": 110187.89,
+      "TV": 108.0756,
+      "DR": 118.4975,
+      "STR": 104.2099,
+      "SPY": 104.2099,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-04",
-      "portfolio_value": 112060.4,
-      "TV": 109.0182,
-      "DR": 122.1715,
-      "STR": 105.3475,
-      "SPY": 105.3475,
+      "portfolio_value": 110622.73,
+      "TV": 110.0059,
+      "DR": 117.3362,
+      "STR": 104.6037,
+      "SPY": 104.6037,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-05",
-      "portfolio_value": 106129.03,
-      "TV": 104.958,
-      "DR": 110.475,
-      "STR": 102.6285,
-      "SPY": 102.6285,
+      "portfolio_value": 104767.47,
+      "TV": 105.909,
+      "DR": 106.1026,
+      "STR": 101.9039,
+      "SPY": 101.9039,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-08",
-      "portfolio_value": 107661.42,
-      "TV": 106.0902,
-      "DR": 113.8186,
-      "STR": 102.8609,
-      "SPY": 102.8609,
+      "portfolio_value": 106280.19,
+      "TV": 107.0514,
+      "DR": 109.3139,
+      "STR": 102.1346,
+      "SPY": 102.1346,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-09",
-      "portfolio_value": 106410.52,
-      "TV": 105.1532,
-      "DR": 111.1906,
-      "STR": 102.5589,
-      "SPY": 102.5589,
+      "portfolio_value": 105045.34,
+      "TV": 106.106,
+      "DR": 106.7899,
+      "STR": 101.8348,
+      "SPY": 101.8348,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-10",
-      "portfolio_value": 103455.97,
-      "TV": 102.2643,
-      "DR": 106.7366,
-      "STR": 100.942,
-      "SPY": 100.942,
+      "portfolio_value": 102128.69,
+      "TV": 103.1909,
+      "DR": 102.5122,
+      "STR": 100.2293,
+      "SPY": 100.2293,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-11",
-      "portfolio_value": 107085.64,
-      "TV": 104.5872,
-      "DR": 113.7323,
-      "STR": 102.6577,
-      "SPY": 102.6577,
+      "portfolio_value": 105711.8,
+      "TV": 105.5348,
+      "DR": 109.231,
+      "STR": 101.9329,
+      "SPY": 101.9329,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-12",
-      "portfolio_value": 108622.75,
-      "TV": 107.1638,
-      "DR": 115.2128,
-      "STR": 103.2129,
-      "SPY": 103.2129,
+      "portfolio_value": 107229.2,
+      "TV": 108.1347,
+      "DR": 110.6529,
+      "STR": 102.4842,
+      "SPY": 102.4842,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-15",
-      "portfolio_value": 112796.22,
-      "TV": 110.9701,
-      "DR": 122.3689,
-      "STR": 105.033,
-      "SPY": 105.033,
+      "portfolio_value": 111349.12,
+      "TV": 111.9756,
+      "DR": 117.5258,
+      "STR": 104.2914,
+      "SPY": 104.2914,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-16",
-      "portfolio_value": 111102.31,
-      "TV": 110.7945,
-      "DR": 117.7791,
-      "STR": 104.4068,
-      "SPY": 104.4068,
+      "portfolio_value": 109676.94,
+      "TV": 111.7983,
+      "DR": 113.1177,
+      "STR": 103.6697,
+      "SPY": 103.6697,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-17",
-      "portfolio_value": 109100.19,
-      "TV": 108.3935,
-      "DR": 115.4349,
-      "STR": 103.103,
-      "SPY": 103.103,
+      "portfolio_value": 107700.5,
+      "TV": 109.3756,
+      "DR": 110.8662,
+      "STR": 102.3751,
+      "SPY": 102.3751,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-18",
-      "portfolio_value": 111765.09,
-      "TV": 110.1698,
-      "DR": 120.802,
-      "STR": 104.175,
-      "SPY": 104.175,
+      "portfolio_value": 110331.22,
+      "TV": 111.168,
+      "DR": 116.0209,
+      "STR": 103.4395,
+      "SPY": 103.4395,
+      "TV_ticker": "SVXY",
+      "DR_ticker": "QLD",
+      "STR_ticker": "SPY"
+    },
+    {
+      "date": "2026-06-19",
+      "portfolio_value": 110331.22,
+      "TV": 111.168,
+      "DR": 116.0209,
+      "STR": 103.4395,
+      "SPY": 103.4395,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-22",
-      "portfolio_value": 111613.15,
-      "TV": 110.326,
-      "DR": 120.5182,
-      "STR": 103.8471,
-      "SPY": 103.8471,
+      "portfolio_value": 110181.22,
+      "TV": 111.3256,
+      "DR": 115.7483,
+      "STR": 103.1139,
+      "SPY": 103.1139,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-23",
-      "portfolio_value": 107611.84,
-      "TV": 107.359,
-      "DR": 112.5478,
-      "STR": 102.3391,
-      "SPY": 102.3391,
+      "portfolio_value": 106231.25,
+      "TV": 108.3317,
+      "DR": 108.0934,
+      "STR": 101.6165,
+      "SPY": 101.6165,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-24",
-      "portfolio_value": 107389.09,
-      "TV": 107.6713,
-      "DR": 111.5737,
-      "STR": 102.2916,
-      "SPY": 102.2916,
+      "portfolio_value": 106011.36,
+      "TV": 108.6468,
+      "DR": 107.1578,
+      "STR": 101.5694,
+      "SPY": 101.5694,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-25",
-      "portfolio_value": 108287.42,
-      "TV": 108.5497,
-      "DR": 113.3022,
-      "STR": 102.4395,
-      "SPY": 102.4395,
+      "portfolio_value": 106898.16,
+      "TV": 109.5332,
+      "DR": 108.8179,
+      "STR": 101.7162,
+      "SPY": 101.7162,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-26",
-      "portfolio_value": 106932.15,
-      "TV": 108.3935,
-      "DR": 110.0304,
-      "STR": 101.6987,
-      "SPY": 101.6987,
+      "portfolio_value": 105560.28,
+      "TV": 109.3756,
+      "DR": 105.6756,
+      "STR": 100.9807,
+      "SPY": 100.9807,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-29",
-      "portfolio_value": 110023.58,
-      "TV": 110.4626,
-      "DR": 115.6603,
-      "STR": 103.3742,
-      "SPY": 103.3742,
+      "portfolio_value": 108612.05,
+      "TV": 111.4635,
+      "DR": 111.0827,
+      "STR": 102.6443,
+      "SPY": 102.6443,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-06-30",
-      "portfolio_value": 111949.15,
-      "TV": 111.7704,
-      "DR": 119.463,
-      "STR": 104.1792,
-      "SPY": 104.1792,
+      "portfolio_value": 110512.91,
+      "TV": 112.7831,
+      "DR": 114.7349,
+      "STR": 103.4436,
+      "SPY": 103.4436,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-01",
-      "portfolio_value": 110684.91,
-      "TV": 111.4386,
-      "DR": 115.9319,
-      "STR": 104.0383,
-      "SPY": 104.0383,
+      "portfolio_value": 109264.89,
+      "TV": 112.4483,
+      "DR": 111.3436,
+      "STR": 103.3037,
+      "SPY": 103.3037,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-02",
-      "portfolio_value": 109485.9,
-      "TV": 111.868,
-      "DR": 111.87,
-      "STR": 103.9015,
-      "SPY": 103.9015,
+      "portfolio_value": 108081.27,
+      "TV": 112.8816,
+      "DR": 107.4424,
+      "STR": 103.168,
+      "SPY": 103.168,
+      "TV_ticker": "SVXY",
+      "DR_ticker": "QLD",
+      "STR_ticker": "SPY"
+    },
+    {
+      "date": "2026-07-03",
+      "portfolio_value": 108081.27,
+      "TV": 112.8816,
+      "DR": 107.4424,
+      "STR": 103.168,
+      "SPY": 103.168,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-06",
-      "portfolio_value": 111307.4,
-      "TV": 113.3516,
-      "DR": 114.9936,
-      "STR": 104.8083,
-      "SPY": 104.8083,
+      "portfolio_value": 109879.4,
+      "TV": 114.3786,
+      "DR": 110.4424,
+      "STR": 104.0683,
+      "SPY": 104.0683,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-07",
-      "portfolio_value": 109603.44,
-      "TV": 112.8831,
-      "DR": 110.7341,
-      "STR": 104.3103,
-      "SPY": 104.3103,
+      "portfolio_value": 108197.3,
+      "TV": 113.9059,
+      "DR": 106.3515,
+      "STR": 103.5738,
+      "SPY": 103.5738,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-08",
-      "portfolio_value": 109332.72,
-      "TV": 111.829,
-      "DR": 111.2897,
-      "STR": 103.988,
-      "SPY": 103.988,
+      "portfolio_value": 107930.05,
+      "TV": 112.8422,
+      "DR": 106.8851,
+      "STR": 103.2538,
+      "SPY": 103.2538,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-09",
-      "portfolio_value": 111248.56,
-      "TV": 113.0392,
-      "DR": 114.9936,
-      "STR": 104.8683,
-      "SPY": 104.8683,
+      "portfolio_value": 109821.31,
+      "TV": 114.0634,
+      "DR": 110.4424,
+      "STR": 104.1279,
+      "SPY": 104.1279,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-10",
-      "portfolio_value": 112034.77,
-      "TV": 114.269,
-      "DR": 115.685,
-      "STR": 105.3203,
-      "SPY": 105.3203,
+      "portfolio_value": 110597.44,
+      "TV": 115.3043,
+      "DR": 111.1064,
+      "STR": 104.5767,
+      "SPY": 104.5767,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-13",
-      "portfolio_value": 109764.61,
-      "TV": 112.5512,
-      "DR": 111.2774,
-      "STR": 104.514,
-      "SPY": 104.514,
+      "portfolio_value": 108356.4,
+      "TV": 113.571,
+      "DR": 106.8732,
+      "STR": 103.7761,
+      "SPY": 103.7761,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-14",
-      "portfolio_value": 110922.17,
-      "TV": 113.2149,
-      "DR": 113.7466,
-      "STR": 104.8851,
-      "SPY": 104.8851,
+      "portfolio_value": 109499.11,
+      "TV": 114.2407,
+      "DR": 109.2448,
+      "STR": 104.1445,
+      "SPY": 104.1445,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-15",
-      "portfolio_value": 111389.14,
-      "TV": 114.8351,
-      "DR": 113.1046,
-      "STR": 105.3008,
-      "SPY": 105.3008,
+      "portfolio_value": 109960.09,
+      "TV": 115.8755,
+      "DR": 108.6282,
+      "STR": 104.5573,
+      "SPY": 104.5573,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-16",
-      "portfolio_value": 109507.73,
-      "TV": 113.4491,
-      "DR": 109.3513,
-      "STR": 104.7302,
-      "SPY": 104.7302,
+      "portfolio_value": 108102.81,
+      "TV": 114.4771,
+      "DR": 105.0234,
+      "STR": 103.9908,
+      "SPY": 103.9908,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-17",
-      "portfolio_value": 107095.54,
-      "TV": 110.4821,
-      "DR": 106.0672,
-      "STR": 103.6937,
-      "SPY": 103.6937,
+      "portfolio_value": 105721.57,
+      "TV": 111.4832,
+      "DR": 101.8693,
+      "STR": 102.9616,
+      "SPY": 102.9616,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-20",
-      "portfolio_value": 107422.05,
-      "TV": 111.5167,
-      "DR": 106.2154,
-      "STR": 103.5263,
-      "SPY": 103.5263,
+      "portfolio_value": 106043.9,
+      "TV": 112.5271,
+      "DR": 102.0116,
+      "STR": 102.7953,
+      "SPY": 102.7953,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-21",
-      "portfolio_value": 109685.67,
-      "TV": 113.4882,
-      "DR": 110.1662,
-      "STR": 104.3898,
-      "SPY": 104.3898,
+      "portfolio_value": 108278.48,
+      "TV": 114.5164,
+      "DR": 105.806,
+      "STR": 103.6528,
+      "SPY": 103.6528,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-22",
-      "portfolio_value": 109033.8,
-      "TV": 112.805,
-      "DR": 108.9933,
-      "STR": 104.2684,
-      "SPY": 104.2684,
+      "portfolio_value": 107634.96,
+      "TV": 113.8271,
+      "DR": 104.6796,
+      "STR": 103.5323,
+      "SPY": 103.5323,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-23",
-      "portfolio_value": 106322.68,
-      "TV": 109.9746,
-      "DR": 104.9437,
-      "STR": 102.9808,
-      "SPY": 102.9808,
+      "portfolio_value": 104958.63,
+      "TV": 110.971,
+      "DR": 100.7902,
+      "STR": 102.2537,
+      "SPY": 102.2537,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-24",
-      "portfolio_value": 105826.73,
-      "TV": 110.9116,
-      "DR": 102.4744,
-      "STR": 103.0854,
-      "SPY": 103.0854,
+      "portfolio_value": 104469.05,
+      "TV": 111.9165,
+      "DR": 98.4187,
+      "STR": 102.3576,
+      "SPY": 102.3576,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-27",
-      "portfolio_value": 105681.66,
-      "TV": 111.1263,
-      "DR": 101.8324,
-      "STR": 103.1077,
-      "SPY": 103.1077,
+      "portfolio_value": 104325.84,
+      "TV": 112.1331,
+      "DR": 97.8021,
+      "STR": 102.3798,
+      "SPY": 102.3798,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-28",
-      "portfolio_value": 105183.59,
-      "TV": 111.4581,
-      "DR": 99.8447,
-      "STR": 103.3547,
-      "SPY": 103.3547,
+      "portfolio_value": 103834.15,
+      "TV": 112.468,
+      "DR": 95.893,
+      "STR": 102.6249,
+      "SPY": 102.6249,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-29",
-      "portfolio_value": 102143.15,
-      "TV": 108.0422,
-      "DR": 95.7827,
-      "STR": 101.7643,
-      "SPY": 101.7643,
+      "portfolio_value": 100832.72,
+      "TV": 109.0211,
+      "DR": 91.9918,
+      "STR": 101.0458,
+      "SPY": 101.0458,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-30",
-      "portfolio_value": 106102.54,
-      "TV": 111.6924,
-      "DR": 102.0794,
-      "STR": 103.4705,
-      "SPY": 103.4705,
+      "portfolio_value": 104741.31,
+      "TV": 112.7044,
+      "DR": 98.0393,
+      "STR": 102.7399,
+      "SPY": 102.7399,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-31",
-      "portfolio_value": 107299.86,
-      "TV": 113.332,
-      "DR": 103.3016,
-      "STR": 104.2154,
-      "SPY": 104.2154,
+      "portfolio_value": 105923.27,
+      "TV": 114.3589,
+      "DR": 99.2132,
+      "STR": 103.4796,
+      "SPY": 103.4796,
+      "TV_ticker": "SVXY",
+      "DR_ticker": "QLD",
+      "STR_ticker": "SPY"
+    },
+    {
+      "date": "2026-08-03",
+      "portfolio_value": 107792.65,
+      "TV": 114.7528,
+      "DR": 102.7112,
+      "STR": 104.9535,
+      "SPY": 104.9535,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1640,13 +1662,13 @@
   "period_attribution": [
     {
       "regime": "Calm",
-      "date_from": "2026-04-30",
-      "date_to": "2026-07-31",
+      "date_from": "2026-05-05",
+      "date_to": "2026-08-03",
       "days": 65,
-      "TV_pct": 13.33,
-      "DR_pct": 3.3,
-      "STR_pct": 4.22,
-      "port_pct": 7.3
+      "TV_pct": 14.75,
+      "DR_pct": 2.71,
+      "STR_pct": 4.95,
+      "port_pct": 7.79
     }
   ]
 }

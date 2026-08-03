@@ -1,29 +1,52 @@
 {
-  "sharpe": 1.341,
-  "sortino": 1.651,
-  "cagr": 28.31,
+  "sharpe": 1.336,
+  "sortino": 1.646,
+  "cagr": 28.22,
   "max_dd": -18.9,
-  "calmar": 1.498,
+  "calmar": 1.493,
   "worst_year": -10.37,
   "best_year": 67.58,
-  "is_sharpe": 1.303,
-  "oos_sharpe": 1.382,
-  "retention": 1.061,
-  "n_years": 14.7,
+  "is_sharpe": 1.301,
+  "oos_sharpe": 1.373,
+  "retention": 1.056,
+  "n_years": 14.8,
   "win_rate_years": 75.0,
   "positive_years": 12,
   "total_years": 16,
   "cum_commission_usd": 535.0,
-  "cum_slippage_usd": 31992.61,
-  "cum_total_cost_usd": 32527.61,
-  "cost_drag_pct_per_year": 0.2249,
-  "cost_drag_on_initial_capital": 2.2059,
-  "avg_portfolio_value_usd": 980752.34,
-  "final_portfolio_value_usd": 3947966.43,
+  "cum_slippage_usd": 31923.37,
+  "cum_total_cost_usd": 32458.37,
+  "cost_drag_pct_per_year": 0.2225,
+  "cost_drag_on_initial_capital": 2.1953,
+  "avg_portfolio_value_usd": 986490.88,
+  "final_portfolio_value_usd": 3946532.84,
   "n_svxy_trades": 107,
-  "avg_svxy_trades_per_year": 7.3,
-  "report_generated": "2026-07-21",
-  "data_through": "2026-07-17",
-  "bootstrap_sharpe_lo90": 0.922,
-  "bootstrap_sharpe_hi90": 1.767
+  "avg_svxy_trades_per_year": 7.2,
+  "report_generated": "2026-08-01",
+  "data_through": "2026-07-31",
+  "data_freshness": {
+    "vix": {
+      "last": "2026-07-31",
+      "lag_days": 0
+    },
+    "vix3m": {
+      "last": "2026-07-31",
+      "lag_days": 0
+    },
+    "hyg": {
+      "last": "2026-07-31",
+      "lag_days": 0
+    },
+    "spy": {
+      "last": "2026-07-31",
+      "lag_days": 0
+    },
+    "svxy": {
+      "last": "2026-07-31",
+      "lag_days": 0
+    }
+  },
+  "stale_inputs": [],
+  "bootstrap_sharpe_lo90": 0.91,
+  "bootstrap_sharpe_hi90": 1.764
 }
