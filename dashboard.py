@@ -245,10 +245,10 @@ if _rg or _dt:
 
 st.markdown("<div style='margin-top:8px'></div>", unsafe_allow_html=True)
 
-# ── Main columns ───────────────────────────────────────────────────────────────
-left, right = st.columns([1, 2.2])
+# ── Statusband: wat er nu waar is ─────────────────────────────────────────────
+status_left, status_right = st.columns([1, 1])
 
-with left:
+with status_left:
     baro    = sig["barometer"]
     regime  = sig["regime"]
     rc      = REGIME_COLOR[regime]
@@ -277,7 +277,10 @@ with left:
         },
         domain={"x":[0,1],"y":[0,1]},
     ))
-    fig_g.update_layout(height=210, margin=dict(l=10,r=10,t=15,b=5),
+    # l/r ruim genoeg voor de schaallabels (0/60/80/95/100), die Plotly BUITEN de
+    # boog tekent. Met 10px werden ze op smalle schermen aan beide zijden
+    # afgesneden.
+    fig_g.update_layout(height=210, margin=dict(l=32,r=32,t=15,b=5),
                         paper_bgcolor="white")
     st.plotly_chart(fig_g, use_container_width=True, config={"displayModeBar":False})
 
@@ -343,8 +346,8 @@ with left:
                 f'If barometer reaches {next_up[1]}: '
                 + " · ".join(changes) + "</div>", unsafe_allow_html=True)
 
-    st.divider()
 
+with status_right:
     # ── Crash systems: SVXY trailing stop + VIX override ──────────────────────
     st.markdown("**🛡️ Crash Systems**")
     if pos["TV"] in ("SVXY", "Cash (stop)"):
@@ -419,437 +422,436 @@ with left:
     col_a.metric("VIX", f"{sig['vix']:.1f}")
     col_b.metric("VIX pct (252d)", f"{sig['vix_252d_percentile']:.0f}%")
 
-# ── Right panel ────────────────────────────────────────────────────────────────
-with right:
+# ── Volle breedte: prestaties en historie ─────────────────────────────────────
 
-    # ── Monthly performance (top) — per sleeve + portfolio vs average ─────────
-    if sleeve_monthly is not None and not sleeve_monthly.empty:
-        sm = sleeve_monthly.copy()
-        cur_period = pd.Timestamp.today().to_period("M")
-        completed  = sm[sm.index.to_period("M") < cur_period]
-        avg        = sm.mean()
-        SLBL = {"TV": "TV", "DR": "DR", "STR": "STR", "PORT": "Portfolio", "SPY": "SPY"}
-        _keys = ["PORT", "SPY", "TV", "DR", "STR"] if "SPY" in sm.columns else ["PORT", "TV", "DR", "STR"]
+# ── Monthly performance (top) — per sleeve + portfolio vs average ─────────
+if sleeve_monthly is not None and not sleeve_monthly.empty:
+    sm = sleeve_monthly.copy()
+    cur_period = pd.Timestamp.today().to_period("M")
+    completed  = sm[sm.index.to_period("M") < cur_period]
+    avg        = sm.mean()
+    SLBL = {"TV": "TV", "DR": "DR", "STR": "STR", "PORT": "Portfolio", "SPY": "SPY"}
+    _keys = ["PORT", "SPY", "TV", "DR", "STR"] if "SPY" in sm.columns else ["PORT", "TV", "DR", "STR"]
 
-        if not completed.empty:
-            last = completed.iloc[-1]
-            lbl  = completed.index[-1].strftime("%B %Y")
+    if not completed.empty:
+        last = completed.iloc[-1]
+        lbl  = completed.index[-1].strftime("%B %Y")
+        st.markdown(
+            f"**📅 Monthly Performance — {lbl}** "
+            f"<span style='font-size:.8rem;color:#888'>(last full month · strategies "
+            f"standalone, vs average month)</span>", unsafe_allow_html=True)
+        sc = st.columns(len(_keys))
+        for i, k in enumerate(_keys):
+            v = float(last[k]); a = float(avg[k]); d = v - a
+            arrow = "▲" if d >= 0 else "▼"
+            vcol = "#2E7D32" if v >= 0 else "#B71C1C"
+            dcol = "#2E7D32" if d >= 0 else "#B71C1C"
+            sc[i].markdown(
+                f'<div class="kpi-box"><div class="kpi-val" style="color:{vcol}">{v:+.1f}%</div>'
+                f'<div class="kpi-lbl">{SLBL[k]}</div>'
+                f'<div style="font-size:.72rem;color:{dcol};margin-top:2px">'
+                f'{arrow} {d:+.1f}pp vs avg</div></div>', unsafe_allow_html=True)
+        if "SPY" in sm.columns:
+            _exc  = float(last["PORT"]) - float(last["SPY"])
+            _ecol = "#2E7D32" if _exc >= 0 else "#B71C1C"
             st.markdown(
-                f"**📅 Monthly Performance — {lbl}** "
-                f"<span style='font-size:.8rem;color:#888'>(last full month · strategies "
-                f"standalone, vs average month)</span>", unsafe_allow_html=True)
-            sc = st.columns(len(_keys))
-            for i, k in enumerate(_keys):
-                v = float(last[k]); a = float(avg[k]); d = v - a
-                arrow = "▲" if d >= 0 else "▼"
-                vcol = "#2E7D32" if v >= 0 else "#B71C1C"
-                dcol = "#2E7D32" if d >= 0 else "#B71C1C"
-                sc[i].markdown(
-                    f'<div class="kpi-box"><div class="kpi-val" style="color:{vcol}">{v:+.1f}%</div>'
-                    f'<div class="kpi-lbl">{SLBL[k]}</div>'
-                    f'<div style="font-size:.72rem;color:{dcol};margin-top:2px">'
-                    f'{arrow} {d:+.1f}pp vs avg</div></div>', unsafe_allow_html=True)
-            if "SPY" in sm.columns:
-                _exc  = float(last["PORT"]) - float(last["SPY"])
-                _ecol = "#2E7D32" if _exc >= 0 else "#B71C1C"
-                st.markdown(
-                    f"<div style='font-size:.82rem;margin-top:4px'><b>Portfolio vs SPY:</b> "
-                    f"<b style='color:{_ecol}'>{_exc:+.1f}pp</b> "
-                    f"<span style='color:#999'>(SPY {float(last['SPY']):+.1f}% this month)</span></div>",
-                    unsafe_allow_html=True)
-            st.markdown(
-                f"<div style='font-size:.72rem;color:#999;margin-top:3px'>"
-                f"Average month (all history): Portfolio {avg['PORT']:+.1f}%"
-                + (f" · SPY {avg['SPY']:+.1f}%" if 'SPY' in sm.columns else "")
-                + f" · TV {avg['TV']:+.1f}% · DR {avg['DR']:+.1f}% · STR {avg['STR']:+.1f}%</div>",
+                f"<div style='font-size:.82rem;margin-top:4px'><b>Portfolio vs SPY:</b> "
+                f"<b style='color:{_ecol}'>{_exc:+.1f}pp</b> "
+                f"<span style='color:#999'>(SPY {float(last['SPY']):+.1f}% this month)</span></div>",
                 unsafe_allow_html=True)
+        st.markdown(
+            f"<div style='font-size:.72rem;color:#999;margin-top:3px'>"
+            f"Average month (all history): Portfolio {avg['PORT']:+.1f}%"
+            + (f" · SPY {avg['SPY']:+.1f}%" if 'SPY' in sm.columns else "")
+            + f" · TV {avg['TV']:+.1f}% · DR {avg['DR']:+.1f}% · STR {avg['STR']:+.1f}%</div>",
+            unsafe_allow_html=True)
 
-        # MTD — current month so far (fresh from the daily signal, not the report)
-        mtd, mtd_p = mtd_from_equity(sig.get("equity_60d", []))
-        if mtd:
-            parts = " · ".join(
-                f"{SLBL[k]} <b style='color:{'#2E7D32' if mtd[k] >= 0 else '#B71C1C'}'>"
-                f"{mtd[k]:+.1f}%</b>" for k in ["PORT", "SPY", "TV", "DR", "STR"] if k in mtd)
-            st.markdown(f"<div style='font-size:.82rem;color:#555;margin:4px 0 6px'>"
-                        f"<b>{mtd_p.strftime('%B')} so far (MTD, live):</b> {parts}</div>",
-                        unsafe_allow_html=True)
+    # MTD — current month so far (fresh from the daily signal, not the report)
+    mtd, mtd_p = mtd_from_equity(sig.get("equity_60d", []))
+    if mtd:
+        parts = " · ".join(
+            f"{SLBL[k]} <b style='color:{'#2E7D32' if mtd[k] >= 0 else '#B71C1C'}'>"
+            f"{mtd[k]:+.1f}%</b>" for k in ["PORT", "SPY", "TV", "DR", "STR"] if k in mtd)
+        st.markdown(f"<div style='font-size:.82rem;color:#555;margin:4px 0 6px'>"
+                    f"<b>{mtd_p.strftime('%B')} so far (MTD, live):</b> {parts}</div>",
+                    unsafe_allow_html=True)
 
-        # Recent-months table (last 12 full months) + average row, colour-coded
-        tbl = completed.tail(12).copy()
-        tbl.index = tbl.index.strftime("%b %Y")
-        tbl = tbl.iloc[::-1]   # most recent month on top
-        tbl = pd.concat([tbl, pd.DataFrame([avg], index=["Avg month"])])  # avg at bottom
-        if "SPY" in tbl.columns:
-            tbl["vs SPY"] = tbl["PORT"] - tbl["SPY"]
-            _tc = ["PORT", "SPY", "vs SPY", "TV", "DR", "STR"]
-        else:
-            _tc = ["PORT", "TV", "DR", "STR"]
-        tbl = tbl[_tc].rename(columns={"PORT": "Portfolio"})
-        def _csign(v):
-            if pd.isna(v): return ""
-            return "color:#2E7D32;font-weight:600" if v >= 0 else "color:#B71C1C;font-weight:600"
-        _st = tbl.style
-        _elem = _st.map if hasattr(_st, "map") else _st.applymap   # pandas ≥2.1 .map / 2.0 .applymap
-        sty = _elem(_csign).format("{:+.1f}%")
-        st.dataframe(sty, use_container_width=True, height=300)
+    # Recent-months table (last 12 full months) + average row, colour-coded
+    tbl = completed.tail(12).copy()
+    tbl.index = tbl.index.strftime("%b %Y")
+    tbl = tbl.iloc[::-1]   # most recent month on top
+    tbl = pd.concat([tbl, pd.DataFrame([avg], index=["Avg month"])])  # avg at bottom
+    if "SPY" in tbl.columns:
+        tbl["vs SPY"] = tbl["PORT"] - tbl["SPY"]
+        _tc = ["PORT", "SPY", "vs SPY", "TV", "DR", "STR"]
+    else:
+        _tc = ["PORT", "TV", "DR", "STR"]
+    tbl = tbl[_tc].rename(columns={"PORT": "Portfolio"})
+    def _csign(v):
+        if pd.isna(v): return ""
+        return "color:#2E7D32;font-weight:600" if v >= 0 else "color:#B71C1C;font-weight:600"
+    _st = tbl.style
+    _elem = _st.map if hasattr(_st, "map") else _st.applymap   # pandas ≥2.1 .map / 2.0 .applymap
+    sty = _elem(_csign).format("{:+.1f}%")
+    st.dataframe(sty, use_container_width=True, height=300)
 
-    st.divider()
+st.divider()
 
-    # ── Barometer 60 days ─────────────────────────────────────────────────────
-    st.markdown("**Barometer — Last 60 Days**")
-    baro_60 = pd.DataFrame(sig.get("barometer_history_60d", []))
+# ── Barometer 60 days ─────────────────────────────────────────────────────
+st.markdown("**Barometer — Last 60 Days**")
+baro_60 = pd.DataFrame(sig.get("barometer_history_60d", []))
+if not baro_60.empty:
+    baro_60["date"] = pd.to_datetime(baro_60["date"])
+
+    # Colour config per regime
+    _seg_color = {
+        "Calm":        "#2E7D32",
+        "Defensive":   "#E65C00",
+        "High-Stress": "#BF360C",
+        "Extreme":     "#B71C1C",
+    }
+    _bg_color = {
+        "Calm":        "rgba(46,125,50,0.07)",
+        "Defensive":   "rgba(230,81,0,0.09)",
+        "High-Stress": "rgba(191,54,12,0.09)",
+        "Extreme":     "rgba(183,28,28,0.12)",
+    }
+
+    # ── Split into per-regime segments so the line changes colour ──────────
+    # Build list of (start_idx, end_idx, regime_name)
+    segments = []
+    cur_regime = baro_60["regime"].iloc[0]
+    seg_start  = 0
+    for i in range(1, len(baro_60)):
+        if baro_60["regime"].iloc[i] != cur_regime:
+            segments.append((seg_start, i, cur_regime))
+            seg_start  = i
+            cur_regime = baro_60["regime"].iloc[i]
+    segments.append((seg_start, len(baro_60) - 1, cur_regime))
+
+    fig_b = go.Figure()
+
+    # Horizontal regime bands
+    for lo, hi, lbl, col in [
+        (0,  60, "Calm",        "rgba(46,125,50,0.06)"),
+        (60, 80, "Defensive",   "rgba(230,81,0,0.08)"),
+        (80, 95, "High-Stress", "rgba(191,54,12,0.08)"),
+        (95,100, "Extreme",     "rgba(183,28,28,0.11)"),
+    ]:
+        fig_b.add_hrect(y0=lo, y1=hi, fillcolor=col, line_width=0,
+                        annotation_text=lbl, annotation_position="right",
+                        annotation_font_size=9, annotation_font_color="#888")
+
+    # Threshold dashed lines
+    for thresh, col in [(60,"#F9A825"),(80,"#E65C00"),(95,"#B71C1C")]:
+        fig_b.add_hline(y=thresh, line_dash="dot", line_color=col, line_width=1.2)
+
+    # Coloured line segments (one trace per segment, bridge with next point)
+    shown = set()
+    for s_start, s_end, seg_reg in segments:
+        # Include the next point to avoid gaps between segments
+        end_idx   = min(s_end + 1, len(baro_60) - 1)
+        seg_df    = baro_60.iloc[s_start : end_idx + 1]
+        col       = _seg_color.get(seg_reg, "#555")
+        show_leg  = seg_reg not in shown
+        shown.add(seg_reg)
+        fig_b.add_trace(go.Scatter(
+            x=seg_df["date"], y=seg_df["barometer"],
+            mode="lines",
+            line={"color": col, "width": 2.5},
+            fill="tozeroy",
+            fillcolor=_bg_color.get(seg_reg, "rgba(0,0,0,0.05)"),
+            name=seg_reg,
+            legendgroup=seg_reg,
+            showlegend=show_leg,
+        ))
+
+    # Vertical regime-change markers
+    for i in range(1, len(baro_60)):
+        if baro_60["regime"].iloc[i] != baro_60["regime"].iloc[i - 1]:
+            chg_date = baro_60["date"].iloc[i]
+            new_reg  = baro_60["regime"].iloc[i]
+            old_reg  = baro_60["regime"].iloc[i - 1]
+            col      = _seg_color.get(new_reg, "#555")
+            fig_b.add_vline(
+                x=chg_date,
+                line_dash="dash", line_color=col, line_width=1.5,
+            )
+            fig_b.add_annotation(
+                x=chg_date,
+                y=103,
+                text=f"→{new_reg[:3]}",
+                showarrow=False,
+                font={"size": 8, "color": col, "family": "monospace"},
+                xanchor="left",
+            )
+
+    # Today's value dot
+    fig_b.add_trace(go.Scatter(
+        x=[baro_60["date"].iloc[-1]], y=[baro_60["barometer"].iloc[-1]],
+        mode="markers+text",
+        marker={"size": 11, "color": rc, "line": {"color": "white", "width": 2}},
+        text=[f" {baro:.1f}"], textposition="middle right",
+        textfont={"color": rc, "size": 11, "family": "monospace"},
+        name="Today", showlegend=False,
+    ))
+
+    fig_b.update_layout(
+        height=255, margin=dict(l=0, r=95, t=10, b=25),
+        xaxis={"showgrid": False, "tickformat": "%b %d"},
+        yaxis={"range": [0, 107], "showgrid": True, "gridcolor": "#EEE",
+               "tickvals": [0, 60, 80, 95, 100]},
+        paper_bgcolor="white", plot_bgcolor="white",
+        legend={"orientation": "h", "y": 1.12, "font": {"size": 10}},
+    )
+    st.plotly_chart(fig_b, use_container_width=True, config={"displayModeBar": False})
+
+# ── Strategy breakdown — last 60 days ────────────────────────────────────
+eq60_raw = sig.get("equity_60d", [])
+attr_raw = sig.get("period_attribution", [])
+
+if eq60_raw:
+    eq60 = pd.DataFrame(eq60_raw)
+    eq60["date"] = pd.to_datetime(eq60["date"])
+
+    end_val  = eq60["portfolio_value"].iloc[-1]
+    gain_pct = (end_val / 100_000 - 1) * 100
+    c60      = "#2E7D32" if gain_pct >= 0 else "#B71C1C"
+
+    st.markdown(
+        f'**Strategy Breakdown — Last 60 Days** '
+        f'<span style="font-size:.88rem;color:{c60};font-weight:600">'
+        f'Portfolio: {gain_pct:+.1f}%  ·  $100K → ${end_val/1e3:.1f}K'
+        f'</span>', unsafe_allow_html=True)
+
+    # ── Subplot: sleeve lines (top) + barometer (bottom) ─────────────────
+    fig_s = make_subplots(
+        rows=2, cols=1,
+        shared_xaxes=True,
+        row_heights=[0.65, 0.35],
+        vertical_spacing=0.04,
+    )
+
+    # Regime background bands on barometer subplot
+    for lo, hi, lbl, col in [
+        (0,  60, "Calm",        "rgba(46,125,50,0.07)"),
+        (60, 80, "Defensive",   "rgba(230,81,0,0.09)"),
+        (80, 95, "High-Stress", "rgba(191,54,12,0.09)"),
+        (95,100, "Extreme",     "rgba(183,28,28,0.12)"),
+    ]:
+        fig_s.add_hrect(y0=lo, y1=hi, fillcolor=col, line_width=0,
+                        row=2, col=1)
+    for thresh, col in [(60,"#F9A825"),(80,"#E65C00"),(95,"#B71C1C")]:
+        fig_s.add_hline(y=thresh, line_dash="dot", line_color=col,
+                        line_width=1, row=2, col=1)
+
+    # Barometer line (coloured by regime, same logic as barometer chart)
     if not baro_60.empty:
-        baro_60["date"] = pd.to_datetime(baro_60["date"])
-
-        # Colour config per regime
-        _seg_color = {
-            "Calm":        "#2E7D32",
-            "Defensive":   "#E65C00",
-            "High-Stress": "#BF360C",
-            "Extreme":     "#B71C1C",
-        }
-        _bg_color = {
-            "Calm":        "rgba(46,125,50,0.07)",
-            "Defensive":   "rgba(230,81,0,0.09)",
-            "High-Stress": "rgba(191,54,12,0.09)",
-            "Extreme":     "rgba(183,28,28,0.12)",
-        }
-
-        # ── Split into per-regime segments so the line changes colour ──────────
-        # Build list of (start_idx, end_idx, regime_name)
-        segments = []
-        cur_regime = baro_60["regime"].iloc[0]
-        seg_start  = 0
+        _seg_b = []; cr = baro_60["regime"].iloc[0]; cs = 0
         for i in range(1, len(baro_60)):
-            if baro_60["regime"].iloc[i] != cur_regime:
-                segments.append((seg_start, i, cur_regime))
-                seg_start  = i
-                cur_regime = baro_60["regime"].iloc[i]
-        segments.append((seg_start, len(baro_60) - 1, cur_regime))
+            if baro_60["regime"].iloc[i] != cr:
+                _seg_b.append((cs, i, cr)); cs = i; cr = baro_60["regime"].iloc[i]
+        _seg_b.append((cs, len(baro_60)-1, cr))
+        shown_b = set()
+        for s, e, sr in _seg_b:
+            ei = min(e+1, len(baro_60)-1)
+            seg = baro_60.iloc[s:ei+1]
+            col = _seg_color.get(sr, "#555")
+            fig_s.add_trace(go.Scatter(
+                x=seg["date"], y=seg["barometer"],
+                mode="lines", line={"color": col, "width": 1.8},
+                name=sr, legendgroup=sr,
+                showlegend=(sr not in shown_b),
+            ), row=2, col=1)
+            shown_b.add(sr)
 
-        fig_b = go.Figure()
-
-        # Horizontal regime bands
-        for lo, hi, lbl, col in [
-            (0,  60, "Calm",        "rgba(46,125,50,0.06)"),
-            (60, 80, "Defensive",   "rgba(230,81,0,0.08)"),
-            (80, 95, "High-Stress", "rgba(191,54,12,0.08)"),
-            (95,100, "Extreme",     "rgba(183,28,28,0.11)"),
-        ]:
-            fig_b.add_hrect(y0=lo, y1=hi, fillcolor=col, line_width=0,
-                            annotation_text=lbl, annotation_position="right",
-                            annotation_font_size=9, annotation_font_color="#888")
-
-        # Threshold dashed lines
-        for thresh, col in [(60,"#F9A825"),(80,"#E65C00"),(95,"#B71C1C")]:
-            fig_b.add_hline(y=thresh, line_dash="dot", line_color=col, line_width=1.2)
-
-        # Coloured line segments (one trace per segment, bridge with next point)
-        shown = set()
-        for s_start, s_end, seg_reg in segments:
-            # Include the next point to avoid gaps between segments
-            end_idx   = min(s_end + 1, len(baro_60) - 1)
-            seg_df    = baro_60.iloc[s_start : end_idx + 1]
-            col       = _seg_color.get(seg_reg, "#555")
-            show_leg  = seg_reg not in shown
-            shown.add(seg_reg)
-            fig_b.add_trace(go.Scatter(
-                x=seg_df["date"], y=seg_df["barometer"],
-                mode="lines",
-                line={"color": col, "width": 2.5},
-                fill="tozeroy",
-                fillcolor=_bg_color.get(seg_reg, "rgba(0,0,0,0.05)"),
-                name=seg_reg,
-                legendgroup=seg_reg,
-                showlegend=show_leg,
-            ))
-
-        # Vertical regime-change markers
+    # Vertical regime-change markers on both subplots
+    if not baro_60.empty:
         for i in range(1, len(baro_60)):
-            if baro_60["regime"].iloc[i] != baro_60["regime"].iloc[i - 1]:
-                chg_date = baro_60["date"].iloc[i]
-                new_reg  = baro_60["regime"].iloc[i]
-                old_reg  = baro_60["regime"].iloc[i - 1]
-                col      = _seg_color.get(new_reg, "#555")
-                fig_b.add_vline(
-                    x=chg_date,
-                    line_dash="dash", line_color=col, line_width=1.5,
-                )
-                fig_b.add_annotation(
-                    x=chg_date,
-                    y=103,
-                    text=f"→{new_reg[:3]}",
+            if baro_60["regime"].iloc[i] != baro_60["regime"].iloc[i-1]:
+                chg_d = baro_60["date"].iloc[i]
+                col   = _seg_color.get(baro_60["regime"].iloc[i], "#555")
+                for row in [1, 2]:
+                    fig_s.add_vline(x=chg_d, line_dash="dash",
+                                    line_color=col, line_width=1.2, row=row, col=1)
+                fig_s.add_annotation(
+                    x=chg_d, y=103, xref="x2", yref="y2",
+                    text=f"→{baro_60['regime'].iloc[i][:3]}",
                     showarrow=False,
-                    font={"size": 8, "color": col, "family": "monospace"},
+                    font={"size": 7, "color": col, "family": "monospace"},
                     xanchor="left",
                 )
 
-        # Today's value dot
-        fig_b.add_trace(go.Scatter(
-            x=[baro_60["date"].iloc[-1]], y=[baro_60["barometer"].iloc[-1]],
-            mode="markers+text",
-            marker={"size": 11, "color": rc, "line": {"color": "white", "width": 2}},
-            text=[f" {baro:.1f}"], textposition="middle right",
-            textfont={"color": rc, "size": 11, "family": "monospace"},
-            name="Today", showlegend=False,
-        ))
-
-        fig_b.update_layout(
-            height=255, margin=dict(l=0, r=95, t=10, b=25),
-            xaxis={"showgrid": False, "tickformat": "%b %d"},
-            yaxis={"range": [0, 107], "showgrid": True, "gridcolor": "#EEE",
-                   "tickvals": [0, 60, 80, 95, 100]},
-            paper_bgcolor="white", plot_bgcolor="white",
-            legend={"orientation": "h", "y": 1.12, "font": {"size": 10}},
-        )
-        st.plotly_chart(fig_b, use_container_width=True, config={"displayModeBar": False})
-
-    # ── Strategy breakdown — last 60 days ────────────────────────────────────
-    eq60_raw = sig.get("equity_60d", [])
-    attr_raw = sig.get("period_attribution", [])
-
-    if eq60_raw:
-        eq60 = pd.DataFrame(eq60_raw)
-        eq60["date"] = pd.to_datetime(eq60["date"])
-
-        end_val  = eq60["portfolio_value"].iloc[-1]
-        gain_pct = (end_val / 100_000 - 1) * 100
-        c60      = "#2E7D32" if gain_pct >= 0 else "#B71C1C"
-
-        st.markdown(
-            f'**Strategy Breakdown — Last 60 Days** '
-            f'<span style="font-size:.88rem;color:{c60};font-weight:600">'
-            f'Portfolio: {gain_pct:+.1f}%  ·  $100K → ${end_val/1e3:.1f}K'
-            f'</span>', unsafe_allow_html=True)
-
-        # ── Subplot: sleeve lines (top) + barometer (bottom) ─────────────────
-        fig_s = make_subplots(
-            rows=2, cols=1,
-            shared_xaxes=True,
-            row_heights=[0.65, 0.35],
-            vertical_spacing=0.04,
-        )
-
-        # Regime background bands on barometer subplot
-        for lo, hi, lbl, col in [
-            (0,  60, "Calm",        "rgba(46,125,50,0.07)"),
-            (60, 80, "Defensive",   "rgba(230,81,0,0.09)"),
-            (80, 95, "High-Stress", "rgba(191,54,12,0.09)"),
-            (95,100, "Extreme",     "rgba(183,28,28,0.12)"),
-        ]:
-            fig_s.add_hrect(y0=lo, y1=hi, fillcolor=col, line_width=0,
-                            row=2, col=1)
-        for thresh, col in [(60,"#F9A825"),(80,"#E65C00"),(95,"#B71C1C")]:
-            fig_s.add_hline(y=thresh, line_dash="dot", line_color=col,
-                            line_width=1, row=2, col=1)
-
-        # Barometer line (coloured by regime, same logic as barometer chart)
-        if not baro_60.empty:
-            _seg_b = []; cr = baro_60["regime"].iloc[0]; cs = 0
-            for i in range(1, len(baro_60)):
-                if baro_60["regime"].iloc[i] != cr:
-                    _seg_b.append((cs, i, cr)); cs = i; cr = baro_60["regime"].iloc[i]
-            _seg_b.append((cs, len(baro_60)-1, cr))
-            shown_b = set()
-            for s, e, sr in _seg_b:
-                ei = min(e+1, len(baro_60)-1)
-                seg = baro_60.iloc[s:ei+1]
-                col = _seg_color.get(sr, "#555")
-                fig_s.add_trace(go.Scatter(
-                    x=seg["date"], y=seg["barometer"],
-                    mode="lines", line={"color": col, "width": 1.8},
-                    name=sr, legendgroup=sr,
-                    showlegend=(sr not in shown_b),
-                ), row=2, col=1)
-                shown_b.add(sr)
-
-        # Vertical regime-change markers on both subplots
-        if not baro_60.empty:
-            for i in range(1, len(baro_60)):
-                if baro_60["regime"].iloc[i] != baro_60["regime"].iloc[i-1]:
-                    chg_d = baro_60["date"].iloc[i]
-                    col   = _seg_color.get(baro_60["regime"].iloc[i], "#555")
-                    for row in [1, 2]:
-                        fig_s.add_vline(x=chg_d, line_dash="dash",
-                                        line_color=col, line_width=1.2, row=row, col=1)
-                    fig_s.add_annotation(
-                        x=chg_d, y=103, xref="x2", yref="y2",
-                        text=f"→{baro_60['regime'].iloc[i][:3]}",
-                        showarrow=False,
-                        font={"size": 7, "color": col, "family": "monospace"},
-                        xanchor="left",
-                    )
-
-        # Sleeve lines — TV, DR, STR each indexed to 100
-        SLEEVE_STYLE = {
-            "TV":  {"color": "#1A3D6E", "dash": "solid",  "width": 2.2, "label": "TV (Tactical Vol)"},
-            "DR":  {"color": "#E65C00", "dash": "solid",  "width": 2.2, "label": "DR (Defensive Rot.)"},
-            "STR": {"color": "#6A1B9A", "dash": "solid",  "width": 2.2, "label": "STR (Strategic Ret.)"},
-        }
-        for sleeve, style in SLEEVE_STYLE.items():
-            if sleeve not in eq60.columns: continue
-            last_v = eq60[sleeve].iloc[-1]
-            last_g = last_v - 100
-            fig_s.add_trace(go.Scatter(
-                x=eq60["date"], y=eq60[sleeve],
-                mode="lines",
-                line={"color": style["color"], "width": style["width"],
-                      "dash": style["dash"]},
-                name=style["label"],
-                hovertemplate=f"<b>{sleeve}</b>: %{{y:.1f}}<extra>%{{x|%d %b}}</extra>",
-            ), row=1, col=1)
-            # End label
-            fig_s.add_annotation(
-                x=eq60["date"].iloc[-1], y=last_v, xref="x", yref="y",
-                text=f" {last_g:+.1f}",
-                showarrow=False, xanchor="left",
-                font={"color": style["color"], "size": 10, "family": "monospace"},
-            )
-
-        # 100-baseline
-        fig_s.add_hline(y=100, line_dash="dot", line_color="#CCC",
-                        line_width=1, row=1, col=1)
-
-        fig_s.update_layout(
-            height=360,
-            margin=dict(l=0, r=75, t=10, b=5),
-            paper_bgcolor="white", plot_bgcolor="white",
-            legend={"orientation": "h", "y": 1.07, "font": {"size": 10}},
-        )
-        fig_s.update_xaxes(showgrid=False, tickformat="%b %d", row=1, col=1)
-        fig_s.update_xaxes(showgrid=False, tickformat="%b %d", row=2, col=1)
-        fig_s.update_yaxes(showgrid=True, gridcolor="#EEE",
-                           ticksuffix="", tickprefix="",
-                           title_text="Indexed (100 = start)", title_font_size=9,
-                           row=1, col=1)
-        fig_s.update_yaxes(range=[0, 107], showgrid=False,
-                           tickvals=[0, 60, 80, 95, 100],
-                           title_text="Barometer", title_font_size=9,
-                           row=2, col=1)
-
-        st.plotly_chart(fig_s, use_container_width=True,
-                        config={"displayModeBar": False})
-
-        # ── Period attribution table ──────────────────────────────────────────
-        if attr_raw:
-            attr = pd.DataFrame(attr_raw)
-            # Emoji regime icons
-            _ri = {"Calm":"🟢","Defensive":"🟡","High-Stress":"🟠","Extreme":"🔴"}
-            attr["Regime"] = attr["regime"].apply(
-                lambda r: f'{_ri.get(r,"⚪")} {r}')
-            attr["Period"] = attr.apply(
-                lambda row: f'{pd.to_datetime(row["date_from"]).strftime("%d %b")} – '
-                            f'{pd.to_datetime(row["date_to"]).strftime("%d %b")}', axis=1)
-            attr["Days"]  = attr["days"]
-            for col, key in [("TV %","TV_pct"),("DR %","DR_pct"),
-                             ("STR %","STR_pct"),("Port %","port_pct")]:
-                attr[col] = attr[key].apply(lambda x: f"{x:+.1f}%")
-
-            st.dataframe(
-                attr[["Regime","Period","Days","TV %","DR %","STR %","Port %"]],
-                hide_index=True, use_container_width=True,
-                column_config={
-                    "Regime": st.column_config.TextColumn(width="medium"),
-                    "Period": st.column_config.TextColumn(width="medium"),
-                    "Days":   st.column_config.NumberColumn(width="small"),
-                    "TV %":   st.column_config.TextColumn(width="small"),
-                    "DR %":   st.column_config.TextColumn(width="small"),
-                    "STR %":  st.column_config.TextColumn(width="small"),
-                    "Port %": st.column_config.TextColumn(width="small"),
-                }
-            )
-
-    # ── Equity curve ──────────────────────────────────────────────────────────
-    st.markdown("**Portfolio Value — Full Period** *(starting $100K · VTS vs SPY)*")
-    if equity is not None:
-        final = equity.iloc[-1]
-        fig_e = go.Figure()
-        fig_e.add_trace(go.Scatter(
-            x=equity.index, y=equity.values,
-            mode="lines", name="VTS V20",
-            line={"color":"#1A3D6E","width":2},
-            fill="tozeroy", fillcolor="rgba(26,61,110,0.06)",
-            hovertemplate="<b>VTS $%{y:,.0f}</b><extra>%{x|%b %Y}</extra>",
-        ))
-        if spy_equity is not None and len(spy_equity):
-            fig_e.add_trace(go.Scatter(
-                x=spy_equity.index, y=spy_equity.values,
-                mode="lines", name="SPY (buy & hold)",
-                line={"color":"#E67E22","width":1.6,"dash":"dot"},
-                hovertemplate="<b>SPY $%{y:,.0f}</b><extra>%{x|%b %Y}</extra>",
-            ))
-            fig_e.add_annotation(
-                x=spy_equity.index[-1], y=spy_equity.iloc[-1],
-                text=f" SPY ${spy_equity.iloc[-1]/1e6:.2f}M",
-                showarrow=False, xanchor="left",
-                font={"color":"#E67E22","size":10,"family":"monospace"},
-            )
-        fig_e.add_hline(y=100_000, line_dash="dot", line_color="#BBB", line_width=1)
-        fig_e.add_annotation(
-            x=equity.index[-1], y=final,
-            text=f" VTS ${final/1e6:.2f}M",
+    # Sleeve lines — TV, DR, STR each indexed to 100
+    SLEEVE_STYLE = {
+        "TV":  {"color": "#1A3D6E", "dash": "solid",  "width": 2.2, "label": "TV (Tactical Vol)"},
+        "DR":  {"color": "#E65C00", "dash": "solid",  "width": 2.2, "label": "DR (Defensive Rot.)"},
+        "STR": {"color": "#6A1B9A", "dash": "solid",  "width": 2.2, "label": "STR (Strategic Ret.)"},
+    }
+    for sleeve, style in SLEEVE_STYLE.items():
+        if sleeve not in eq60.columns: continue
+        last_v = eq60[sleeve].iloc[-1]
+        last_g = last_v - 100
+        fig_s.add_trace(go.Scatter(
+            x=eq60["date"], y=eq60[sleeve],
+            mode="lines",
+            line={"color": style["color"], "width": style["width"],
+                  "dash": style["dash"]},
+            name=style["label"],
+            hovertemplate=f"<b>{sleeve}</b>: %{{y:.1f}}<extra>%{{x|%d %b}}</extra>",
+        ), row=1, col=1)
+        # End label
+        fig_s.add_annotation(
+            x=eq60["date"].iloc[-1], y=last_v, xref="x", yref="y",
+            text=f" {last_g:+.1f}",
             showarrow=False, xanchor="left",
-            font={"color":"#1A3D6E","size":11,"family":"monospace"},
+            font={"color": style["color"], "size": 10, "family": "monospace"},
         )
-        fig_e.update_layout(
-            height=240, margin=dict(l=0,r=95,t=5,b=25),
-            xaxis={"showgrid":False},
-            yaxis={"showgrid":True,"gridcolor":"#EEE","tickformat":"$,.0f"},
-            paper_bgcolor="white", plot_bgcolor="white",
-            legend={"orientation":"h","y":1.08},
-        )
-        st.plotly_chart(fig_e, use_container_width=True, config={"displayModeBar":False})
 
-    # ── Signal history — last 3 months ───────────────────────────────────────
-    st.markdown("**Signal History — Last 3 Months**")
-    hist3m_raw = sig.get("signal_history_3m", [])
-    if hist3m_raw:
-        hist3m = pd.DataFrame(hist3m_raw)
-        hist3m["date"] = pd.to_datetime(hist3m["date"])
-        hist3m = hist3m.sort_values("date", ascending=False).reset_index(drop=True)
+    # 100-baseline
+    fig_s.add_hline(y=100, line_dash="dot", line_color="#CCC",
+                    line_width=1, row=1, col=1)
 
-        # Styled columns
-        hist3m["Date"]    = hist3m["date"].dt.strftime("%d %b %Y")
-        hist3m["Baro"]    = hist3m["barometer"].round(1)
-        hist3m["VIX"]     = hist3m["vix"].round(1)
+    fig_s.update_layout(
+        height=360,
+        margin=dict(l=0, r=75, t=10, b=5),
+        paper_bgcolor="white", plot_bgcolor="white",
+        legend={"orientation": "h", "y": 1.07, "font": {"size": 10}},
+    )
+    fig_s.update_xaxes(showgrid=False, tickformat="%b %d", row=1, col=1)
+    fig_s.update_xaxes(showgrid=False, tickformat="%b %d", row=2, col=1)
+    fig_s.update_yaxes(showgrid=True, gridcolor="#EEE",
+                       ticksuffix="", tickprefix="",
+                       title_text="Indexed (100 = start)", title_font_size=9,
+                       row=1, col=1)
+    fig_s.update_yaxes(range=[0, 107], showgrid=False,
+                       tickvals=[0, 60, 80, 95, 100],
+                       title_text="Barometer", title_font_size=9,
+                       row=2, col=1)
 
-        def _regime_icon(r):
-            icons = {"Calm":"🟢","Defensive":"🟡","High-Stress":"🟠","Extreme":"🔴"}
-            return f'{icons.get(r,"⚪")} {r}'
-        hist3m["Regime"]  = hist3m["regime"].apply(_regime_icon)
-        hist3m["Chg"]     = hist3m["regime_changed"].apply(lambda x: "⚡" if x else "")
-        hist3m["SVXY $"]  = hist3m["svxy_price"].apply(
-            lambda x: f"${x:.2f}" if pd.notna(x) and x else "—")
-        hist3m["DD%"]     = hist3m["svxy_dd_pct"].apply(
-            lambda x: f"{x:+.1f}%" if pd.notna(x) and x is not None else "—")
+    st.plotly_chart(fig_s, use_container_width=True,
+                    config={"displayModeBar": False})
+
+    # ── Period attribution table ──────────────────────────────────────────
+    if attr_raw:
+        attr = pd.DataFrame(attr_raw)
+        # Emoji regime icons
+        _ri = {"Calm":"🟢","Defensive":"🟡","High-Stress":"🟠","Extreme":"🔴"}
+        attr["Regime"] = attr["regime"].apply(
+            lambda r: f'{_ri.get(r,"⚪")} {r}')
+        attr["Period"] = attr.apply(
+            lambda row: f'{pd.to_datetime(row["date_from"]).strftime("%d %b")} – '
+                        f'{pd.to_datetime(row["date_to"]).strftime("%d %b")}', axis=1)
+        attr["Days"]  = attr["days"]
+        for col, key in [("TV %","TV_pct"),("DR %","DR_pct"),
+                         ("STR %","STR_pct"),("Port %","port_pct")]:
+            attr[col] = attr[key].apply(lambda x: f"{x:+.1f}%")
 
         st.dataframe(
-            hist3m[["Date","Baro","VIX","Regime","Chg","SVXY $","DD%"]],
-            hide_index=True,
-            use_container_width=True,
-            height=420,          # scrollable — ~15 rows visible, rest scroll
+            attr[["Regime","Period","Days","TV %","DR %","STR %","Port %"]],
+            hide_index=True, use_container_width=True,
             column_config={
-                "Date":   st.column_config.TextColumn("Date",   width="small"),
-                "Baro":   st.column_config.NumberColumn("Baro", format="%.1f", width="small"),
-                "VIX":    st.column_config.NumberColumn("VIX",  format="%.1f", width="small"),
-                "Regime": st.column_config.TextColumn("Regime", width="medium"),
-                "Chg":    st.column_config.TextColumn("Chg",    width="small"),
-                "SVXY $": st.column_config.TextColumn("SVXY",   width="small"),
-                "DD%":    st.column_config.TextColumn("DD%",    width="small"),
+                "Regime": st.column_config.TextColumn(width="medium"),
+                "Period": st.column_config.TextColumn(width="medium"),
+                "Days":   st.column_config.NumberColumn(width="small"),
+                "TV %":   st.column_config.TextColumn(width="small"),
+                "DR %":   st.column_config.TextColumn(width="small"),
+                "STR %":  st.column_config.TextColumn(width="small"),
+                "Port %": st.column_config.TextColumn(width="small"),
             }
         )
-    elif not history.empty:
-        # Fallback: live CSV data (fills in over time)
-        show = history.sort_values("date", ascending=False).copy()
-        show["Date"]    = show["date"].dt.strftime("%d %b %Y")
-        show["Baro"]    = show["barometer"].round(1)
-        show["Regime"]  = show["regime"]
-        show["Chg"]     = show["regime_changed"].apply(lambda x: "⚡" if x else "")
-        show["SVXY DD"] = show["svxy_dd_pct"].apply(
-            lambda x: f"{x:+.1f}%" if pd.notna(x) else "—")
-        st.dataframe(
-            show[["Date","Baro","Regime","Chg","SVXY DD"]],
-            hide_index=True, use_container_width=True, height=420)
+
+# ── Equity curve ──────────────────────────────────────────────────────────
+st.markdown("**Portfolio Value — Full Period** *(starting $100K · VTS vs SPY)*")
+if equity is not None:
+    final = equity.iloc[-1]
+    fig_e = go.Figure()
+    fig_e.add_trace(go.Scatter(
+        x=equity.index, y=equity.values,
+        mode="lines", name="VTS V20",
+        line={"color":"#1A3D6E","width":2},
+        fill="tozeroy", fillcolor="rgba(26,61,110,0.06)",
+        hovertemplate="<b>VTS $%{y:,.0f}</b><extra>%{x|%b %Y}</extra>",
+    ))
+    if spy_equity is not None and len(spy_equity):
+        fig_e.add_trace(go.Scatter(
+            x=spy_equity.index, y=spy_equity.values,
+            mode="lines", name="SPY (buy & hold)",
+            line={"color":"#E67E22","width":1.6,"dash":"dot"},
+            hovertemplate="<b>SPY $%{y:,.0f}</b><extra>%{x|%b %Y}</extra>",
+        ))
+        fig_e.add_annotation(
+            x=spy_equity.index[-1], y=spy_equity.iloc[-1],
+            text=f" SPY ${spy_equity.iloc[-1]/1e6:.2f}M",
+            showarrow=False, xanchor="left",
+            font={"color":"#E67E22","size":10,"family":"monospace"},
+        )
+    fig_e.add_hline(y=100_000, line_dash="dot", line_color="#BBB", line_width=1)
+    fig_e.add_annotation(
+        x=equity.index[-1], y=final,
+        text=f" VTS ${final/1e6:.2f}M",
+        showarrow=False, xanchor="left",
+        font={"color":"#1A3D6E","size":11,"family":"monospace"},
+    )
+    fig_e.update_layout(
+        height=240, margin=dict(l=0,r=95,t=5,b=25),
+        xaxis={"showgrid":False},
+        yaxis={"showgrid":True,"gridcolor":"#EEE","tickformat":"$,.0f"},
+        paper_bgcolor="white", plot_bgcolor="white",
+        legend={"orientation":"h","y":1.08},
+    )
+    st.plotly_chart(fig_e, use_container_width=True, config={"displayModeBar":False})
+
+# ── Signal history — last 3 months ───────────────────────────────────────
+st.markdown("**Signal History — Last 3 Months**")
+hist3m_raw = sig.get("signal_history_3m", [])
+if hist3m_raw:
+    hist3m = pd.DataFrame(hist3m_raw)
+    hist3m["date"] = pd.to_datetime(hist3m["date"])
+    hist3m = hist3m.sort_values("date", ascending=False).reset_index(drop=True)
+
+    # Styled columns
+    hist3m["Date"]    = hist3m["date"].dt.strftime("%d %b %Y")
+    hist3m["Baro"]    = hist3m["barometer"].round(1)
+    hist3m["VIX"]     = hist3m["vix"].round(1)
+
+    def _regime_icon(r):
+        icons = {"Calm":"🟢","Defensive":"🟡","High-Stress":"🟠","Extreme":"🔴"}
+        return f'{icons.get(r,"⚪")} {r}'
+    hist3m["Regime"]  = hist3m["regime"].apply(_regime_icon)
+    hist3m["Chg"]     = hist3m["regime_changed"].apply(lambda x: "⚡" if x else "")
+    hist3m["SVXY $"]  = hist3m["svxy_price"].apply(
+        lambda x: f"${x:.2f}" if pd.notna(x) and x else "—")
+    hist3m["DD%"]     = hist3m["svxy_dd_pct"].apply(
+        lambda x: f"{x:+.1f}%" if pd.notna(x) and x is not None else "—")
+
+    st.dataframe(
+        hist3m[["Date","Baro","VIX","Regime","Chg","SVXY $","DD%"]],
+        hide_index=True,
+        use_container_width=True,
+        height=420,          # scrollable — ~15 rows visible, rest scroll
+        column_config={
+            "Date":   st.column_config.TextColumn("Date",   width="small"),
+            "Baro":   st.column_config.NumberColumn("Baro", format="%.1f", width="small"),
+            "VIX":    st.column_config.NumberColumn("VIX",  format="%.1f", width="small"),
+            "Regime": st.column_config.TextColumn("Regime", width="medium"),
+            "Chg":    st.column_config.TextColumn("Chg",    width="small"),
+            "SVXY $": st.column_config.TextColumn("SVXY",   width="small"),
+            "DD%":    st.column_config.TextColumn("DD%",    width="small"),
+        }
+    )
+elif not history.empty:
+    # Fallback: live CSV data (fills in over time)
+    show = history.sort_values("date", ascending=False).copy()
+    show["Date"]    = show["date"].dt.strftime("%d %b %Y")
+    show["Baro"]    = show["barometer"].round(1)
+    show["Regime"]  = show["regime"]
+    show["Chg"]     = show["regime_changed"].apply(lambda x: "⚡" if x else "")
+    show["SVXY DD"] = show["svxy_dd_pct"].apply(
+        lambda x: f"{x:+.1f}%" if pd.notna(x) else "—")
+    st.dataframe(
+        show[["Date","Baro","Regime","Chg","SVXY DD"]],
+        hide_index=True, use_container_width=True, height=420)
 
 # ── Footer ─────────────────────────────────────────────────────────────────────
 st.markdown("---")
