@@ -1,52 +1,52 @@
 {
-  "sharpe": 1.17,
-  "sortino": 1.388,
-  "cagr": 24.41,
-  "max_dd": -22.09,
-  "calmar": 1.105,
-  "worst_year": -10.37,
-  "best_year": 65.16,
-  "is_sharpe": 1.146,
-  "oos_sharpe": 1.199,
-  "retention": 1.046,
+  "sharpe": 1.151,
+  "sortino": 1.366,
+  "cagr": 23.79,
+  "max_dd": -23.7,
+  "calmar": 1.004,
+  "worst_year": -12.6,
+  "best_year": 64.86,
+  "is_sharpe": 1.124,
+  "oos_sharpe": 1.184,
+  "retention": 1.053,
   "n_years": 14.8,
-  "win_rate_years": 75.0,
-  "positive_years": 12,
+  "win_rate_years": 81.2,
+  "positive_years": 13,
   "total_years": 16,
   "cum_commission_usd": 605.0,
-  "cum_slippage_usd": 24330.35,
-  "cum_total_cost_usd": 24935.35,
-  "cost_drag_pct_per_year": 0.2436,
-  "cost_drag_on_initial_capital": 1.6797,
-  "avg_portfolio_value_usd": 689434.94,
-  "final_portfolio_value_usd": 2560621.29,
+  "cum_slippage_usd": 23953.97,
+  "cum_total_cost_usd": 24558.97,
+  "cost_drag_pct_per_year": 0.243,
+  "cost_drag_on_initial_capital": 1.6539,
+  "avg_portfolio_value_usd": 680512.23,
+  "final_portfolio_value_usd": 2379309.34,
   "n_svxy_trades": 121,
-  "avg_svxy_trades_per_year": 8.2,
-  "report_generated": "2026-08-23",
-  "data_through": "2026-08-21",
+  "avg_svxy_trades_per_year": 8.1,
+  "report_generated": "2026-08-25",
+  "data_through": "2026-08-24",
   "data_freshness": {
     "vix": {
-      "last": "2026-08-21",
+      "last": "2026-08-25",
       "lag_days": 0
     },
     "vix3m": {
-      "last": "2026-08-21",
+      "last": "2026-08-24",
       "lag_days": 0
     },
     "hyg": {
-      "last": "2026-08-21",
+      "last": "2026-08-24",
       "lag_days": 0
     },
     "spy": {
-      "last": "2026-08-21",
+      "last": "2026-08-24",
       "lag_days": 0
     },
     "svxy": {
-      "last": "2026-08-21",
+      "last": "2026-08-24",
       "lag_days": 0
     }
   },
   "stale_inputs": [],
-  "bootstrap_sharpe_lo90": 0.744,
-  "bootstrap_sharpe_hi90": 1.593
+  "bootstrap_sharpe_lo90": 0.724,
+  "bootstrap_sharpe_hi90": 1.579
 }
