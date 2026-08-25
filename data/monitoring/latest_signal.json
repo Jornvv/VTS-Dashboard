@@ -1,43 +1,43 @@
 {
-  "as_of": "2026-08-21",
-  "generated_at": "2026-08-21T21:50:26.926365+00:00",
-  "barometer": 7.74,
-  "barometer_raw": 6.0,
-  "vix": 15.13,
-  "vix_252d_percentile": 9.6,
-  "hyg": 79.61,
-  "hyg_252d_percentile": 97.6,
-  "hyg_stress": 2.4,
+  "as_of": "2026-08-24",
+  "generated_at": "2026-08-25T06:33:15.882886+00:00",
+  "barometer": 9.75,
+  "barometer_raw": 11.8,
+  "vix": 15.85,
+  "vix_252d_percentile": 22.3,
+  "hyg": 79.7,
+  "hyg_252d_percentile": 98.8,
+  "hyg_stress": 1.2,
   "override": {
     "active": false,
     "level": null,
-    "vix_5d_roc": 6.2,
-    "vix3m": 18.5,
+    "vix_5d_roc": 4.3,
+    "vix3m": 18.56,
     "backwardation": false,
     "trigger_roc": 80
   },
   "data_freshness": {
-    "reference": "2026-08-21",
+    "reference": "2026-08-24",
     "series": {
       "vix": {
-        "last": "2026-08-21",
+        "last": "2026-08-24",
         "lag_days": 0,
-        "n_obs": 9256
+        "n_obs": 9257
       },
       "vix3m": {
-        "last": "2026-08-21",
+        "last": "2026-08-24",
         "lag_days": 0,
-        "n_obs": 4257
+        "n_obs": 4258
       },
       "hyg": {
-        "last": "2026-08-21",
+        "last": "2026-08-24",
         "lag_days": 0,
-        "n_obs": 481
+        "n_obs": 480
       },
       "svxy": {
-        "last": "2026-08-21",
+        "last": "2026-08-24",
         "lag_days": 0,
-        "n_obs": 481
+        "n_obs": 480
       }
     },
     "stale": [],
@@ -51,19 +51,16 @@
     "DR": "QLD",
     "STR": "SPY"
   },
-  "svxy_price": 61.57,
-  "svxy_peak_price": 61.57,
-  "svxy_dd_from_peak_pct": 0.0,
+  "svxy_price": 61.3,
+  "svxy_peak_price": 61.79,
+  "svxy_dd_from_peak_pct": -0.79,
+  "svxy_trailing_stop_level": 54.38,
+  "svxy_stop_executed_by_broker": false,
   "svxy_stop_active": false,
   "svxy_stop_triggered_today": false,
   "trade_needed_tomorrow": false,
   "trade_details": null,
   "barometer_history_60d": [
-    {
-      "date": "2026-06-01",
-      "barometer": 11.5,
-      "regime": "Calm"
-    },
     {
       "date": "2026-06-02",
       "barometer": 11.03,
@@ -358,18 +355,14 @@
       "date": "2026-08-21",
       "barometer": 7.74,
       "regime": "Calm"
+    },
+    {
+      "date": "2026-08-24",
+      "barometer": 9.75,
+      "regime": "Calm"
     }
   ],
   "signal_history_3m": [
-    {
-      "date": "2026-05-25",
-      "barometer": 24.09,
-      "vix": 16.6,
-      "regime": "Calm",
-      "regime_changed": false,
-      "svxy_price": null,
-      "svxy_dd_pct": null
-    },
     {
       "date": "2026-05-26",
       "barometer": 24.0,
@@ -377,7 +370,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 53.6,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.45
     },
     {
       "date": "2026-05-27",
@@ -386,7 +379,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 54.22,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.07
     },
     {
       "date": "2026-05-28",
@@ -395,7 +388,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 54.78,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.13
     },
     {
       "date": "2026-05-29",
@@ -404,7 +397,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 55.19,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.61
     },
     {
       "date": "2026-06-01",
@@ -413,7 +406,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 54.49,
-      "svxy_dd_pct": -1.27
+      "svxy_dd_pct": -1.87
     },
     {
       "date": "2026-06-02",
@@ -422,7 +415,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 54.98,
-      "svxy_dd_pct": -0.38
+      "svxy_dd_pct": -0.99
     },
     {
       "date": "2026-06-03",
@@ -431,7 +424,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 54.87,
-      "svxy_dd_pct": -0.58
+      "svxy_dd_pct": -1.19
     },
     {
       "date": "2026-06-04",
@@ -440,7 +433,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 55.85,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.27
     },
     {
       "date": "2026-06-05",
@@ -449,7 +442,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 53.77,
-      "svxy_dd_pct": -3.72
+      "svxy_dd_pct": -3.98
     },
     {
       "date": "2026-06-08",
@@ -458,7 +451,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 54.35,
-      "svxy_dd_pct": -2.69
+      "svxy_dd_pct": -2.95
     },
     {
       "date": "2026-06-09",
@@ -467,7 +460,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 53.87,
-      "svxy_dd_pct": -3.55
+      "svxy_dd_pct": -3.8
     },
     {
       "date": "2026-06-10",
@@ -476,7 +469,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 52.39,
-      "svxy_dd_pct": -6.2
+      "svxy_dd_pct": -6.45
     },
     {
       "date": "2026-06-11",
@@ -485,7 +478,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 53.58,
-      "svxy_dd_pct": -4.06
+      "svxy_dd_pct": -4.32
     },
     {
       "date": "2026-06-12",
@@ -494,7 +487,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 54.9,
-      "svxy_dd_pct": -1.7
+      "svxy_dd_pct": -1.96
     },
     {
       "date": "2026-06-15",
@@ -503,7 +496,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 56.85,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.0
     },
     {
       "date": "2026-06-16",
@@ -512,7 +505,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 56.76,
-      "svxy_dd_pct": -0.16
+      "svxy_dd_pct": -0.46
     },
     {
       "date": "2026-06-17",
@@ -521,7 +514,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 55.53,
-      "svxy_dd_pct": -2.32
+      "svxy_dd_pct": -2.66
     },
     {
       "date": "2026-06-18",
@@ -530,7 +523,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 56.44,
-      "svxy_dd_pct": -0.72
+      "svxy_dd_pct": -1.07
     },
     {
       "date": "2026-06-19",
@@ -548,7 +541,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 56.52,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -1.64
     },
     {
       "date": "2026-06-23",
@@ -557,7 +550,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 55.0,
-      "svxy_dd_pct": -2.69
+      "svxy_dd_pct": -4.28
     },
     {
       "date": "2026-06-24",
@@ -566,7 +559,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 55.16,
-      "svxy_dd_pct": -2.41
+      "svxy_dd_pct": -4.0
     },
     {
       "date": "2026-06-25",
@@ -575,7 +568,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 55.61,
-      "svxy_dd_pct": -1.61
+      "svxy_dd_pct": -3.22
     },
     {
       "date": "2026-06-26",
@@ -584,7 +577,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 55.53,
-      "svxy_dd_pct": -1.75
+      "svxy_dd_pct": -3.36
     },
     {
       "date": "2026-06-29",
@@ -593,7 +586,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 56.59,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -1.51
     },
     {
       "date": "2026-06-30",
@@ -602,7 +595,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 57.26,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.35
     },
     {
       "date": "2026-07-01",
@@ -611,7 +604,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 57.09,
-      "svxy_dd_pct": -0.3
+      "svxy_dd_pct": -0.64
     },
     {
       "date": "2026-07-02",
@@ -620,7 +613,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 57.31,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.68
     },
     {
       "date": "2026-07-03",
@@ -638,7 +631,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 58.07,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.17
     },
     {
       "date": "2026-07-07",
@@ -647,7 +640,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 57.83,
-      "svxy_dd_pct": -0.41
+      "svxy_dd_pct": -0.81
     },
     {
       "date": "2026-07-08",
@@ -656,7 +649,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 57.29,
-      "svxy_dd_pct": -1.34
+      "svxy_dd_pct": -1.73
     },
     {
       "date": "2026-07-09",
@@ -665,7 +658,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 57.91,
-      "svxy_dd_pct": -0.28
+      "svxy_dd_pct": -0.67
     },
     {
       "date": "2026-07-10",
@@ -674,7 +667,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 58.54,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.14
     },
     {
       "date": "2026-07-13",
@@ -683,7 +676,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 57.66,
-      "svxy_dd_pct": -1.5
+      "svxy_dd_pct": -1.64
     },
     {
       "date": "2026-07-14",
@@ -692,7 +685,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 58.0,
-      "svxy_dd_pct": -0.92
+      "svxy_dd_pct": -1.06
     },
     {
       "date": "2026-07-15",
@@ -701,7 +694,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 58.83,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.2
     },
     {
       "date": "2026-07-16",
@@ -710,7 +703,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 58.12,
-      "svxy_dd_pct": -1.21
+      "svxy_dd_pct": -1.41
     },
     {
       "date": "2026-07-17",
@@ -719,7 +712,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 56.6,
-      "svxy_dd_pct": -3.79
+      "svxy_dd_pct": -3.99
     },
     {
       "date": "2026-07-20",
@@ -728,7 +721,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 57.13,
-      "svxy_dd_pct": -2.89
+      "svxy_dd_pct": -3.09
     },
     {
       "date": "2026-07-21",
@@ -737,7 +730,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 58.14,
-      "svxy_dd_pct": -1.17
+      "svxy_dd_pct": -1.37
     },
     {
       "date": "2026-07-22",
@@ -746,7 +739,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 57.79,
-      "svxy_dd_pct": -1.77
+      "svxy_dd_pct": -1.97
     },
     {
       "date": "2026-07-23",
@@ -755,7 +748,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 56.34,
-      "svxy_dd_pct": -4.23
+      "svxy_dd_pct": -4.43
     },
     {
       "date": "2026-07-24",
@@ -764,7 +757,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 56.82,
-      "svxy_dd_pct": -3.42
+      "svxy_dd_pct": -3.61
     },
     {
       "date": "2026-07-27",
@@ -773,7 +766,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 56.93,
-      "svxy_dd_pct": -3.23
+      "svxy_dd_pct": -3.43
     },
     {
       "date": "2026-07-28",
@@ -782,7 +775,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 57.1,
-      "svxy_dd_pct": -2.94
+      "svxy_dd_pct": -3.14
     },
     {
       "date": "2026-07-29",
@@ -791,7 +784,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 55.35,
-      "svxy_dd_pct": -5.92
+      "svxy_dd_pct": -6.11
     },
     {
       "date": "2026-07-30",
@@ -800,7 +793,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 57.22,
-      "svxy_dd_pct": -2.74
+      "svxy_dd_pct": -2.93
     },
     {
       "date": "2026-07-31",
@@ -809,7 +802,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 58.06,
-      "svxy_dd_pct": -1.31
+      "svxy_dd_pct": -1.51
     },
     {
       "date": "2026-08-03",
@@ -818,7 +811,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 58.26,
-      "svxy_dd_pct": -0.97
+      "svxy_dd_pct": -1.17
     },
     {
       "date": "2026-08-04",
@@ -827,7 +820,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 58.11,
-      "svxy_dd_pct": -1.22
+      "svxy_dd_pct": -1.42
     },
     {
       "date": "2026-08-05",
@@ -836,7 +829,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 59.07,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.32
     },
     {
       "date": "2026-08-06",
@@ -845,7 +838,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 59.5,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.08
     },
     {
       "date": "2026-08-07",
@@ -854,7 +847,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 59.36,
-      "svxy_dd_pct": -0.24
+      "svxy_dd_pct": -0.39
     },
     {
       "date": "2026-08-10",
@@ -863,7 +856,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 59.5,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.57
     },
     {
       "date": "2026-08-11",
@@ -872,7 +865,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 59.75,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.15
     },
     {
       "date": "2026-08-12",
@@ -881,7 +874,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 60.62,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.21
     },
     {
       "date": "2026-08-13",
@@ -890,7 +883,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 60.47,
-      "svxy_dd_pct": -0.25
+      "svxy_dd_pct": -0.62
     },
     {
       "date": "2026-08-14",
@@ -899,7 +892,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 60.79,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.18
     },
     {
       "date": "2026-08-17",
@@ -908,7 +901,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 60.55,
-      "svxy_dd_pct": -0.39
+      "svxy_dd_pct": -0.71
     },
     {
       "date": "2026-08-18",
@@ -917,7 +910,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 60.37,
-      "svxy_dd_pct": -0.69
+      "svxy_dd_pct": -1.0
     },
     {
       "date": "2026-08-19",
@@ -926,7 +919,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 61.35,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.13
     },
     {
       "date": "2026-08-20",
@@ -935,7 +928,7 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 61.03,
-      "svxy_dd_pct": -0.52
+      "svxy_dd_pct": -0.65
     },
     {
       "date": "2026-08-21",
@@ -944,12 +937,21 @@
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": 61.57,
-      "svxy_dd_pct": 0.0
+      "svxy_dd_pct": -0.08
+    },
+    {
+      "date": "2026-08-24",
+      "barometer": 9.75,
+      "vix": 15.8,
+      "regime": "Calm",
+      "regime_changed": false,
+      "svxy_price": 61.3,
+      "svxy_dd_pct": -0.79
     }
   ],
   "equity_60d": [
     {
-      "date": "2026-05-25",
+      "date": "2026-05-26",
       "portfolio_value": 100000.0,
       "TV": 100.0,
       "DR": 100.0,
@@ -958,17 +960,6 @@
       "TV_ticker": null,
       "DR_ticker": null,
       "STR_ticker": null
-    },
-    {
-      "date": "2026-05-26",
-      "portfolio_value": 100000.0,
-      "TV": 100.0,
-      "DR": 100.0,
-      "STR": 100.0,
-      "SPY": 100.0,
-      "TV_ticker": "SVXY",
-      "DR_ticker": "QLD",
-      "STR_ticker": "SPY"
     },
     {
       "date": "2026-05-27",
@@ -1662,18 +1653,29 @@
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
+    },
+    {
+      "date": "2026-08-24",
+      "portfolio_value": 102460.62,
+      "TV": 114.3657,
+      "DR": 91.0567,
+      "STR": 101.978,
+      "SPY": 101.978,
+      "TV_ticker": "SVXY",
+      "DR_ticker": "QLD",
+      "STR_ticker": "SPY"
     }
   ],
   "period_attribution": [
     {
       "regime": "Calm",
-      "date_from": "2026-05-25",
-      "date_to": "2026-08-21",
+      "date_from": "2026-05-26",
+      "date_to": "2026-08-24",
       "days": 65,
-      "TV_pct": 14.87,
-      "DR_pct": -7.06,
-      "STR_pct": 2.28,
-      "port_pct": 3.41
+      "TV_pct": 14.37,
+      "DR_pct": -8.94,
+      "STR_pct": 1.98,
+      "port_pct": 2.46
     }
   ]
 }
