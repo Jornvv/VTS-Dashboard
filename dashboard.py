@@ -220,16 +220,43 @@ def fmt_pct(v, decimals=1):
     if v is None: return "—"
     return f"{v:+.{decimals}f}%"
 
+# Each tile says where its number comes from, in the LABEL.
+#
+# Why in the label and not only in the note below: the KPI row stacks vertically on a
+# phone, so a provenance line under six tiles lands well below the fold. The result was
+# a green "Fresh" badge sitting directly above figures that were a month old, with
+# nothing visible to tell them apart — and that is exactly how a stale number gets read
+# as a live one.
+#
+# YTD and SPY YTD come from the backtest report (01_annual_returns.csv), which is only
+# regenerated when someone runs run_prepare_v20_report.py — not nightly. So they carry
+# the report's through-date.
+_dt = perf.get("data_through")
+try:
+    _bt = f" · bt {pd.to_datetime(_dt).strftime('%d-%m')}" if _dt else " · backtest"
+except Exception:
+    _bt = " · backtest"
+
+# MTD: prefer tonight's LIVE figure over the report's month cell. The live one is
+# computed from equity_60d, which the evening signal refreshes every run; the report
+# cell is empty for the current month until the report is regenerated, which is why
+# this tile used to show a bare dash.
+_mtd_live, _ = mtd_from_equity(sig.get("equity_60d", []))
+if _mtd_live and "PORT" in _mtd_live:
+    _mtd_val, _mtd_lbl = _mtd_live["PORT"], "MTD · live"
+else:
+    _mtd_val, _mtd_lbl = perf.get("mtd"), f"MTD{_bt}"
+
 k1,k2,k3,k4,k5,k6 = st.columns(6)
-k1.markdown(kpi("YTD Return", fmt_pct(perf.get("ytd")),
+k1.markdown(kpi(f"YTD{_bt}", fmt_pct(perf.get("ytd")),
                 color=pct_color(perf.get("ytd"))), unsafe_allow_html=True)
-k2.markdown(kpi("MTD Return", fmt_pct(perf.get("mtd")),
-                color=pct_color(perf.get("mtd"))), unsafe_allow_html=True)
-k3.markdown(kpi("SPY YTD",   fmt_pct(perf.get("spy_ytd")),
+k2.markdown(kpi(_mtd_lbl, fmt_pct(_mtd_val),
+                color=pct_color(_mtd_val)), unsafe_allow_html=True)
+k3.markdown(kpi(f"SPY YTD{_bt}", fmt_pct(perf.get("spy_ytd")),
                 color=pct_color(perf.get("spy_ytd"))), unsafe_allow_html=True)
-k4.markdown(kpi("CAGR (full)", f"{perf.get('cagr','—')}%", color="#1A3D6E"), unsafe_allow_html=True)
-k5.markdown(kpi("Sharpe", f"{perf.get('sharpe','—')}", color="#1A3D6E"), unsafe_allow_html=True)
-k6.markdown(kpi("Max DD", f"{perf.get('max_dd','—')}%", color="#B71C1C"), unsafe_allow_html=True)
+k4.markdown(kpi(f"CAGR full{_bt}", f"{perf.get('cagr','—')}%", color="#1A3D6E"), unsafe_allow_html=True)
+k5.markdown(kpi(f"Sharpe{_bt}", f"{perf.get('sharpe','—')}", color="#1A3D6E"), unsafe_allow_html=True)
+k6.markdown(kpi(f"Max DD{_bt}", f"{perf.get('max_dd','—')}%", color="#B71C1C"), unsafe_allow_html=True)
 
 # Backtest provenance — these KPIs are static backtest figures, not live values.
 _rg = perf.get("report_generated")
