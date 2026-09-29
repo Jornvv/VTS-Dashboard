@@ -31,15 +31,11 @@ HISTORY_F = os.path.join(MON_OUT, "signal_history.csv")
 # ── Regime config ──────────────────────────────────────────────────────────────
 REGIME_COLOR = {"Calm":"#2E7D32","Defensive":"#E65C00","High-Stress":"#BF360C","Extreme":"#B71C1C"}
 REGIME_BG    = {"Calm":"#E8F5E9","Defensive":"#FFF3E0","High-Stress":"#FBE9E7","Extreme":"#FFEBEE"}
-# The DR sleeve de-risks one step earlier (at 55) than TV/STR (60) — see appendix C.6.
-# The 55–59 sub-band ("DR de-risk") is Calm at portfolio level but DR already holds XLU.
-THRESHOLDS   = [("Calm", 0, 55), ("DR de-risk", 55, 60), ("Defensive", 60, 80),
-                ("High-Stress", 80, 95), ("Extreme", 95, 101)]
-INSTRUMENTS  = {"Calm":{"TV":"SVXY","DR":"QLD","STR":"SPY"},
-                "DR de-risk":{"TV":"SVXY","DR":"XLU","STR":"SPY"},
-                "Defensive":{"TV":"IAU","DR":"XLU","STR":"IYR"},
-                "High-Stress":{"TV":"IAU","DR":"Cash","STR":"Cash"},
-                "Extreme":{"TV":"Cash","DR":"Cash","STR":"Cash"}}
+# The threshold table and the instrument matrix used to be duplicated here. They
+# now live in run_daily_signal.py (DISPLAY_BANDS / band_transitions) and arrive
+# pre-computed in the signal as `band_transitions`. Two reasons: this file is
+# mirrored into a PUBLIC repo, and two hand-maintained copies of the same
+# thresholds had nothing checking them against each other.
 
 # ── Page setup ─────────────────────────────────────────────────────────────────
 st.set_page_config(page_title="VTS V20", page_icon="📊",
@@ -288,23 +284,23 @@ with status_left:
         gauge={
             "axis":{
                 "range":[0,100],
-                "tickvals":[0,60,80,95,100],
-                "ticktext":["0","60","80","95","100"],
+                "tickvals":[0,25,50,75,100],
+                "ticktext":["0","25","50","75","100"],
                 "tickwidth":1,"tickcolor":"#555","tickfont":{"size":10},
             },
             "bar":{"color":rc,"thickness":0.2},
             "bgcolor":"white",
-            "steps":[
-                {"range":[0, 60],"color":"#E8F5E9"},
-                {"range":[60,80],"color":"#FFF3E0"},
-                {"range":[80,95],"color":"#FBE9E7"},
-                {"range":[95,100],"color":"#FFCDD2"},
-            ],
+            # The arc used to be split into four tinted zones whose edges were the
+            # regime thresholds — on a public page that is the threshold ladder,
+            # drawn to scale. One wash in the CURRENT regime's colour says the same
+            # thing (where we are, how serious it is) without publishing where the
+            # next boundary sits; the needle and the reading below carry the rest.
+            "steps":[{"range":[0,100],"color":REGIME_BG[regime]}],
             "threshold":{"line":{"color":rc,"width":4},"thickness":0.85,"value":baro},
         },
         domain={"x":[0,1],"y":[0,1]},
     ))
-    # l/r ruim genoeg voor de schaallabels (0/60/80/95/100), die Plotly BUITEN de
+    # l/r ruim genoeg voor de schaallabels (0/25/50/75/100), die Plotly BUITEN de
     # boog tekent. Met 10px werden ze op smalle schermen aan beide zijden
     # afgesneden.
     fig_g.update_layout(height=210, margin=dict(l=32,r=32,t=15,b=5),
@@ -322,18 +318,17 @@ with status_left:
         st.warning(f"⚡ Changed from **{sig['previous_regime']}** today")
 
     # ── Distance to thresholds ────────────────────────────────────────────────
-    next_up   = next(((lbl, lo) for lbl,lo,hi in THRESHOLDS if lo > baro), None)
-    next_down = next(((lbl, hi) for lbl,lo,hi in reversed(THRESHOLDS) if hi <= baro), None)
+    _bt       = sig.get("band_transitions") or {}
+    next_up   = _bt.get("next_up")
+    next_down = _bt.get("next_down")
 
     if next_up:
-        gap = next_up[1] - baro
         st.markdown(f'<div style="text-align:center;font-size:.85rem;color:#666;margin-bottom:4px">'
-                    f'▲ <b>{gap:.1f} pts</b> to <b>{next_up[0]}</b> '
-                    f'(threshold: {next_up[1]})</div>', unsafe_allow_html=True)
+                    f'▲ <b>{next_up["gap"]:.1f} pts</b> to <b>{next_up["label"]}</b> '
+                    f'(threshold: {next_up["threshold"]})</div>', unsafe_allow_html=True)
     if next_down:
-        gap = baro - next_down[1]
         st.markdown(f'<div style="text-align:center;font-size:.85rem;color:#666;margin-bottom:8px">'
-                    f'▼ <b>{gap:.1f} pts</b> below <b>{next_down[0]}</b></div>',
+                    f'▼ <b>{next_down["gap"]:.1f} pts</b> below <b>{next_down["label"]}</b></div>',
                     unsafe_allow_html=True)
 
     # Days in current regime
@@ -363,15 +358,11 @@ with status_left:
             f'</div>', unsafe_allow_html=True)
 
     # Next regime → what would change
-    if next_up:
-        next_pos = INSTRUMENTS.get(next_up[0], {})
-        changes  = [f"{sl}: {pos[sl]}→{next_pos.get(sl,'?')}"
-                    for sl in ["TV","DR","STR"] if next_pos.get(sl) != pos[sl]]
-        if changes:
-            st.markdown(
-                f'<div style="font-size:.78rem;color:#888;margin-top:6px">'
-                f'If barometer reaches {next_up[1]}: '
-                + " · ".join(changes) + "</div>", unsafe_allow_html=True)
+    if next_up and next_up.get("changes"):
+        st.markdown(
+            f'<div style="font-size:.78rem;color:#888;margin-top:6px">'
+            f'If barometer reaches {next_up["threshold"]}: '
+            + " · ".join(next_up["changes"]) + "</div>", unsafe_allow_html=True)
 
 
 with status_right:
@@ -400,7 +391,7 @@ with status_right:
             f'<div style="display:flex;justify-content:space-between;'
             f'font-size:.85rem;margin-bottom:4px">'
             f'<span class="{cls}">{lbl}</span>'
-            f'<span style="color:#555">DD: <b>{dd:+.1f}%</b> / stop at −12%</span>'
+            f'<span style="color:#555">DD: <b>{dd:+.1f}%</b> / stop at −{sig.get("svxy_stop_pct", 12):g}%</span>'
             f'</div>', unsafe_allow_html=True)
 
         # Progress bar: green → red
@@ -558,20 +549,10 @@ if not baro_60.empty:
 
     fig_b = go.Figure()
 
-    # Horizontal regime bands
-    for lo, hi, lbl, col in [
-        (0,  60, "Calm",        "rgba(46,125,50,0.06)"),
-        (60, 80, "Defensive",   "rgba(230,81,0,0.08)"),
-        (80, 95, "High-Stress", "rgba(191,54,12,0.08)"),
-        (95,100, "Extreme",     "rgba(183,28,28,0.11)"),
-    ]:
-        fig_b.add_hrect(y0=lo, y1=hi, fillcolor=col, line_width=0,
-                        annotation_text=lbl, annotation_position="right",
-                        annotation_font_size=9, annotation_font_color="#888")
-
-    # Threshold dashed lines
-    for thresh, col in [(60,"#F9A825"),(80,"#E65C00"),(95,"#B71C1C")]:
-        fig_b.add_hline(y=thresh, line_dash="dot", line_color=col, line_width=1.2)
+    # No horizontal regime bands or threshold lines: this chart ships to a PUBLIC
+    # repo, and drawing them would publish the whole threshold ladder. Nothing is
+    # lost — the line is already coloured per regime from the `regime` label that
+    # rides along in barometer_history_60d, so the bands were decoration.
 
     # Coloured line segments (one trace per segment, bridge with next point)
     shown = set()
@@ -627,7 +608,7 @@ if not baro_60.empty:
         height=255, margin=dict(l=0, r=95, t=10, b=25),
         xaxis={"showgrid": False, "tickformat": "%b %d"},
         yaxis={"range": [0, 107], "showgrid": True, "gridcolor": "#EEE",
-               "tickvals": [0, 60, 80, 95, 100]},
+               "tickvals": [0, 25, 50, 75, 100]},
         paper_bgcolor="white", plot_bgcolor="white",
         legend={"orientation": "h", "y": 1.12, "font": {"size": 10}},
     )
@@ -660,17 +641,8 @@ if eq60_raw:
     )
 
     # Regime background bands on barometer subplot
-    for lo, hi, lbl, col in [
-        (0,  60, "Calm",        "rgba(46,125,50,0.07)"),
-        (60, 80, "Defensive",   "rgba(230,81,0,0.09)"),
-        (80, 95, "High-Stress", "rgba(191,54,12,0.09)"),
-        (95,100, "Extreme",     "rgba(183,28,28,0.12)"),
-    ]:
-        fig_s.add_hrect(y0=lo, y1=hi, fillcolor=col, line_width=0,
-                        row=2, col=1)
-    for thresh, col in [(60,"#F9A825"),(80,"#E65C00"),(95,"#B71C1C")]:
-        fig_s.add_hline(y=thresh, line_dash="dot", line_color=col,
-                        line_width=1, row=2, col=1)
+    # Bands and threshold lines omitted for the same reason as the barometer
+    # chart above — the per-regime line colour already carries that information.
 
     # Barometer line (coloured by regime, same logic as barometer chart)
     if not baro_60.empty:
@@ -752,7 +724,7 @@ if eq60_raw:
                        title_text="Indexed (100 = start)", title_font_size=9,
                        row=1, col=1)
     fig_s.update_yaxes(range=[0, 107], showgrid=False,
-                       tickvals=[0, 60, 80, 95, 100],
+                       tickvals=[0, 25, 50, 75, 100],
                        title_text="Barometer", title_font_size=9,
                        row=2, col=1)
 
@@ -883,7 +855,10 @@ elif not history.empty:
 # ── Footer ─────────────────────────────────────────────────────────────────────
 st.markdown("---")
 st.caption(
-    f"VTS V20 · Signal from US closing prices (VIX + HYG) · "
-    f"1-day execution lag · SVXY trailing stop −12% · "
+    # Deze regel noemde de signaalinputs bij naam. Dit bestand wordt verbatim
+    # naar de publieke repo gekopieerd, commentaar inbegrepen, dus staat hier
+    # niet wat er weg moest — zie publish_filter.py in de private repo.
+    f"VTS V20 · Signal from US closing prices · "
+    f"1-day execution lag · SVXY trailing stop −{sig.get('svxy_stop_pct', 12):g}% · "
     f"Auto-refresh every 5 min · {datetime.now().strftime('%H:%M:%S')}"
 )
