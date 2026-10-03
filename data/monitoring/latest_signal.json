@@ -1,14 +1,14 @@
 {
-  "as_of": "2026-10-01",
-  "generated_at": "2026-10-02T01:01:51.340547+00:00",
-  "barometer": 52.42,
-  "vix": 16.39,
-  "vix_252d_percentile": 34.3,
+  "as_of": "2026-10-02",
+  "generated_at": "2026-10-03T00:39:35.358024+00:00",
+  "barometer": 48.52,
+  "vix": 15.31,
+  "vix_252d_percentile": 14.7,
   "override": {
     "active": false,
     "level": null,
-    "vix_5d_roc": 4.6,
-    "vix3m": 18.58,
+    "vix_5d_roc": 3.0,
+    "vix3m": 18.01,
     "backwardation": false,
     "trigger_roc": 80
   },
@@ -24,7 +24,7 @@
     "next_up": {
       "label": "DR de-risk",
       "threshold": 55,
-      "gap": 2.6,
+      "gap": 6.5,
       "changes": [
         "DR: QLD\u2192XLU"
       ]
@@ -32,18 +32,13 @@
     "next_down": null
   },
   "svxy_stop_pct": 12.0,
-  "svxy_price": 63.78,
-  "svxy_peak_price": 63.78,
+  "svxy_price": 63.43,
+  "svxy_peak_price": 63.43,
   "svxy_dd_from_peak_pct": 0.0,
   "svxy_stop_active": false,
   "trade_needed_tomorrow": false,
   "trade_details": null,
   "barometer_history_60d": [
-    {
-      "date": "2026-07-10",
-      "barometer": 10.75,
-      "regime": "Calm"
-    },
     {
       "date": "2026-07-13",
       "barometer": 19.72,
@@ -336,20 +331,16 @@
     },
     {
       "date": "2026-10-01",
-      "barometer": 52.42,
+      "barometer": 52.03,
+      "regime": "Calm"
+    },
+    {
+      "date": "2026-10-02",
+      "barometer": 48.52,
       "regime": "Calm"
     }
   ],
   "signal_history_3m": [
-    {
-      "date": "2026-07-03",
-      "barometer": 15.03,
-      "vix": 15.8,
-      "regime": "Calm",
-      "regime_changed": false,
-      "svxy_price": null,
-      "svxy_dd_pct": null
-    },
     {
       "date": "2026-07-06",
       "barometer": 12.0,
@@ -919,8 +910,17 @@
     },
     {
       "date": "2026-10-01",
-      "barometer": 52.42,
+      "barometer": 52.03,
       "vix": 16.4,
+      "regime": "Calm",
+      "regime_changed": false,
+      "svxy_price": 63.43,
+      "svxy_dd_pct": -1.81
+    },
+    {
+      "date": "2026-10-02",
+      "barometer": 48.52,
+      "vix": 15.3,
       "regime": "Calm",
       "regime_changed": false,
       "svxy_price": null,
@@ -929,7 +929,7 @@
   ],
   "equity_60d": [
     {
-      "date": "2026-07-03",
+      "date": "2026-07-06",
       "portfolio_value": 100000.0,
       "TV": 100.0,
       "DR": 100.0,
@@ -938,17 +938,6 @@
       "TV_ticker": null,
       "DR_ticker": null,
       "STR_ticker": null
-    },
-    {
-      "date": "2026-07-06",
-      "portfolio_value": 100000.0,
-      "TV": 100.0,
-      "DR": 100.0,
-      "STR": 100.0,
-      "SPY": 100.0,
-      "TV_ticker": "SVXY",
-      "DR_ticker": "QLD",
-      "STR_ticker": "SPY"
     },
     {
       "date": "2026-07-07",
@@ -1634,11 +1623,22 @@
     },
     {
       "date": "2026-10-01",
-      "portfolio_value": 104980.29,
-      "TV": 109.833,
-      "DR": 102.7232,
-      "STR": 101.7628,
-      "SPY": 101.7628,
+      "portfolio_value": 105066.51,
+      "TV": 109.2302,
+      "DR": 103.3569,
+      "STR": 101.9443,
+      "SPY": 101.9443,
+      "TV_ticker": "SVXY",
+      "DR_ticker": "QLD",
+      "STR_ticker": "SPY"
+    },
+    {
+      "date": "2026-10-02",
+      "portfolio_value": 105066.51,
+      "TV": 109.2302,
+      "DR": 103.3569,
+      "STR": 101.9443,
+      "SPY": 101.9443,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1647,13 +1647,13 @@
   "period_attribution": [
     {
       "regime": "Calm",
-      "date_from": "2026-07-03",
-      "date_to": "2026-10-01",
+      "date_from": "2026-07-06",
+      "date_to": "2026-10-02",
       "days": 65,
-      "TV_pct": 9.83,
-      "DR_pct": 2.72,
-      "STR_pct": 1.76,
-      "port_pct": 4.98
+      "TV_pct": 9.23,
+      "DR_pct": 3.36,
+      "STR_pct": 1.94,
+      "port_pct": 5.07
     }
   ]
 }
