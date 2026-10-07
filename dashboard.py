@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-VTS V20 — Daily Monitoring Dashboard  (v2)
+Volatility Barometer Strategy — Daily Monitoring Dashboard  (v2)
 Run with:  streamlit run VTS_V18/monitoring/dashboard.py
 """
 
@@ -37,8 +37,16 @@ REGIME_BG    = {"Calm":"#E8F5E9","Defensive":"#FFF3E0","High-Stress":"#FBE9E7","
 # mirrored into a PUBLIC repo, and two hand-maintained copies of the same
 # thresholds had nothing checking them against each other.
 
+# ── Sleeve-weergave ────────────────────────────────────────────────────────────
+# De data houden hun interne codes: zo heten de sleutels in latest_signal.json,
+# de kolommen in 05_sleeve_monthly.csv en de velden in period_attribution. Alleen
+# wat de lezer ziet draagt de namen uit het investor report, zodat rapport en
+# dashboard dezelfde sleeves op dezelfde manier noemen.
+SLEEVE_CODE = {"TV": "VC", "DR": "GR", "STR": "MC"}
+SLEEVE_NAME = {"TV": "Volatility Carry", "DR": "Growth Rotation", "STR": "Market Core"}
+
 # ── Page setup ─────────────────────────────────────────────────────────────────
-st.set_page_config(page_title="VTS V20", page_icon="📊",
+st.set_page_config(page_title="Volatility Barometer Strategy", page_icon="📊",
                    layout="wide", initial_sidebar_state="collapsed")
 
 st.markdown("""<style>
@@ -171,7 +179,7 @@ spy_equity     = load_spy_equity()
 
 # ── Header ─────────────────────────────────────────────────────────────────────
 c1, c2 = st.columns([6, 1])
-c1.markdown("### 📊 VTS V20 — Signal Dashboard")
+c1.markdown("### 📊 Volatility Barometer Strategy — Signal Dashboard")
 if c2.button("🔄 Refresh"):
     st.cache_data.clear(); st.rerun()
 
@@ -348,12 +356,13 @@ with status_left:
     # ── Current holdings ─────────────────────────────────────────────────────
     st.markdown("**Current Holdings**")
     pos = sig["positions"]
-    for sl, lbl in [("TV","Tactical Vol"),("DR","Defensive Rot."),("STR","Strategic Ret.")]:
+    for sl in ("TV", "DR", "STR"):
         ticker = pos[sl]
         color  = "#B71C1C" if "Cash" in ticker else "#1A3D6E"
         st.markdown(
             f'<div class="holding-row">'
-            f'<span style="color:#555;font-size:.9rem"><b>{sl}</b> {lbl}</span>'
+            f'<span style="color:#555;font-size:.9rem">'
+            f'<b>{SLEEVE_CODE[sl]}</b> {SLEEVE_NAME[sl]}</span>'
             f'<span style="color:{color};font-weight:700">{ticker}</span>'
             f'</div>', unsafe_allow_html=True)
 
@@ -448,7 +457,7 @@ if sleeve_monthly is not None and not sleeve_monthly.empty:
     cur_period = pd.Timestamp.today().to_period("M")
     completed  = sm[sm.index.to_period("M") < cur_period]
     avg        = sm.mean()
-    SLBL = {"TV": "TV", "DR": "DR", "STR": "STR", "PORT": "Portfolio", "SPY": "SPY"}
+    SLBL = {**SLEEVE_CODE, "PORT": "Portfolio", "SPY": "SPY"}
     _keys = ["PORT", "SPY", "TV", "DR", "STR"] if "SPY" in sm.columns else ["PORT", "TV", "DR", "STR"]
 
     if not completed.empty:
@@ -481,7 +490,8 @@ if sleeve_monthly is not None and not sleeve_monthly.empty:
             f"<div style='font-size:.72rem;color:#999;margin-top:3px'>"
             f"Average month (all history): Portfolio {avg['PORT']:+.1f}%"
             + (f" · SPY {avg['SPY']:+.1f}%" if 'SPY' in sm.columns else "")
-            + f" · TV {avg['TV']:+.1f}% · DR {avg['DR']:+.1f}% · STR {avg['STR']:+.1f}%</div>",
+            + "".join(f" · {SLEEVE_CODE[k]} {avg[k]:+.1f}%" for k in ("TV", "DR", "STR"))
+            + "</div>",
             unsafe_allow_html=True)
 
     # MTD — current month so far (fresh from the daily signal, not the report)
@@ -504,7 +514,7 @@ if sleeve_monthly is not None and not sleeve_monthly.empty:
         _tc = ["PORT", "SPY", "vs SPY", "TV", "DR", "STR"]
     else:
         _tc = ["PORT", "TV", "DR", "STR"]
-    tbl = tbl[_tc].rename(columns={"PORT": "Portfolio"})
+    tbl = tbl[_tc].rename(columns={"PORT": "Portfolio", **SLEEVE_CODE})
     def _csign(v):
         if pd.isna(v): return ""
         return "color:#2E7D32;font-weight:600" if v >= 0 else "color:#B71C1C;font-weight:600"
@@ -683,9 +693,12 @@ if eq60_raw:
 
     # Sleeve lines — TV, DR, STR each indexed to 100
     SLEEVE_STYLE = {
-        "TV":  {"color": "#1A3D6E", "dash": "solid",  "width": 2.2, "label": "TV (Tactical Vol)"},
-        "DR":  {"color": "#E65C00", "dash": "solid",  "width": 2.2, "label": "DR (Defensive Rot.)"},
-        "STR": {"color": "#6A1B9A", "dash": "solid",  "width": 2.2, "label": "STR (Strategic Ret.)"},
+        "TV":  {"color": "#1A3D6E", "dash": "solid",  "width": 2.2,
+                "label": f"{SLEEVE_CODE['TV']} ({SLEEVE_NAME['TV']})"},
+        "DR":  {"color": "#E65C00", "dash": "solid",  "width": 2.2,
+                "label": f"{SLEEVE_CODE['DR']} ({SLEEVE_NAME['DR']})"},
+        "STR": {"color": "#6A1B9A", "dash": "solid",  "width": 2.2,
+                "label": f"{SLEEVE_CODE['STR']} ({SLEEVE_NAME['STR']})"},
     }
     for sleeve, style in SLEEVE_STYLE.items():
         if sleeve not in eq60.columns: continue
@@ -742,35 +755,36 @@ if eq60_raw:
             lambda row: f'{pd.to_datetime(row["date_from"]).strftime("%d %b")} – '
                         f'{pd.to_datetime(row["date_to"]).strftime("%d %b")}', axis=1)
         attr["Days"]  = attr["days"]
-        for col, key in [("TV %","TV_pct"),("DR %","DR_pct"),
-                         ("STR %","STR_pct"),("Port %","port_pct")]:
+        # Kop uit SLEEVE_CODE, sleutel uit de signaal-JSON: die twee lopen hier
+        # uiteen en moeten dat ook blijven doen.
+        _acols  = [(f"{SLEEVE_CODE[s]} %", f"{s}_pct") for s in ("TV", "DR", "STR")]
+        _anames = [c for c, _ in _acols]
+        for col, key in _acols + [("Port %", "port_pct")]:
             attr[col] = attr[key].apply(lambda x: f"{x:+.1f}%")
 
         st.dataframe(
-            attr[["Regime","Period","Days","TV %","DR %","STR %","Port %"]],
+            attr[["Regime", "Period", "Days", *_anames, "Port %"]],
             hide_index=True, use_container_width=True,
             column_config={
                 "Regime": st.column_config.TextColumn(width="medium"),
                 "Period": st.column_config.TextColumn(width="medium"),
                 "Days":   st.column_config.NumberColumn(width="small"),
-                "TV %":   st.column_config.TextColumn(width="small"),
-                "DR %":   st.column_config.TextColumn(width="small"),
-                "STR %":  st.column_config.TextColumn(width="small"),
+                **{c: st.column_config.TextColumn(width="small") for c in _anames},
                 "Port %": st.column_config.TextColumn(width="small"),
             }
         )
 
 # ── Equity curve ──────────────────────────────────────────────────────────
-st.markdown("**Portfolio Value — Full Period** *(starting $100K · VTS vs SPY)*")
+st.markdown("**Portfolio Value — Full Period** *(starting $100K · VBS vs SPY)*")
 if equity is not None:
     final = equity.iloc[-1]
     fig_e = go.Figure()
     fig_e.add_trace(go.Scatter(
         x=equity.index, y=equity.values,
-        mode="lines", name="VTS V20",
+        mode="lines", name="VBS",
         line={"color":"#1A3D6E","width":2},
         fill="tozeroy", fillcolor="rgba(26,61,110,0.06)",
-        hovertemplate="<b>VTS $%{y:,.0f}</b><extra>%{x|%b %Y}</extra>",
+        hovertemplate="<b>VBS $%{y:,.0f}</b><extra>%{x|%b %Y}</extra>",
     ))
     if spy_equity is not None and len(spy_equity):
         fig_e.add_trace(go.Scatter(
@@ -788,7 +802,7 @@ if equity is not None:
     fig_e.add_hline(y=100_000, line_dash="dot", line_color="#BBB", line_width=1)
     fig_e.add_annotation(
         x=equity.index[-1], y=final,
-        text=f" VTS ${final/1e6:.2f}M",
+        text=f" VBS ${final/1e6:.2f}M",
         showarrow=False, xanchor="left",
         font={"color":"#1A3D6E","size":11,"family":"monospace"},
     )
@@ -858,7 +872,7 @@ st.caption(
     # Deze regel noemde de signaalinputs bij naam. Dit bestand wordt verbatim
     # naar de publieke repo gekopieerd, commentaar inbegrepen, dus staat hier
     # niet wat er weg moest — zie publish_filter.py in de private repo.
-    f"VTS V20 · Signal from US closing prices · "
+    f"Volatility Barometer Strategy · Signal from US closing prices · "
     f"1-day execution lag · SVXY trailing stop −{sig.get('svxy_stop_pct', 12):g}% · "
     f"Auto-refresh every 5 min · {datetime.now().strftime('%H:%M:%S')}"
 )
