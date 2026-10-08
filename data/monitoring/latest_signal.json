@@ -1,14 +1,14 @@
 {
   "as_of": "2026-10-07",
-  "generated_at": "2026-10-07T19:20:22.008579+00:00",
-  "barometer": 42.17,
+  "generated_at": "2026-10-08T01:12:35.238163+00:00",
+  "barometer": 41.67,
   "vix": 15.08,
   "vix_252d_percentile": 11.6,
   "override": {
     "active": false,
     "level": null,
     "vix_5d_roc": -7.7,
-    "vix3m": 17.71,
+    "vix3m": 17.72,
     "backwardation": false,
     "trigger_roc": 80
   },
@@ -24,7 +24,7 @@
     "next_up": {
       "label": "DR de-risk",
       "threshold": 55,
-      "gap": 12.8,
+      "gap": 13.3,
       "changes": [
         "DR: QLD\u2192XLU"
       ]
@@ -32,9 +32,9 @@
     "next_down": null
   },
   "svxy_stop_pct": 12.0,
-  "svxy_price": 65.02,
-  "svxy_peak_price": 65.36,
-  "svxy_dd_from_peak_pct": -0.52,
+  "svxy_price": 65.32,
+  "svxy_peak_price": 65.32,
+  "svxy_dd_from_peak_pct": 0.0,
   "svxy_stop_active": false,
   "trade_needed_tomorrow": false,
   "trade_details": null,
@@ -336,7 +336,7 @@
     },
     {
       "date": "2026-10-07",
-      "barometer": 42.17,
+      "barometer": 41.67,
       "regime": "Calm"
     }
   ],
@@ -919,12 +919,12 @@
     },
     {
       "date": "2026-10-07",
-      "barometer": 42.17,
+      "barometer": 41.67,
       "vix": 15.1,
       "regime": "Calm",
       "regime_changed": false,
-      "svxy_price": 65.02,
-      "svxy_dd_pct": -0.52
+      "svxy_price": null,
+      "svxy_dd_pct": null
     }
   ],
   "equity_60d": [
@@ -1634,11 +1634,11 @@
     },
     {
       "date": "2026-10-07",
-      "portfolio_value": 107989.93,
-      "TV": 112.2777,
-      "DR": 107.4379,
-      "STR": 103.6503,
-      "SPY": 103.6503,
+      "portfolio_value": 108504.87,
+      "TV": 112.7957,
+      "DR": 108.2218,
+      "STR": 103.8997,
+      "SPY": 103.8997,
       "TV_ticker": "SVXY",
       "DR_ticker": "QLD",
       "STR_ticker": "SPY"
@@ -1650,10 +1650,10 @@
       "date_from": "2026-07-09",
       "date_to": "2026-10-07",
       "days": 65,
-      "TV_pct": 12.28,
-      "DR_pct": 7.44,
-      "STR_pct": 3.65,
-      "port_pct": 7.99
+      "TV_pct": 12.8,
+      "DR_pct": 8.22,
+      "STR_pct": 3.9,
+      "port_pct": 8.5
     }
   ]
 }
